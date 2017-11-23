@@ -36,6 +36,7 @@ A chaque instant, et peu importe la vue dans laquelle nous sommes, les mêmes ac
 - Visualiser au choix les Taux de CO2, La taille des trains, le prix.
 - Selectionner une plage de temps à visualiser
 - Mettre en pause / remettre en route la visualisation.
+- Arrêter la visualisation pour changer de critères.
 
 
  
