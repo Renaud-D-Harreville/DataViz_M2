@@ -38,7 +38,7 @@ A chaque instant, et peu importe la vue dans laquelle nous sommes, les mêmes ac
 - Mettre en pause / remettre en route la visualisation.
 - Arrêter la visualisation pour changer de critères.
 
-
+### Validation de *week_1.md*
  
 | Nom | Action |
 | --- | ------ |
