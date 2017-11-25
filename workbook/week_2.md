@@ -32,3 +32,8 @@ Nous avons été tous les trois actifs en parallèle pour l'écriture du documen
 ## Conclusion de la semaine
 La visualisation est claire pour tous les membres du groupe, le projet peut maintenant commencer. 
 
+### Validation de *week_2.md*
+ 
+| Nom | Action |
+| --- | ------ |
+| Mathilde | Ecriture |
