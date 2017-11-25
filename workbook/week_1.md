@@ -40,4 +40,9 @@ A chaque instant, et peu importe la vue dans laquelle nous sommes, les mêmes ac
 
 
  
-
+| Nom | Action |
+| --- | ------ |
+| Renaud | Ecriture |
+| Mathilde | Modification |
+| Alice | Validation |
+| Renaud | Validation |
