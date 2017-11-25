@@ -6,8 +6,6 @@
 
 # Tree structure 
 
-Reports : find two articles of our project
-
-src : sources
-
-workbook : the progress of our work per week 
+*Reports : find two articles of our project
+*src : sources
+*workbook : the progress of our work per week 
