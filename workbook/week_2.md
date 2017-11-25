@@ -2,8 +2,8 @@
 
 ## Objectifs de la semaine : 
 * Ecrire un article nous permettant d'aboutir à une finalisation des idées
-* Trouver des travaux similaires ou intéressants à l'aboutissement de notre projet 
-* Vérifier nos croquis de la semaine précédante
+* Trouver des travaux similaires ou intéressants pour l'aboutissement de notre projet 
+* Vérifier nos croquis de la semaine précédente
 * Etudier le côté technique en D3 
 
 
@@ -37,3 +37,4 @@ La visualisation est claire pour tous les membres du groupe, le projet peut main
 | Nom | Action |
 | --- | ------ |
 | Mathilde | Ecriture |
+| Alice | Relecture, correction |
