@@ -1,1 +1,102 @@
-Hello World ! 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>M2 DataViz - study on SNCF open-data</title>
+  <link rel="stylesheet" href="src_site/dataviz_style.css">
+  <link rel="shortcut icon" href="src_site/france.ico">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+<script>
+	function resetForm() {
+		document.getElementById("advanced_search").reset();
+	}
+</script>
+<div id="title">
+	<h1> Study of carbon emissions, frequency and average prices of high speed trains per month </h1>
+</div>
+<div id="left">
+	<div id="map">
+		<script>
+			var width = 700,
+			height = 580;
+
+			var svg = d3.select( "body" )
+				.append( "svg" )
+				.attr( "width", width )
+				.attr( "height", height );
+
+			// On rajoute un groupe englobant toute la visualisation pour plus tard
+			var g = svg.append( "g" ); 
+			
+			var projection =  d3.geoConicConformal()
+								.center([2.454071, 46.279229])
+							.scale(2800);
+
+			var path = d3.geoPath()
+						 .projection(projection);
+			
+			d3.json("src_site/france.json", function(json) {
+				g.selectAll("path")
+				   .data(json.features)
+				   .enter()
+				   .append("path")
+					 .attr( "fill", "#ccc" )
+				   .attr("d", path);
+
+			});
+		</script>
+	</div>
+	<div id="details">
+	Here there will be graphs
+	</div>
+</div>
+<div id="right">
+	<div id="legend">
+		Here will be the legend for the map
+	</div>
+	<div id="select">
+		<form method="GET" id="advanced_search">
+		   <p>
+				<label id="head" for="type_search">
+				What is your question about ?
+				</label><br/>
+				<br/>
+				<SELECT name="type" size="1">
+				<OPTION selected>Mainland France
+				<OPTION>A single city
+				<OPTION>A single rail line
+				</SELECT>
+				<br/>
+				<label for="input_search">
+				Which line/city ?
+				</label> <br/>
+				<SELECT name="city" size="1">
+				<OPTION> Lyon
+				<OPTION> Paris
+				</SELECT>
+				<br/>
+				<label for="criteria_search">
+				What do you want to compare ? 
+				</label> <br/>
+				<SELECT name="criteria" size="1">
+				<OPTION>Prices / carbon emissions
+				<OPTION selected>Prices / number of trains
+				<OPTION>Nunmber of trains / carbon emissions
+				</SELECT>
+				<br/>
+		   </p>
+		</form>
+				<button id="play" type="button" value=""> <img src="src_site/play.png" alt="Lancer" /> </button>
+				<button id="pause" type="button" value=""> <img src="src_site/pause.png" alt="Pause" /> </button>
+				<button id="stop" type="button" value=""> <img src="src_site/stop.png" alt="Stop" /> </button>
+				<button id="reset" type="button" value="" onclick="resetForm();"> <img src="src_site/reset.png" alt="Reset" /> </button>
+	</div>
+</div>
+<div id="footer">
+	Project by Mathilde BOLTENHAGEN, Renaud D'HARREVILLE & Alice MONTEL - M2DS Univ. Claude Bernard Lyon 1 2017/2018   
+	<a href="https://icones8.fr/">icons</a><a href="https://www.dafont.com/fr/">fonts</a>
+</div>
+</body>
+</html>
