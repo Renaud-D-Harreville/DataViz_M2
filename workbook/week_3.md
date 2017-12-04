@@ -20,10 +20,11 @@ Cependant, nous pensons qu'il pourrait être utile d'avoir toujours la possibili
 ### Bases techniques : 
 
 Mathilde a commencé un script (voir son [block](https://bl.ocks.org/BoltMaud/1635165707343f53b0f0e201e966361e)) pour afficher la carte de la France, qui servira de base pour notre projet.
-Alice a enrichi la page html afin d'avoir une base avec les formulaires qui seront utilisés pour choisir les critères de recherche.
+Alice a enrichi la page html afin d'avoir une base avec les formulaires qui seront utilisés pour choisir les critères de recherche. Renaud a refactoré les dossiers et a modifié le script de Mathilde afin d'utiliser d3.queue.
 
 ### Validation de *week_3.md*
  
 | Nom | Action |
 | --- | ------ |
 | Alice | Ecriture - début |
+| Mathilde | Lecture - écriture | 
