@@ -39,13 +39,5 @@ function displayMap() {
 		 .attr( "fill", "#ccc" )
 	   .attr("d", path);
 }
-/*
-d3.json("ressources/data/france.json", function(json) {
-	g.selectAll("path")
-	   .data(json.features)
-	   .enter()
-	   .append("path")
-		 .attr( "fill", "#ccc" )
-	   .attr("d", path);
-});
-*/
+
+
