@@ -33,7 +33,7 @@ d3.queue()
 
 function displayMap() {
 	g.selectAll("path")
-	   .data(json.features)
+	   .data(geoJsonFrance.features)
 	   .enter()
 	   .append("path")
 		 .attr( "fill", "#ccc" )
