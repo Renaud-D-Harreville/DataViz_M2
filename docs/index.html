@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>M2 DataViz - study on SNCF open-data</title>
-  <link rel="stylesheet" href="src_site/dataviz_style.css">
-  <link rel="shortcut icon" href="src_site/france.ico">
+  <link rel="stylesheet" href="dataviz_style.css">
+  <link rel="shortcut icon" href="ressources/img/france.ico">
   <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
@@ -37,7 +37,7 @@
 			var path = d3.geoPath()
 						 .projection(projection);
 			
-			d3.json("src_site/france.json", function(json) {
+			d3.json("ressources/data/france.json", function(json) {
 				g.selectAll("path")
 				   .data(json.features)
 				   .enter()
@@ -88,10 +88,10 @@
 				<br/>
 		   </p>
 		</form>
-				<button id="play" type="button" value=""> <img src="src_site/play.png" alt="Lancer" /> </button>
-				<button id="pause" type="button" value=""> <img src="src_site/pause.png" alt="Pause" /> </button>
-				<button id="stop" type="button" value=""> <img src="src_site/stop.png" alt="Stop" /> </button>
-				<button id="reset" type="button" value="" onclick="resetForm();"> <img src="src_site/reset.png" alt="Reset" /> </button>
+				<button id="play" type="button" value=""> <img src="ressources/img/play.png" alt="Lancer" /> </button>
+				<button id="pause" type="button" value=""> <img src="ressources/img/pause.png" alt="Pause" /> </button>
+				<button id="stop" type="button" value=""> <img src="ressources/img/stop.png" alt="Stop" /> </button>
+				<button id="reset" type="button" value="" onclick="resetForm();"> <img src="ressources/img/reset.png" alt="Reset" /> </button>
 	</div>
 </div>
 <div id="footer">
