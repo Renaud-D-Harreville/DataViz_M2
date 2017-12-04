@@ -38,3 +38,4 @@ La visualisation est claire pour tous les membres du groupe, le projet peut main
 | --- | ------ |
 | Mathilde | Ecriture |
 | Alice | Relecture, correction |
+| Mathilde | Validation | 
