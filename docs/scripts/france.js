@@ -18,7 +18,7 @@ var geoJsonFrance;
 
 d3.queue()
 	//.defer(d3.csv, "grippe.csv")
-	.defer(d3.json, "../ressources/data/france.json")
+	.defer(d3.json, "DataViz_M2/docs/ressources/data/france.json")
 	.await(function(error, /*grippe, */france) {
 		if (error) {
 			console.error('Oh dear, something went wrong: ' + error);
