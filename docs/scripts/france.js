@@ -39,5 +39,39 @@ function displayMap() {
 		 .attr( "fill", "#ccc" )
 	   .attr("d", path);
 }
+var cities = [ 
+                {'pos': [2.351, 48.857], 'name': 'Paris'},
+                {'pos':[5.381, 43.293], 'name': 'Marseille'},
+                {'pos':[3.878, 43.609], 'name': 'Montpellier'},
+                {'pos':[4.856, 45.756], 'name': 'Lyon'}, 
+                {'pos':[1.436, 43.602], 'name': 'Toulouse'},
+                {'pos':[-0.566, 44.841], 'name': 'Bordeaux'},
+                {'pos':[-1.553, 47.212], 'name': 'Nantes'},
+                {'pos':[8.737, 41.925], 'name': 'Ajaccio'},
+              ];
+
+
+var city_labels =svg.selectAll(".city_label")
+    .data(cities)
+    .enter();
+
+  city_labels
+    .append("text")
+    .attr("class", "city_label")
+    .text(function(d){return d.name;})
+    .attr("font-family", "AquilineTwoRegular")
+    .attr("font-size", "18px")
+    .attr("fill", "#544")
+    .attr("x",function(d){return projection(d.pos)[0];})
+    .attr("y",function(d){return projection(d.pos)[1];});
+
+
+  city_labels
+    .append("circle")
+    .attr("r", 3)
+    .attr("id",function(d){return d.name;})
+    .attr("fill", "black")
+    .attr("cx",function(d){return projection(d.pos)[0];})
+    .attr("cy",function(d){return projection(d.pos)[1];});
 
 
