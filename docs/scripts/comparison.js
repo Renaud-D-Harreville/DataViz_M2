@@ -3,5 +3,4 @@ function displayComparison(d, i){
         stringHtml+=' <span class="card-title" id="title-card">COMPARISONS</span>';
         stringHtml+='<p id="text-card"><div id="svgcomparision">des graphes pertinents </div></p></div></div></div>';
         document.getElementById("comparison").innerHTML=stringHtml;
-        console.log("fuck");
 }

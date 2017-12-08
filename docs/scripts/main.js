@@ -22,4 +22,5 @@ function createDivs(){
         stringHtml+='<p id="text-card">CO2 :<br> spent time : <br> spent monney : </p></div></div></div>';
     }
     document.getElementById("players").innerHTML=stringHtml;
+    displayComparison("gnn","gnn");
 }
