@@ -1,7 +1,7 @@
 
 var width = 700,
 height = 580;
-var svg = d3.select( "body" )
+var svg = d3.select( "#jeu" )
 	.append( "svg" )
 	.attr( "width", width )
 	.attr( "height", height );
@@ -63,7 +63,8 @@ var city_labels =svg.selectAll(".city_label")
     .attr("font-size", "18px")
     .attr("fill", "#544")
     .attr("x",function(d){return projection(d.pos)[0];})
-    .attr("y",function(d){return projection(d.pos)[1];});
+    .attr("y",function(d){return projection(d.pos)[1];})
+    .on("mouseover",function(){console.log("gnn")});
 
 
   city_labels

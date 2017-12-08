@@ -6,69 +6,52 @@
   <link rel="stylesheet" href="dataviz_style.css">
   <link rel="shortcut icon" href="ressources/img/france.ico">
   <script src="https://d3js.org/d3.v4.min.js"></script>
+   <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 <body>
-<script>
-	function resetForm() {
-		document.getElementById("advanced_search").reset();
-	}
-</script>
-<div id="title">
-	<h1> Study of carbon emissions, frequency and average prices of high speed trains per month </h1>
-</div>
-<div id="left">
-	<div id="map">
-		<script src="scripts/france.js"></script>
-	</div>
-	<div id="details">
-	Here there will be graphs
-	</div>
-</div>
-<div id="right">
-	<div id="legend">
-		Here will be the legend for the map
-	</div>
-	<div id="select">
-		<form method="GET" id="advanced_search">
-		   <p>
-				<label id="head" for="type_search">
-				What is your question about ?
-				</label><br/>
-				<br/>
-				<SELECT name="type" size="1">
-				<OPTION selected>Mainland France
-				<OPTION>A single city
-				<OPTION>A single rail line
-				</SELECT>
-				<br/>
-				<label for="input_search">
-				Which line/city ?
-				</label> <br/>
-				<SELECT name="city" size="1">
-				<OPTION> Lyon
-				<OPTION> Paris
-				</SELECT>
-				<br/>
-				<label for="criteria_search">
-				What do you want to compare ? 
-				</label> <br/>
-				<SELECT name="criteria" size="1">
-				<OPTION>Prices / carbon emissions
-				<OPTION selected>Prices / number of trains
-				<OPTION>Nunmber of trains / carbon emissions
-				</SELECT>
-				<br/>
-		   </p>
-		</form>
-				<button id="play" type="button" value=""> <img src="ressources/img/play.png" alt="Lancer" /> </button>
-				<button id="pause" type="button" value=""> <img src="ressources/img/pause.png" alt="Pause" /> </button>
-				<button id="stop" type="button" value=""> <img src="ressources/img/stop.png" alt="Stop" /> </button>
-				<button id="reset" type="button" value="" onclick="resetForm();"> <img src="ressources/img/reset.png" alt="Reset" /> </button>
-	</div>
-</div>
-<div id="footer">
-	Project by Mathilde BOLTENHAGEN, Renaud D'HARREVILLE & Alice MONTEL - M2DS Univ. Claude Bernard Lyon 1 2017/2018   
-	<a href="https://icones8.fr/">icons</a><a href="https://www.dafont.com/fr/">fonts</a>
-</div>
+ <nav>
+    <div class="nav-wrapper grey darken-3 center">
+      <spam style="font-size:20pt;" >AWARENESS OF CO2 CONSUMPTION</spam>
+
+    </div>
+  </nav>
+
+
+      <div class="row fixe" id="card">
+		<div class="col m4  center">
+		</div>
+        <div class="col m4 center">
+          <div class="card  orange lighten-3 ">
+            <div class="card-content black-text">
+              <span class="card-title" id="title-card">Bienvenue</span>
+              <p id="text-card">Explication de l'objectif du jeu</p>
+            </div>
+            <div class="card-action" id="submit-card">
+                <a class="btn-floating btn-large waves-effect waves-light orange darken-4" onclick="next()" > ></a>
+            </div>
+          </div>
+        </div>
+		<div class="col m4 center">
+		</div>
+      </div>
+	  <div class="row">
+		 <div class="col m2 fixe" id="players"> 
+
+		 </div>
+    	<div id="jeu" class="fixe absolute">
+    	</div>	
+		<div class="col m5 fixe "> </div>
+		<div id="comparison" class="col m5 fixe ">
+    	</div>
+   	 </div>
+<script src="./scripts/comparison.js"></script>
+<script src="./scripts/france.js"></script>
+<script src="./scripts/main.js"></script>
+
 </body>
 </html>
