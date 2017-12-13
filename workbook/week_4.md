@@ -9,11 +9,11 @@
 * * Reprendre l'article 
 
 ## Trouver un nouveau projet : 
-Lorsque nous avons commencé le projet, on s'est rendu compte que l'on n'avait pas les données temporelles pour le CO2. Notre projet tombe complètement à l'eau puisque c'est un des critères que l'on pensait étudier. 
+Lorsque nous avons commencé le projet, nous nous sommes rendu compte que les données temporelles pour le CO2 manquaient. Notre projet tombe complètement à l'eau puisque c'est un des critères que nous voulions étudier. 
 
-Nous souhaitons tout de même étuder le CO2 et faire une visualisation cartographique.. Pour cela nous avons du trouver un nouveau projet. 
+Nous souhaitons tout de même étudier le CO2 et faire une visualisation cartographique.. Pour cela nous avons du trouver un nouveau projet. 
 
-Nous avons décidé de faire un jeu afin de sensibiliser les jeunes sur l'émssion de CO2 lors de leur trajet à travers la France. Pour cela nous symplifions le problème en ne considérant que les 25 premières plus grosses villes. 
+Nous avons décidé de faire un jeu afin de sensibiliser les jeunes sur l'émssion de CO2 lors de leur trajet à travers la France. Pour cela nous simplifions le problème en ne considérant que les 25 premières plus grosses villes. 
 Nous décidons de comparer les trajets en TGV, par avion et en voiture. 
 
 ## Assurer les données : 
@@ -26,11 +26,13 @@ Nous décidons de comparer les trajets en TGV, par avion et en voiture.
 Nos données semblent satisfaisantes. 
 
 ## Recommencer depuis le début
-Nous devons imaginer une nouvelle visualisation qui soit pertinente à ce nouveau problème. Pour cela, nous proposons de refaire le travail des croquis : un par personne puis un final. 
+Nous devons imaginer une nouvelle visualisation qui soit pertinente à ce nouveau problème. Pour cela, nous proposons de refaire le travail des croquis : un par personne puis un final. Ils sont disponibles dans le dossier workbook/ressources de ce projet.
 
+Nous sommes plutôt d'accord sur l'aspect global que doit avoir le jeu. Nous pouvons donc commencer en parallèle la rédaction d'un nouvel article, le nettoyage des données et le développement de la page web. 
 
-### Validation de *week_3.md*
+### Validation de *week_4.md*
  
 | Nom | Action |
 | --- | ------ |
 | Mathilde | Ecriture |
+| Alice | Lecture - correction |
