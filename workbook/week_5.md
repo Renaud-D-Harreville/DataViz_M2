@@ -6,6 +6,11 @@
 * * Reprendre l'article 
 * * Avancer le développement de l'interface
 
+### Article 
+
+### Interface
+
+Nous avons divisé notre jeu en trois interfaces afin de répartir les tâches. 
 
 ### Validation de *week_5.md*
  
