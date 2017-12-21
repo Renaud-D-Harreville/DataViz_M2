@@ -12,6 +12,11 @@
 
 Nous avons divisé notre jeu en trois interfaces afin de répartir les tâches. 
 
+### Autres : 
+
+Nous avons établi un coefficient pour le CO2 / km via ce site : 
+http://www.moteurnature.com/actu/consommation-emission-CO2.php
+
 ### Validation de *week_5.md*
  
 | Nom | Action |
