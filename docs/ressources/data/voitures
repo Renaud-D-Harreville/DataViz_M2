@@ -1,0 +1,316 @@
+Depart, arrivee, autoroute, km, cout
+Marseille,Paris,Via A6,07h17,775 km,120,10 €
+Lyon,Paris,Via A6,04h29,466 km,71,23 €
+Toulouse,Paris,Via A20,06h32,679 km,89,80 €
+Nice,Paris,Via A6,08h52,934 km,150,21 €
+Nantes,Paris,Via A811,03h54,386 km,68,09 €
+Strasbourg,Paris,Via A4,04h39,488 km,77,00 €
+Montpellier,Paris,Via A6,07h10,763 km,119,79 €
+Bordeaux,Paris,Via A10,05h32,585 km,101,67 €
+Rennes,Paris,Via A11,03h41,350 km,57,84 €
+Le Havre,Paris,Via A13,02h22,196 km,37,38 €
+Reims,Paris,Via A4,01h32,143 km,22,69 €
+Lille,Paris,Via A1,02h24,220 km,34,92 €
+Saint-etienne,Paris,Via N7 A77,05h29,485 km,55,71 €
+Toulon,Paris,Via A6,07h48,840 km,132,84 €
+Grenoble,Paris,Via A6,05h21,576 km,94,52 €
+Angers,Paris,Via A11,02h54,297 km,51,98 €
+Dijon,Paris,Via A6,03h08,315 km,43,77 €
+Brest,Paris,Via N12 A11,06h16,593 km,77,78 €
+Le Mans,Paris,Via A11,02h15,209 km,35,62 €
+Clermont-Ferrand,Paris,Via A71,04h11,424 km,72,31 €
+Amiens,Paris,Via A16,01h52,133 km,20,67 €
+Aix-en-Provence,Paris,Via A6,07h08,763 km,118,97 €
+Limoges,Paris,Via A20,03h49,394 km,51,20 €
+Nimes,Paris,Via A6,06h48,719 km,113,94 €
+Lyon,Marseille,Via A7,03h09,314 km,50,20 €
+Toulouse,Marseille,Via E80 A9 A7,04h05,405 km,65,31 €
+Nice,Marseille,Via A8 D560,02h28,190 km,34,46 €
+Nantes,Marseille,Via A10 A62,09h23,968 km,155,49 €
+Strasbourg,Marseille,Via A36 A7,07h38,805 km,118,81 €
+Montpellier,Marseille,Via A9 A54 A7,01h52,166 km,24,38 €
+Bordeaux,Marseille,Via A62 A61,06h06,645 km,103,81 €
+Rennes,Marseille,Via A71 A7,09h59,1047 km,168,37 €
+Le Havre,Marseille,Via A6,09h06,965 km,154,47 €
+Reims,Marseille,Via A31 A6 A7,07h17,798 km,128,64 €
+Lille,Marseille,Via A26 A7,09h07,1001 km,161,01 €
+Saint-etienne,Marseille,Via A7,03h24,331 km,52,04 €
+Toulon,Marseille,Via A50,00h51,64.8 km,13,04 €
+Grenoble,Marseille,Via A7,03h00,306 km,51,54 €
+Angers,Marseille,Via A71 A7,08h24,905 km,146,76 €
+Dijon,Marseille,Via A7,04h53,503 km,80,07 €
+Brest,Marseille,Via N165 A62,12h37,1266 km,180,12 €
+Le Mans,Marseille,Via A71 A7,08h29,897 km,144,57 €
+Clermont-Ferrand,Marseille,Via A7,04h46,475 km,74,19 €
+Amiens,Marseille,Via A6,08h55,909 km,140,11 €
+Aix-en-Provence,Marseille,Via A51,00h40,33.4 km,3,86 €
+Limoges,Marseille,Via A20 A75,07h32,594 km,73,90 €
+Nimes,Marseille,Via A54 A7,01h41,127 km,22,39 €
+Toulouse,Lyon,Via A9 A7,05h15,541 km,90,86 €
+Nice,Lyon,Via A7,04h43,473 km,80,36 €
+Nantes,Lyon,Via A85 A71,06h36,687 km,118,49 €
+Strasbourg,Lyon,Via A36 A39,04h51,492 km,69,73 €
+Montpellier,Lyon,Via A9 A7,03h02,301 km,49,93 €
+Bordeaux,Lyon,Via A89 A20,05h25,552 km,95,97 €
+Rennes,Lyon,Via A71 A89,07h11,740 km,123,98 €
+Le Havre,Lyon,Via A6,06h19,657 km,105,78 €
+Reims,Lyon,Via A31 A6,04h30,490 km,79,95 €
+Lille,Lyon,Via A26 A6,06h20,693 km,112,32 €
+Saint-etienne,Lyon,Via A47,01h04,63.3 km,6,75 €
+Toulon,Lyon,Via A7,03h40,379 km,62,98 €
+Grenoble,Lyon,Via A48,01h23,111 km,21,34 €
+Angers,Lyon,Via A85 A71,05h36,598 km,102,38 €
+Dijon,Lyon,Via A6,02h06,195 km,31,38 €
+Brest,Lyon,Via N165 A71,09h42,975 km,142,26 €
+Le Mans,Lyon,Via A71 A89,05h41,590 km,100,18 €
+Clermont-Ferrand,Lyon,Via A89,01h59,168 km,29,80 €
+Amiens,Lyon,Via A6,06h08,601 km,91,41 €
+Aix-en-Provence,Lyon,Via A7,02h59,302 km,49,12 €
+Limoges,Lyon,Via A20 A89,04h06,405 km,65,02 €
+Nimes,Lyon,Via A7,02h39,258 km,44,09 €
+Nice,Toulouse,Via A8 A61,05h42,563 km,96,22 €
+Nantes,Toulouse,Via A10 A62,05h47,567 km,90,69 €
+Strasbourg,Toulouse,Via A36 A20,09h52,957 km,132,12 €
+Montpellier,Toulouse,Via A61,02h34,243 km,43,03 €
+Bordeaux,Toulouse,Via A62,02h30,244 km,39,01 €
+Rennes,Toulouse,Via A10 A62,07h00,682 km,100,12 €
+Le Havre,Toulouse,Via A20,08h21,826 km,102,06 €
+Reims,Toulouse,Via A20,07h41,812 km,110,79 €
+Lille,Toulouse,Via A1 A10 A20,08h32,894 km,123,14 €
+Saint-etienne,Toulouse,Via N88 A68,06h21,419 km,40,80 €
+Toulon,Toulouse,Via A9 A61,04h38,470 km,78,85 €
+Grenoble,Toulouse,Via A9 A61,05h06,532 km,92,66 €
+Angers,Toulouse,Via A20,06h49,556 km,63,01 €
+Dijon,Toulouse,Via A89 A20,07h06,660 km,93,62 €
+Brest,Toulouse,Via N165 A62,09h00,865 km,115,31 €
+Le Mans,Toulouse,Via A20,06h39,614 km,84,89 €
+Clermont-Ferrand,Toulouse,Via A20,03h58,376 km,59,71 €
+Nice,Toulouse,Via A8 A61,05h42,563 km,96,22 €
+Nantes,Toulouse,Via A10 A62,05h47,567 km,90,69 €
+Strasbourg,Toulouse,Via A36 A20,09h52,957 km,132,12 €
+Montpellier,Toulouse,Via A61,02h34,243 km,43,03 €
+Bordeaux,Toulouse,Via A62,02h30,244 km,39,01 €
+Rennes,Toulouse,Via A10 A62,07h00,682 km,100,12 €
+Le Havre,Toulouse,Via A20,08h21,826 km,102,06 €
+Reims,Toulouse,Via A20,07h41,812 km,110,79 €
+Lille,Toulouse,Via A1 A10 A20,08h32,894 km,123,14 €
+Saint-etienne,Toulouse,Via N88 A68,06h21,419 km,40,80 €
+Toulon,Toulouse,Via A9 A61,04h38,470 km,78,85 €
+Grenoble,Toulouse,Via A9 A61,05h06,532 km,92,66 €
+Angers,Toulouse,Via A20,06h49,551 km,62,77 €
+Dijon,Toulouse,Via A89 A20,07h06,655 km,93,38 €
+Brest,Toulouse,Via N165 A62,09h00,865 km,115,31 €
+Le Mans,Toulouse,Via A20,06h39,614 km,84,89 €
+Clermont-Ferrand,Toulouse,Via A20,03h58,376 km,59,71 €
+Amiens,Toulouse,Via A16 A10 A20,07h56,819 km,122,04 €
+Aix-en-Provence,Toulouse,Via A9 A61,03h58,393 km,64,98 €
+Limoges,Toulouse,Via A20,02h57,290 km,39,65 €
+Nimes,Toulouse,Via A61,03h01,290 km,49,89 €
+Nantes,Nice,Via A62 A8,10h59,1127 km,185,67 €
+Strasbourg,Nice,Via A3 A10,08h22,790 km,135,68 €
+Montpellier,Nice,Via A9 A54 A8,03h27,325 km,54,56 €
+Bordeaux,Nice,Via A62 A61 A8,07h42,804 km,133,99 €
+Rennes,Nice,Via A71 A7,11h34,1206 km,198,55 €
+Le Havre,Nice,Via A6 A7,10h42,1124 km,184,65 €
+Reims,Nice,Via A7 A8,08h52,957 km,158,82 €
+Lille,Nice,Via A7 A8,10h42,1160 km,191,19 €
+Saint-etienne,Nice,Via A7,04h59,490 km,82,22 €
+Toulon,Nice,Via A57 A8,01h46,150 km,26,91 €
+Grenoble,Nice,Via A57 A8,01h48,150 km,27,03 €
+Angers,Nice,Via A57 A8,01h48,150 km,27,03 €
+Dijon,Nice,Via A7,06h28,662 km,110,25 €
+Brest,Nice,Via N165 A62,14h12,1424 km,210,30 €
+Le Mans,Nice,Via A71 A7,10h04,1056 km,174,75 €
+Clermont-Ferrand,Nice,Via A7,06h22,634 km,104,37 €
+Amiens,Nice,Via A6,10h30,1068 km,170,29 €
+Aix-en-Provence,Nice,Via A8,02h00,176 km,32,42 €
+Limoges,Nice,Via A20 A8,09h00,750 km,103,53 €
+Nimes,Nice,Via A54 A8,03h02,279 km,46,92 €
+Strasbourg,Nantes,Via A4,08h11,864 km,143,50 €
+Montpellier,Nantes,Via A62 A10,07h49,806 km,132,52 €
+Bordeaux,Nantes,Via A10,03h34,330 km,52,86 €
+Rennes,Nantes,Via N136,01h35,109 km,10,32 €
+Le Havre,Nantes,Via A84,04h12,384 km,42,40 €
+Reims,Nantes,Via A11,05h04,520 km,89,19 €
+Lille,Nantes,Via A11,05h55,602 km,101,54 €
+Saint-etienne,Nantes,Via A71 A85,06h19,665 km,112,16 €
+Toulon,Nantes,Via A62 A10,09h53,1033 km,168,33 €
+Grenoble,Nantes,Via A71 A85,07h38,794 km,140,59 €
+Angers,Nantes,Via A11,01h06,90.3 km,16,53 €
+Dijon,Nantes,Via A6 A10,06h08,640 km,114,44 €
+Brest,Nantes,Via N165,03h43,297 km,26,12 €
+Le Mans,Nantes,Via A11,02h07,185 km,33,10 €
+Clermont-Ferrand,Nantes,Via A71,05h12,538 km,91,52 €
+Amiens,Nantes,Via A28 A11,05h07,511 km,92,38 €
+Aix-en-Provence,Nantes,Via A62 A10,09h12,957 km,154,46 €
+Limoges,Nantes,Via A83,04h18,322 km,42,52 €
+Nimes,Nantes,Via A62 A10,08h15,853 km,139,37 €
+Montpellier,Strasbourg,Via A7 A36,07h29,786 km,118,04 €
+Bordeaux,Strasbourg,Via A89 A36,10h08,938 km,129,93 €
+Rennes,Strasbourg,Via A4,08h00,828 km,133,17 €
+Le Havre,Strasbourg,Via A4,06h34,697 km,110,40 €
+Reims,Strasbourg,Via A4,03h21,348 km,54,82 €
+Lille,Strasbourg,Via E42 A4,05h20,522 km,55,05 €
+Saint-etienne,Strasbourg,Via A39 A36,05h32,548 km,74,86 €
+Toulon,Strasbourg,Via A7 A36,08h08,864 km,131,09 €
+Grenoble,Strasbourg,Via A1,05h29,529 km,95,70 €
+Angers,Strasbourg,Via A4,07h13,775 km,127,31 €
+Dijon,Strasbourg,Via A36,03h25,331 km,43,78 €
+Brest,Strasbourg,Via A4,10h35,1072 km,153,04 €
+Le Mans,Strasbourg,Via A4,06h34,687 km,110,95 €
+Clermont-Ferrand,Strasbourg,Via A6 A36,06h15,620 km,90,93 €
+Amiens,Strasbourg,Via A4,04h56,523 km,82,76 €
+Aix-en-Provence,Strasbourg,Via A7 A36,07h24,786 km,117,03 €
+Limoges,Strasbourg,Via A20 A36,07h39,731 km,82,32 €
+Nimes,Strasbourg,Via A7 A36,07h07,743 km,112,19 €
+Bordeaux,Montpellier,Via A62,04h34,482 km,80,18 €
+Rennes,Montpellier,Via A71 A75,08h44,914 km,132,41 €
+Le Havre,Montpellier,Via A71 A75,08h58,896 km,120,95 €
+Reims,Montpellier,Via A6 A7,07h15,788 km,128,69 €
+Lille,Montpellier,Via A71 A75,09h10,965 km,141,33 €
+Saint-etienne,Montpellier,Via A7,03h22,321 km,52,09 €
+Toulon,Montpellier,Via A50 A8 A9,02h30,234 km,37,58 €
+Grenoble,Montpellier,Via A49 A7 A9,02h57,296 km,51,39 €
+Angers,Montpellier,Via A71 A75,07h09,772 km,110,80 €
+Dijon,Montpellier,Via A6 A7 A9,04h50,493 km,80,12 €
+Brest,Montpellier,Via N165 A62,11h05,1103 km,156,48 €
+Le Mans,Montpellier,Via A71 A75,07h14,764 km,108,60 €
+Clermont-Ferrand,Montpellier,Via A75,03h30,333 km,37,68 €
+Amiens,Montpellier,Via A71 A75,08h34,890 km,140,22 €
+Aix-en-Provence,Montpellier,Via A54 A9,01h49,157 km,23,71 €
+Limoges,Montpellier,Via A20 A75,05h52,422 km,48,81 €
+Nimes,Montpellier,Via A9,00h52,54.1 km,8,62 €
+Rennes,Bordeaux,Via A844 A10,04h44,442 km,61,99 €
+Le Havre,Bordeaux,Via A10,06h28,655 km,118,47 €
+Reims,Bordeaux,Via A10,06h40,717 km,122,49 €
+Lille,Bordeaux,Via A10,07h31,799 km,134,84 €
+Saint-etienne,Bordeaux,Via A72 A89,05h05,528 km,89,33 €
+Toulon,Bordeaux,Via A61 A62,06h37,710 km,116,63 €
+Grenoble,Bordeaux,Via A48 A89,06h24,657 km,117,76 €
+Angers,Bordeaux,Via A10,03h53,377 km,60,00 €
+Dijon,Bordeaux,Via N79 A89,06h56,647 km,94,24 €
+Brest,Bordeaux,Via N165,06h45,625 km,77,18 €
+Le Mans,Bordeaux,Via A10,04h13,447 km,75,65 €
+Clermont-Ferrand,Bordeaux,Via A89,03h48,368 km,60,56 €
+Amiens,Bordeaux,Via A10,06h55,724 km,133,73 €
+Aix-en-Provence,Bordeaux,Via A61 A62,05h56,633 km,102,76 €
+Limoges,Bordeaux,Via N10,02h49,220 km,19,29 €
+Nimes,Bordeaux,Via A62,04h59,530 km,87,67 €
+Le Havre,Rennes,Via A84,02h56,280 km,33,37 €
+Reims,Rennes,Via A4 A11,04h48,483 km,78,69 €
+Lille,Rennes,Via A29 A84,05h26,573 km,78,60 €
+Saint-etienne,Rennes,Via A71 A85,06h49,717 km,117,20 €
+Toulon,Rennes,Via A7 A71,10h24,1111 km,185,05 €
+Grenoble,Rennes,Via A89 A71,08h08,846 km,145,63 €
+Angers,Rennes,Via D775,02h00,134 km,12,65 €
+Dijon,Rennes,Via A6 A11,05h54,619 km,96,60 €
+Brest,Rennes,Via N12,02h56,242 km,20,92 €
+Le Mans,Rennes,Via A81,01h50,154 km,24,40 €
+Clermont-Ferrand,Rennes,Via A71 A85,05h43,589 km,96,56 €
+Amiens,Rennes,Via A29 A84,04h15,440 km,59,42 €
+Aix-en-Provence,Rennes,Via A7 A71,09h44,1035 km,171,18 €
+Limoges,Rennes,Via N249 N137,05h38,415 km,36,51 €
+Nimes,Rennes,Via A75 A71,09h17,971 km,141,31 €
+Reims,Le Havre,Via A26 A29,03h23,345 km,54,59 €
+Lille,Le Havre,Via A1 A29,03h10,317 km,48,54 €
+Saint-etienne,Le Havre,Via A77 A13,07h18,672 km,89,97 €
+Toulon,Le Havre,Via A6,09h37,1027 km,167,10 €
+Grenoble,Le Havre,Via A6,07h10,763 km,128,78 €
+Angers,Le Havre,Via A28,03h15,301 km,58,95 €
+Dijon,Le Havre,Via A6,04h57,502 km,78,03 €
+Brest,Le Havre,Via N12 A84,05h15,461 km,48,58 €
+Le Mans,Le Havre,Via A28,02h35,212 km,42,71 €
+Clermont-Ferrand,Le Havre,Via A71,06h00,572 km,85,33 €
+Amiens,Le Havre,Via A29,01h59,185 km,29,36 €
+Aix-en-Provence,Le Havre,Via A6,08h56,951 km,153,23 €
+Limoges,Le Havre,Via A20 A71,05h38,542 km,63,53 €
+Lille,Reims,Via A26,02h01,200 km,31,86 €
+Saint-etienne,Reims,Via A6 A31,05h13,547 km,85,18 €
+Toulon,Reims,Via A7 A6 A31,07h48,863 km,141,41 €
+Grenoble,Reims,Via A6 A31,05h21,599 km,103,09 €
+Angers,Reims,Via A11,04h05,431 km,73,09 €
+Dijon,Reims,Via A5 A26,02h51,299 km,48,63 €
+Brest,Reims,Via N12 A11,07h27,727 km,98,88 €
+Le Mans,Reims,Via A11,03h26,343 km,56,72 €
+Clermont-Ferrand,Reims,Via A71,05h22,558 km,93,41 €
+Amiens,Reims,Via A26,01h46,171 km,27,02 €
+Aix-en-Provence,Reims,Via A7 A6 A31,07h08,786 km,127,54 €
+Limoges,Reims,Via A20 A4,05h00,528 km,72,30 €
+Nimes,Reims,Via A7 A6,06h48,742 km,122,51 €
+Saint-etienne,Lille,Via A77 A1,07h28,700 km,89,02 €
+Toulon,Lille,Via A7 A6 A26,09h35,1065 km,173,56 €
+Grenoble,Lille,Via A6 A26,07h07,801 km,135,24 €
+Angers,Lille,Via A11,04h54,512 km,85,29 €
+Dijon,Lille,Via A5 A26,04h37,501 km,80,78 €
+Brest,Lille,Via N12 A84,07h44,754 km,93,78 €
+Le Mans,Lille,Via A1,04h15,424 km,68,92 €
+Clermont-Ferrand,Lille,Via A71,06h10,640 km,105,61 €
+Amiens,Lille,Via A1,01h44,121 km,14,55 €
+Aix-en-Provence,Lille,Via A7 A26,08h54,988 km,159,69 €
+Limoges,Lille,Via A20 A10 A1,05h48,610 km,84,51 €
+Nimes,Lille,Via A7 A26,08h34,944 km,154,66 €
+Toulon,Saint-etienne,Via A7,03h56,397 km,64,91 €
+Grenoble,Saint-etienne,Via A48 A43,01h49,154 km,25,05 €
+Angers,Saint-etienne,Via A85 A71,05h22,576 km,96,11 €
+Dijon,Saint-etienne,Via A6,02h47,252 km,36,59 €
+Brest,Saint-etienne,Via N165 A71,09h27,952 km,135,99 €
+Le Mans,Saint-etienne,Via A85 A71,05h27,568 km,93,91 €
+Clermont-Ferrand,Saint-etienne,Via A89,01h45,146 km,23,53 €
+Amiens,Saint-etienne,Via A16 A77,07h09,620 km,75,95 €
+Aix-en-Provence,Saint-etienne,Via A7,03h15,321 km,51,04 €
+Limoges,Saint-etienne,Via A20 A89,03h52,382 km,58,75 €
+Nimes,Saint-etienne,Via A7,02h55,276 km,46,01 €
+Grenoble,Toulon,Via A7,03h33,371 km,64,45 €
+Angers,Toulon,Via A71 A7,08h57,970 km,159,68 €
+Dijon,Toulon,Via A7,05h26,568 km,92,98 €
+Brest,Toulon,Via N165 A62,13h10,1330 km,193,03 €
+Le Mans,Toulon,Via A71 A7,09h02,962 km,157,48 €
+Clermont-Ferrand,Toulon,Via A7,05h20,540 km,87,10 €
+Amiens,Toulon,Via A6,09h28,974 km,153,02 €
+Aix-en-Provence,Toulon,Via A50,00h58,81.7 km,15,15 €
+Limoges,Toulon,Via A20 A75,08h06,659 km,86,82 €
+Nimes,Toulon,Via A8 A50,02h00,185 km,29,66 €
+Angers,Grenoble,Via A85 A71,06h38,706 km,124,40 €
+Dijon,Grenoble,Via A6,02h58,301 km,52,26 €
+Brest,Grenoble,Via N165 A85,10h44,1082 km,164,28 €
+Le Mans,Grenoble,Via A71 A89,06h43,698 km,122,20 €
+Clermont-Ferrand,Grenoble,Via A89,03h01,276 km,51,82 €
+Amiens,Grenoble,Via A6,07h01,707 km,112,30 €
+Aix-en-Provence,Grenoble,Via A51,03h21,243 km,36,15 €
+Limoges,Grenoble,Via A20 A89,05h08,512 km,87,04 €
+Nimes,Grenoble,Via A9 A7 A49,02h28,250 km,43,63 €
+Dijon,Angers,Via A6 A10,05h08,551 km,98,30 €
+Brest,Angers,Via N165,04h11,377 km,40,19 €
+Le Mans,Angers,Via A11,01h07,95.9 km,16,96 €
+Clermont-Ferrand,Angers,Via A71,04h12,448 km,75,38 €
+Amiens,Angers,Via A28,04h07,422 km,76,24 €
+Aix-en-Provence,Angers,Via A7 A71,08h13,894 km,150,00 €
+Limoges,Angers,Via N147 D347,04h03,265 km,23,93 €
+Brest,Dijon,Via N12 A6,08h33,862 km,116,72 €
+Le Mans,Dijon,Via A6,04h32,477 km,74,56 €
+Clermont-Ferrand,Dijon,Via A89 A6,03h30,323 km,52,10 €
+Amiens,Dijon,Via A26 A5,04h22,473 km,75,96 €
+Aix-en-Provence,Dijon,Via A7,04h40,493 km,78,91 €
+Limoges,Dijon,Via A20 N79,04h53,434 km,43,80 €
+Nimes,Dijon,Via A7,04h20,449 km,73,89 €
+Le Mans,Brest,Via N12,04h24,397 km,44,17 €
+Clermont-Ferrand,Brest,Via A71 A85,08h17,825 km,115,20 €
+Amiens,Brest,Via A84 N12,06h27,628 km,75,19 €
+Aix-en-Provence,Brest,Via A62 A10,12h26,1255 km,179,09 €
+Limoges,Brest,Via A844 N165,07h44,604 km,52,37 €
+Nimes,Brest,Via A62 A10,11h29,1152 km,164,01 €
+Clermont-Ferrand,Le Mans,Via A71,04h15,439 km,72,91 €
+Amiens,Le Mans,Via A28,03h28,336 km,60,15 €
+Aix-en-Provence,Le Mans,Via A7 A71,08h16,885 km,147,53 €
+Limoges,Le Mans,Via A10 A28,03h54,328 km,46,08 €
+Nimes,Le Mans,Via A75 A71,07h49,821 km,117,66 €
+Amiens,Clermont-Ferrand,Via A71,05h34,565 km,104,53 €
+Aix-en-Provence,Clermont-Ferrand,Via A7,04h34,465 km,77,32 €
+Limoges,Clermont-Ferrand,Via A89,02h33,222 km,29,89 €
+Nimes,Clermont-Ferrand,Via A75,04h04,390 km,46,67 €
+Aix-en-Provence,Amiens,Via A6,08h41,898 km,138,88 €
+Limoges,Amiens,Via A20 A10,05h14,535 km,83,54 €
+Nimes,Amiens,Via A6,08h21,854 km,133,85 €
+Limoges,Aix-en-Provence,Via A20 A75,07h23,580 km,72,70 €
+Nimes,Aix-en-Provence,Via N113 A54,01h17,106 km,15,54 €
+Nimes,Limoges,Via A75 A20,06h29,480 km,58,01 €
