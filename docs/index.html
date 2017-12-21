@@ -14,41 +14,41 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 <body>
- <nav>
-    <div class="nav-wrapper grey darken-3 center">
-      <spam style="font-size:20pt;" >AWARENESS OF CO2 CONSUMPTION</spam>
+<div class="row">
+  <div id="title"> RACO2 </div>
+</div>
+<div class="row">
+  <div id="players" class="col s3">
+    <ul class="collapsible" data-collapsible="accordion">
+      <li class="active">
+        <div class="collapsible-header active"><i class="material-icons">filter_drama</i>Player 1</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Player 2</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">whatshot</i>Player 3</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+    </ul>
+  </div>
+  <div id="map" class="col s5">map</div>
+  <div id="graph" class="col s4">graph</div>
+</div>
 
-    </div>
-  </nav>
+<div class="row">
+  <div id="copyright" class="col s1">copyright</div>
+  <div id="footer" class="col s11">footer</div>
+</div>
+
+<div id="popup">
+  popup
+</div>
 
 
-      <div class="row fixe" id="card">
-		<div class="col m4  center">
-		</div>
-        <div class="col m4 center">
-          <div class="card  orange lighten-3 ">
-            <div class="card-content black-text">
-              <span class="card-title" id="title-card">Bienvenue</span>
-              <p id="text-card">Explication de l'objectif du jeu</p>
-            </div>
-            <div class="card-action" id="submit-card">
-                <a class="btn-floating btn-large waves-effect waves-light orange darken-4" onclick="next()" > ></a>
-            </div>
-          </div>
-        </div>
-		<div class="col m4 center">
-		</div>
-      </div>
-	  <div class="row">
-		 <div class="col m2 fixe" id="players"> 
 
-		 </div>
-    	<div id="jeu" class="fixe absolute">
-    	</div>	
-		<div class="col m5 fixe "> </div>
-		<div id="comparison" class="col m5 fixe ">
-    	</div>
-   	 </div>
 <script src="./scripts/comparison.js"></script>
 <script src="./scripts/france.js"></script>
 <script src="./scripts/main.js"></script>
