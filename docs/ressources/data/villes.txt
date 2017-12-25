@@ -1,1 +1,25 @@
-Paris,Marseille,Lyon,Toulouse,Nice,Nantes,Strasbourg,Montpellier,Bordeaux,Rennes,Le Havre,Reims,Lille,Saint-Étienne,Toulon,Grenoble,Angers,Dijon,Brest,Le Mans,Clermont-Ferrand,Amiens,Aix-en-Provence,Limoges,Nîmes
+Paris
+Marseille
+Lyon
+Toulouse
+Nice
+Nantes
+Strasbourg
+Montpellier
+Bordeaux
+Rennes
+Le Havre
+Reims
+Lille
+Saint-Etienne
+Toulon
+Grenoble
+Angers
+Dijon
+Brest
+Le Mans
+Clermont-Ferrand
+Amiens
+Aix-en-Provence
+Limoges
+Nimes
