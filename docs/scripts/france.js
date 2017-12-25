@@ -75,6 +75,7 @@ function createmap(){
       })
       .on("mouseout",function(d){
                             d3.selectAll("."+d.name.replace(/\s/g, '')).attr("fill","#585858")
+                            hidePathsCurrentPlayer()
           
       });
   //-------------------------------------------------------------
@@ -83,6 +84,7 @@ function createmap(){
       .append("circle")
       .attr("r", 3)
       .attr("class",function(d){return d.name.replace(/\s/g, '');})
+      .attr("id",function(d){return d.name.replace(/\s/g, '').toUpperCase();})
       .attr("fill", "#585858")
       .attr("cx",function(d){return projection(d.pos)[0];})
       .attr("cy",function(d){return projection(d.pos)[1];})
@@ -92,8 +94,11 @@ function createmap(){
       })
       .on("mouseout",function(d){
                             d3.selectAll("."+d.name.replace(/\s/g, '')).attr("fill","#585858")
+                            hidePathsCurrentPlayer()
           
       });
+
+      
 }
 
 //----------------------------------------------------------------
@@ -103,63 +108,210 @@ function displayMap() {
 	   .data(geoJsonFrance.features)
 	   .enter()
 	   .append("path")
+     .attr("class","map")
+  g.selectAll(".map")
 		 .attr( "fill", "#ccc" )
 	   .attr("d", path);
+  drawlines();
 }
 
 
 // ----------------------------------------------------------------
 function displayPathsCurrentPlayer(name){
+  listCities=getPossibleCitiesInBlack(name);
+  for(i in listCities){
+    if (listCities[i]<name){
+      d3.select("#"+listCities[i]+name.replace(/\s/g, '').toUpperCase())
+        .attr("stroke","black")
+        .attr("stroke-width","1")
+        .attr("class","current")
+    }
+    else{
+      d3.select("#"+name.replace(/\s/g, '').toUpperCase()+listCities[i])
+         .attr("stroke","black")
+         .attr("stroke-width","1")
+         .attr("class","current")
+    }
+  }
+
+}
+
+//-----------------------------------------------------------------
+function hidePathsCurrentPlayer(){
+  d3.selectAll(".current")
+    .attr("stroke","#626262")
+    .attr("stroke-width","0.5")
+    .classed("current",false)
+
+}
+
+function drawlines(){
+  lines={}
+  var dict=getPossibleCitiesInGray()
+  console.log(dict)
+  for(city in dict){
+    var x1 = d3.select("#"+city.replace(/\s/g, '')).attr("cx");
+    var y1 = d3.select("#"+city.replace(/\s/g, '')).attr("cy");
+    for( i in dict[city]){
+      var x2 = d3.select("#"+dict[city][i].replace(/\s/g, '')).attr("cx");
+      var y2 = d3.select("#"+dict[city][i].replace(/\s/g, '')).attr("cy");
+      g.append("line")
+        .attr("class","allLines")
+        .attr("stroke","#626262")
+        .attr("stroke-width","0.5")
+        .attr("id",city.replace(/\s/g, '')+dict[city][i].replace(/\s/g, ''))
+        .attr("x1",x1)
+        .attr("y1",y1)
+        .attr("x2",x2)
+        .attr("y2",y2)
+    }
+  }
+}
+
+//----------------------------------------------------------------
+function getPossibleCitiesInGray(){
+   dict={}
+   for(i in flights){
+     if( flights[i].depart<flights[i].arrivee ){
+       // si on a deja dans le dict 
+       if(dict[flights[i].depart]!=undefined){
+         // mais pas dans la liste 
+         if(dict[flights[i].depart].indexOf(flights[i].arrivee)<=0){
+         // on ajoute 
+           dict[flights[i].depart].push(flights[i].arrivee)
+         }
+       }
+       else{
+         dict[flights[i].depart]=[]
+         dict[flights[i].depart].push(flights[i].arrivee)
+       }
+     }
+     else{
+      // si on a deja dans le dict 
+      if(dict[flights[i].arrivee]!=undefined){
+        // mais pas dans la liste 
+        if(dict[flights[i].arrivee].indexOf(flights[i].depart)<=0){
+        // on ajoute 
+          dict[flights[i].arrivee].push(flights[i].depart)
+        }
+      }
+      else{
+        dict[flights[i].arrivee]=[]
+        dict[flights[i].arrivee].push(flights[i].depart)
+      }
+    } 
+   }
+  for(i in trains){
+     if( trains[i].depart<trains[i].arrivee ){
+       // si on a deja dans le dict 
+       if(dict[trains[i].depart]!=undefined){
+         // mais pas dans la liste 
+         if(dict[trains[i].depart].indexOf(trains[i].arrivee)<=0){
+         // on ajoute 
+           dict[trains[i].depart].push(trains[i].arrivee)
+         }
+       }
+       else{
+         dict[trains[i].depart]=[]
+         dict[trains[i].depart].push(trains[i].arrivee)
+       }
+     }
+     else{
+      // si on a deja dans le dict 
+      if(dict[trains[i].arrivee]!=undefined){
+        // mais pas dans la liste 
+        if(dict[trains[i].arrivee].indexOf(trains[i].depart)<=0){
+        // on ajoute 
+          dict[trains[i].arrivee].push(trains[i].depart)
+        }
+      }
+      else{
+        dict[trains[i].arrivee]=[]
+        dict[trains[i].arrivee].push(trains[i].depart)
+      }
+    } 
+   }
+  for(var i=0;i<cars.length;i++){
+     if( cars[i].depart.toUpperCase()<cars[i].arrivee.toUpperCase() ){
+       // si on a deja dans le dict 
+       if(dict[cars[i].depart.toUpperCase()]!=undefined){
+         // mais pas dans la liste 
+         if(dict[cars[i].depart.toUpperCase()].indexOf(cars[i].arrivee.toUpperCase())<=0){
+         // on ajoute 
+           dict[cars[i].depart.toUpperCase()].push(cars[i].arrivee.toUpperCase())
+         }
+       }
+       else{
+         dict[cars[i].depart.toUpperCase()]=[]
+         dict[cars[i].depart.toUpperCase()].push(cars[i].arrivee.toUpperCase())
+       }
+     }
+     else{
+      // si on a deja dans le dict 
+      if(dict[cars[i].arrivee.toUpperCase()]!=undefined){
+        // mais pas dans la liste 
+        if(dict[cars[i].arrivee.toUpperCase()].indexOf(cars[i].depart.toUpperCase())<=0){
+        // on ajoute 
+          dict[cars[i].arrivee.toUpperCase()].push(cars[i].depart.toUpperCase())
+        }
+      }
+      else{
+        dict[cars[i].arrivee.toUpperCase()]=[]
+        dict[cars[i].arrivee.toUpperCase()].push(cars[i].depart.toUpperCase())
+      }
+    } 
+   }
+   delete dict["undefined"]
+   return (dict)
+
+}
+//-----------------------------------------------------------------
+function getPossibleCitiesInBlack(name){
   list_cities_black=[]
-  for(flight in flights){
-    if(flight.depart==name.toUpperCase()){
-      if(list_cities_black.indexOf(flight.arrivee)<=0){
-       list_cities.append(flight.arrivee)
+  for(i in flights){
+    if(flights[i].depart==name.toUpperCase()){
+      if(list_cities_black.indexOf(flights[i].arrivee)<=0){
+       list_cities_black.push(flights[i].arrivee)
       }
     }
     else{
-      if(flight.arrivee==name.toUpperCase()){
-        if(list_cities_black.indexOf(flight.depart)<=0){
-          list_cities.append(flight.depart)
+      if(flights[i].arrivee==name.toUpperCase()){
+        if(list_cities_black.indexOf(flights[i].depart)<=0){
+          list_cities_black.push(flights[i].depart)
         }
       }
     }
   }
-  for(train in trains){
-    if(train.depart==name.toUpperCase()){
-      if(list_cities_black.indexOf(train.arrivee)<=0){
-        list_cities.append(train.arrivee)
+  for(i in trains){
+    if(trains[i].depart==name.toUpperCase()){
+      if(list_cities_black.indexOf(trains[i].arrivee)<=0){
+        list_cities_black.push(trains[i].arrivee)
       }
     }
     else{
-      if(train.arrivee==name.toUpperCase()){
-          if(list_cities_black.indexOf(train.depart)<=0){
-            list_cities.append(train.depart)
+      if(trains[i].arrivee==name.toUpperCase()){
+          if(list_cities_black.indexOf(trains[i].depart)<=0){
+            list_cities_black.push(trains[i].depart)
           }
       }
     }
     
   }
-  for(car in cars){
-    if(car.depart==name){
-      if(list_cities_black.indexOf(car.arrivee.toUpperCase())<=0){
-       list_cities.append(car.arrivee.toUpperCase())
+  for(i in cars){
+    if(cars[i].depart==name){
+      if(list_cities_black.indexOf(cars[i].arrivee.toUpperCase())<=0){
+       list_cities_black.push(cars[i].arrivee.toUpperCase())
       }
     }
     else{
-      if(car.arrivee==name){
-        if(list_cities_black.indexOf(car.depart.toUpperCase())<=0){
-          list_cities.append(car.depart.toUpperCase())
+      if(cars[i].arrivee==name){
+        if(list_cities_black.indexOf(cars[i].depart.toUpperCase())<=0){
+          list_cities_black.push(cars[i].depart.toUpperCase())
         }
       }
     }
   }
-  console.log(list_cities_black)
+  return list_cities_black;
 }
-
-//-----------------------------------------------------------------
-function hidePathsCurrentPlayer(){
-}
-
 
 
