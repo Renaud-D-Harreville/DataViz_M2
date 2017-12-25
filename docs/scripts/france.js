@@ -63,6 +63,7 @@ function createmap(){
     city_labels
       .append("text")
       .attr("class", "city_label")
+      .attr("id",function(d){return d.name.replace(/\s/g, '').toUpperCase();})
       .attr("class",function(d){  return d.name.replace(/\s/g, '');})
       .text(function(d){return d.name;})
       .attr("font-size", "11px")
@@ -71,11 +72,9 @@ function createmap(){
       .attr("y",function(d){return projection(d.pos)[1];})
       .on("mouseover", function(d){
                             d3.selectAll("."+d.name.replace(/\s/g, '')).attr("fill","black")
-                            displayPathsCurrentPlayer(d.name)
       })
       .on("mouseout",function(d){
                             d3.selectAll("."+d.name.replace(/\s/g, '')).attr("fill","#585858")
-                            hidePathsCurrentPlayer()
           
       });
   //-------------------------------------------------------------
@@ -84,21 +83,18 @@ function createmap(){
       .append("circle")
       .attr("r", 3)
       .attr("class",function(d){return d.name.replace(/\s/g, '');})
-      .attr("id",function(d){return d.name.replace(/\s/g, '').toUpperCase();})
       .attr("fill", "#585858")
       .attr("cx",function(d){return projection(d.pos)[0];})
       .attr("cy",function(d){return projection(d.pos)[1];})
       .on("mouseover", function(d){
                             d3.selectAll("."+d.name.replace(/\s/g, '')).attr("fill","black")
-                            displayPathsCurrentPlayer(d.name)
       })
       .on("mouseout",function(d){
                             d3.selectAll("."+d.name.replace(/\s/g, '')).attr("fill","#585858")
-                            hidePathsCurrentPlayer()
           
       });
 
-      
+
 }
 
 //----------------------------------------------------------------
@@ -113,6 +109,7 @@ function displayMap() {
 		 .attr( "fill", "#ccc" )
 	   .attr("d", path);
   drawlines();
+        displayPathsCurrentPlayer("Paris")
 }
 
 
@@ -125,12 +122,20 @@ function displayPathsCurrentPlayer(name){
         .attr("stroke","black")
         .attr("stroke-width","1")
         .attr("class","current")
+     d3.select("#"+name.replace(/\s/g,'').toUpperCase())
+          .attr("font-weight","bold")
+          .attr("fill","black")
+          .attr("class","current_available")
     }
     else{
       d3.select("#"+name.replace(/\s/g, '').toUpperCase()+listCities[i])
          .attr("stroke","black")
          .attr("stroke-width","1")
          .attr("class","current")
+      d3.select("#"+name.replace(/\s/g,'').toUpperCase())
+          .attr("font-weight","bold")
+          .attr("fill","black")
+          .attr("class","current_available")
     }
   }
 
@@ -139,10 +144,13 @@ function displayPathsCurrentPlayer(name){
 //-----------------------------------------------------------------
 function hidePathsCurrentPlayer(){
   d3.selectAll(".current")
-    .attr("stroke","#626262")
+    .attr("stroke","#686868")
     .attr("stroke-width","0.5")
     .classed("current",false)
-
+  d3.selectAll(".current_available")
+    .attr("font-weight","normal")
+    .attr("fill","#585858")
+    .classed("current_available",false)
 }
 
 function drawlines(){
@@ -150,14 +158,14 @@ function drawlines(){
   var dict=getPossibleCitiesInGray()
   console.log(dict)
   for(city in dict){
-    var x1 = d3.select("#"+city.replace(/\s/g, '')).attr("cx");
-    var y1 = d3.select("#"+city.replace(/\s/g, '')).attr("cy");
+    var x1 = d3.select("#"+city.replace(/\s/g, '')).attr("x");
+    var y1 = d3.select("#"+city.replace(/\s/g, '')).attr("y");
     for( i in dict[city]){
-      var x2 = d3.select("#"+dict[city][i].replace(/\s/g, '')).attr("cx");
-      var y2 = d3.select("#"+dict[city][i].replace(/\s/g, '')).attr("cy");
+      var x2 = d3.select("#"+dict[city][i].replace(/\s/g, '')).attr("x");
+      var y2 = d3.select("#"+dict[city][i].replace(/\s/g, '')).attr("y");
       g.append("line")
         .attr("class","allLines")
-        .attr("stroke","#626262")
+        .attr("stroke","#686868")
         .attr("stroke-width","0.5")
         .attr("id",city.replace(/\s/g, '')+dict[city][i].replace(/\s/g, ''))
         .attr("x1",x1)
