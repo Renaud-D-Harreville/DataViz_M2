@@ -4,6 +4,21 @@
 // File : main file 
 //----------------------------------------------------------------
 // get the list of the trains
+
+d3.queue()
+    .defer(d3.json, "acteurs_simple2.json")
+    .defer(d3.json, "scrutins.json")
+    .await(function(error, act, scrut) {
+    if (error) {
+      console.error('Oh dear, something went wrong: ' + error);
+    }
+    else {
+      scrutins = scrut.scrutins.scrutin
+      acteurs = act.export;
+      traitementDonnees();
+    }
+  });  
+
 var trains;
 d3.csv( "./ressources/data/tgv.csv", function(data) {
   trains=data;
