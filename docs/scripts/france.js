@@ -156,7 +156,7 @@ function hidePathsCurrentPlayer(){
 function drawlines(){
   lines={}
   var dict=getPossibleCitiesInGray()
-  console.log(dict)
+  //console.log(dict)
   for(city in dict){
     var x1 = d3.select("#"+city.replace(/\s/g, '')).attr("x");
     var y1 = d3.select("#"+city.replace(/\s/g, '')).attr("y");

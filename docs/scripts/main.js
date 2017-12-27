@@ -3,37 +3,13 @@
 // Date : December 2017 
 // File : main file 
 //----------------------------------------------------------------
-// get the list of the trains
-var trains;
-// get the list of the cars
-var cars;
-// get the list of the flights
-var flights;
-// get the list of the cities
-var cities;
 
-/***
- * Récupération des différentes données nécessaires.
+
+
+
+/**
+ * Création des différentes classes utilisée pour l'application
  */
-var dataPromise = d3.queue()
-    .defer(d3.csv, "./ressources/data/tgv.csv")
-    .defer(d3.csv, "./ressources/data/voiture.csv")
-    .defer(d3.csv, "./ressources/data/avion.csv")
-    .defer(d3.csv, "./ressources/data/villes.csv")
-    .await(function(error, tgv, voitures, avion, villes) {
-        if (error) {
-            console.error('Oh dear, something went wrong: ' + error);
-        }
-        else {
-            trains = tgv;
-            cars = voitures;
-            flights = avion;
-            cities = villes;
-            traitementDonnees();
-        }
-    });
-
-
 
 class AllJoueurs {
 
@@ -63,9 +39,46 @@ class ActionsJoueur {
 }
 
 class Ville {
-    constructor (name, adjs) {
-        this.name = name;
-        this.villesAdj = adjs || [];
+    constructor (name) {
+        this.name = name.toLowerCase();
+        this.villesAdjVoiture =  []; // tableau des villes accessibles (adjacentes) en voiture.
+        this.villesAdjTrain =  []; // tableau des villes accessibles (adjacentes) en Train.
+        this.villesAdjAvion =  []; // tableau des villes accessibles (adjacentes) en Avion.
+    }
+
+    addVilleAdjVoiture (trajet) {
+        var destination;
+        if (trajet.depart.toLowerCase() == this.name)
+            { destination = trajet.arrivee; }
+        else if (trajet.arrivee.toLowerCase() == this.name)
+            { destination = trajet.depart; }
+        else
+            {return;}
+        this.villesAdjVoiture[destination.toLowerCase()] = trajet;
+
+    }
+
+    addVilleAdjTrain (trajet) {
+        var destination;
+        if (trajet.depart.toLowerCase() == this.name)
+            { destination = trajet.arrivee; }
+        else if (trajet.arrivee.toLowerCase() == this.name)
+            { destination = trajet.depart; }
+        else
+            {return;}
+        this.villesAdjTrain[destination.toLowerCase()] = trajet;
+
+    }
+
+    addVilleAdjAvion (trajet) {
+        var destination;
+        if (trajet.depart.toLowerCase() == this.name)
+            { destination = trajet.arrivee; }
+        else if (trajet.arrivee.toLowerCase() == this.name)
+            { destination = trajet.depart; }
+        else
+            {return;}
+        this.villesAdjAvion[destination.toLowerCase()] = trajet;
     }
 }
 
@@ -75,19 +88,22 @@ class Allvilles {
     }
 
     addVille(ville) {
-        this.villes[ville.name] = ville;
+        this.villes[ville.name.toLowerCase()] = ville;
     }
 
     getVille(name) {
-        return this.villes[name] || null;
+        return this.villes[name.toLowerCase()] || null;
     }
 }
 
 class Trajet {
-    constructor(start, end) {
-        this.depart = start;
-        this.arrivee = end;
+    constructor(start, end, duree, prix, coutCo2) {
+        this.depart = start.toLowerCase();
+        this.arrivee = end.toLowerCase();
         this.type = "";
+        this.duree = duree;
+        this.prix = prix;
+        this.coutCo2 = coutCo2;
     }
 }
 
@@ -98,6 +114,13 @@ class TrajetVoiture extends Trajet {
     }
 }
 
+class TrajetTrain extends Trajet {
+    constructor(start, end) {
+        super(start, end);
+        this.type = "T";
+    }
+}
+
 class TrajetAvion extends Trajet {
     constructor(start, end) {
         super(start, end);
@@ -105,22 +128,102 @@ class TrajetAvion extends Trajet {
     }
 }
 
+/***
+ * Récupération des différentes données nécessaires.
+ */
 
+// get the list of the trains
+var trains;
+// get the list of the cars
+var cars;
+// get the list of the flights
+var flights;
+// get the list of the cities
+var cities;
+
+// la liste des joueurs
 var joueurs = new AllJoueurs();
+// la liste des villes
 var villes = new Allvilles();
 
-function traitementDonnees() {
+var dataPromise = d3.queue()
+    .defer(d3.csv, "./ressources/data/tgv.csv")
+    .defer(d3.csv, "./ressources/data/voiture.csv")
+    .defer(d3.csv, "./ressources/data/avion.csv")
+    .defer(d3.csv, "./ressources/data/villes.csv")
+    .await(function(error, tgv, voitures, avion, lesVilles) {
+        if (error) {
+            console.error('Oh dear, something went wrong: ' + error);
+        }
+        else {
+            trains = tgv;
+            cars = voitures;
+            flights = avion;
+            cities = lesVilles;
 
-    // Construction des villes à partir du fichier villes.csv
+            let p1 = new Promise(function(resolve, reject) {
+                createVilles();
+            });
+            p1.then(traitementDonnees());
+        }
+    });
+
+
+
+//var essai = new Ville('toto');
+//essai.addVilleAdjVoiture(new Trajet("dest", "yolo", "", "", ""));
+//console.log(essai);
+
+
+/**
+ * Traitement des données :
+ * Instanciation des différents objets depuis les données fournies dans les fichiers.
+ */
+
+// Instanciation des villes à partir du fichier villes.csv
+function createVilles() {
+
     var tmpVille;
+
     cities.forEach(function (d) {
         tmpVille = new Ville(d.ville)
         villes.addVille(tmpVille);
     });
+}
 
+
+function traitementDonnees() {
+
+    console.log("je suis passé");
+    // Instanciation des trajets en voiture, et ajout de ceux ci à leurs villes de depart et d'arrivee.
+    var tmpTrajetVoiture;
+    cars.forEach(function (c) {
+        tmpTrajetVoiture = new TrajetVoiture(c.depart, c.arrivee, c.temps, c.prix, c.CO2);
+        villes.getVille(c.depart.toLowerCase()).addVilleAdjVoiture(tmpTrajetVoiture);
+        villes.getVille(c.arrivee.toLowerCase()).addVilleAdjVoiture(tmpTrajetVoiture);
+    });
+
+    // Instanciation des trajets en train, et ajout de ceux ci à leurs villes de depart et d'arrivee.
+    var tmpTrajetTrain;
+    console.log(trains);
+    trains.forEach(function (t) {
+        console.log("11");
+        tmpTrajetTrain = new TrajetTrain(t.depart, t.arrivee, t.temps, t.prix, t.CO2);
+        villes.getVille(t.depart.toLowerCase()).addVilleAdjTrain(tmpTrajetTrain);
+        villes.getVille(t.arrivee.toLowerCase()).addVilleAdjTrain(tmpTrajetTrain);
+    });
+
+    // Instanciation des trajets en voiture, et ajout de ceux ci à leurs villes de depart et d'arrivee.
+    var tmpTrajetAvion;
+    flights.forEach(function (f) {
+        console.log("22");
+        tmpTrajetAvion = new TrajetAvion(f.depart, f.arrivee, f.temps, f.prix, f.CO2);
+        villes.getVille(f.depart.toLowerCase()).addVilleAdjAvion(tmpTrajetAvion);
+        villes.getVille(f.arrivee.toLowerCase()).addVilleAdjAvion(tmpTrajetAvion);
+    });
+
+    console.log(villes);
     
-
-
 }
 
 
