@@ -1,4 +1,6 @@
-###Objectifs de la semaine : 
+# Rapport de la semaine du 22 décembre au 28 décembre 2017
+
+## Objectifs de la semaine : 
 - Structurer le code pour que l'on puisse correctement répartir les tâches
 - Finaliser les jeux de données
 - Commencer à coder des parties indépendantes.
@@ -26,3 +28,8 @@ Le dernier fichier voitures.csv a été ajouté, et modifié pour avoir le taux 
 Une partie sur la visualisation de la France a été faite, afin de rendre compte d'une première visualisation. 
 Une autre partie s'est penchée sur la définition des classes, ainsi que de l'extraction des informations des fichiers csv.
 
+### Validation de *week_6.md*
+ 
+| Nom | Action |
+| --- | ------ |
+| Renaud | Ecriture-début |
