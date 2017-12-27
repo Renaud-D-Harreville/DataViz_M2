@@ -13,7 +13,7 @@ d3.queue()
 		}
 		else {
 			cities = villes;
-      createmap();
+            createmap();
 		}
 });
 //----------------------------------------------------------------
@@ -28,8 +28,8 @@ var g = svg.append( "g" );
 //----------------------------------------------------------------
 // create the projection of France 
 var projection =  d3.geoConicConformal()
-					          .center([2.454071, 46.279229])
-			            	.scale(2800);
+					          .center([3.454071, 46.279229]) // le centre de la France a été changé (2.454 à 3.454)
+			            	.scale(2900); // et un tout petit peu l'échelle aussi (de 2800 à 2900)
 var path = d3.geoPath()
 			 .projection(projection);
 
