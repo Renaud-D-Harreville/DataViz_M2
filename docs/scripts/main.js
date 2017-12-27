@@ -193,8 +193,7 @@ function createVilles() {
 
 
 function traitementDonnees() {
-
-    console.log("je suis passé");
+    
     // Instanciation des trajets en voiture, et ajout de ceux ci à leurs villes de depart et d'arrivee.
     var tmpTrajetVoiture;
     cars.forEach(function (c) {
@@ -207,7 +206,6 @@ function traitementDonnees() {
     var tmpTrajetTrain;
     console.log(trains);
     trains.forEach(function (t) {
-        console.log("11");
         tmpTrajetTrain = new TrajetTrain(t.depart, t.arrivee, t.temps, t.prix, t.CO2);
         villes.getVille(t.depart.toLowerCase()).addVilleAdjTrain(tmpTrajetTrain);
         villes.getVille(t.arrivee.toLowerCase()).addVilleAdjTrain(tmpTrajetTrain);
@@ -216,7 +214,6 @@ function traitementDonnees() {
     // Instanciation des trajets en voiture, et ajout de ceux ci à leurs villes de depart et d'arrivee.
     var tmpTrajetAvion;
     flights.forEach(function (f) {
-        console.log("22");
         tmpTrajetAvion = new TrajetAvion(f.depart, f.arrivee, f.temps, f.prix, f.CO2);
         villes.getVille(f.depart.toLowerCase()).addVilleAdjAvion(tmpTrajetAvion);
         villes.getVille(f.arrivee.toLowerCase()).addVilleAdjAvion(tmpTrajetAvion);
