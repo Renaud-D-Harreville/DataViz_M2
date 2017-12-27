@@ -193,7 +193,7 @@ function createVilles() {
 
 
 function traitementDonnees() {
-    
+
     // Instanciation des trajets en voiture, et ajout de ceux ci à leurs villes de depart et d'arrivee.
     var tmpTrajetVoiture;
     cars.forEach(function (c) {
