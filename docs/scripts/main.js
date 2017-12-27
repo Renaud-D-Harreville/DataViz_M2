@@ -223,7 +223,7 @@ function traitementDonnees() {
     });
 
     console.log(villes);
-    
+
 }
 
 
