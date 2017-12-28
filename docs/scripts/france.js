@@ -40,7 +40,7 @@ var path = d3.geoPath()
 
 //----------------------------------------------------------------
 // d3 visualisation of the map
-var geoJsonFrance;
+//var geoJsonFrance;
 function createmap(){
     /*
   //-------------------------------------------------------------
@@ -59,7 +59,7 @@ function createmap(){
 */
   //-------------------------------------------------------------
   // create cities 
-  var city_labels =svg.selectAll(".city_label")
+  var city_labels = svg.selectAll(".city_label")
       .data(cities)
       .enter();
 
@@ -114,7 +114,7 @@ function displayMap() {
 		 .attr( "fill", "#ccc" )
 	   .attr("d", path);
   drawlines();
-        displayPathsCurrentPlayer("Paris")
+  displayPathsCurrentPlayer("Paris");
 }
 
 
@@ -159,26 +159,29 @@ function hidePathsCurrentPlayer(){
 }
 
 function drawlines(){
-  lines={}
-  var dict=getPossibleCitiesInGray()
-  //console.log(dict)
-  for(city in dict){
+    lines={}
+    var dict=getPossibleCitiesInGray();
+    console.log(dict);
+    for(city in dict){
     var x1 = d3.select("#"+city.replace(/\s/g, '')).attr("x");
     var y1 = d3.select("#"+city.replace(/\s/g, '')).attr("y");
     for( i in dict[city]){
-      var x2 = d3.select("#"+dict[city][i].replace(/\s/g, '')).attr("x");
-      var y2 = d3.select("#"+dict[city][i].replace(/\s/g, '')).attr("y");
-      g.append("line")
-        .attr("class","allLines")
-        .attr("stroke","#686868")
-        .attr("stroke-width","0.5")
-        .attr("id",city.replace(/\s/g, '')+dict[city][i].replace(/\s/g, ''))
-        .attr("x1",x1)
-        .attr("y1",y1)
-        .attr("x2",x2)
-        .attr("y2",y2)
+        var x2 = d3.select("#"+dict[city][i].replace(/\s/g, '')).attr("x");
+        var y2 = d3.select("#"+dict[city][i].replace(/\s/g, '')).attr("y");
+        g.append("line")
+            .attr("class","allLines")
+            .attr("stroke","#686868")
+            .attr("stroke-width","0.5")
+            .attr("id",city.replace(/\s/g, '')+dict[city][i].replace(/\s/g, ''))
+            .attr("x1",x1)
+            .attr("y1",y1)
+            .attr("x2",x2)
+            .attr("y2",y2)
     }
-  }
+    }
+    trajets.displayVoitures(g, villes, projection);
+    trajets.displayTrains(g, villes, projection);
+    trajets.displayAvions(g, villes, projection);
 }
 
 //----------------------------------------------------------------
