@@ -3,6 +3,8 @@
 // Date : December 2017 
 // File : display the map
 //----------------------------------------------------------------
+
+/*
 // data of the cities
 var cities;
 d3.queue()
@@ -16,6 +18,8 @@ d3.queue()
             createmap();
 		}
 });
+*/
+
 //----------------------------------------------------------------
 // create the svg 
 var width = 700, height = 580;
@@ -38,6 +42,7 @@ var path = d3.geoPath()
 // d3 visualisation of the map
 var geoJsonFrance;
 function createmap(){
+    /*
   //-------------------------------------------------------------
   //launch data of the map
   d3.queue()
@@ -51,7 +56,7 @@ function createmap(){
         displayMap();
       }
   });
-
+*/
   //-------------------------------------------------------------
   // create cities 
   var city_labels =svg.selectAll(".city_label")
