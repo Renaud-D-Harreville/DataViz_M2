@@ -23,6 +23,30 @@ class Trajet {
         this.prix = prix;
         this.coutCo2 = coutCo2;
     }
+
+    afficherTrajet() {
+            d3.select(this.getIdTrajet())
+                .attr("stroke","black")
+                .attr("stroke-width","1")
+                .attr("class","current");
+            d3.select("#"+this.arrivee.toUpperCase())
+                .attr("font-weight","bold")
+                .attr("fill","#ff2e43")
+                .attr("class","current_available")
+    }
+
+    /**
+     * renvoie l'id HTML du trajet dans le DOM
+     * @returns {string}
+     */
+    getIdTrajet() {
+        if (this.depart<this.arrivee){
+            return "#"+(this.depart+this.arrivee).toUpperCase();
+        }
+        else {
+            return "#"+(this.arrivee+this.depart).toUpperCase();
+        }
+    }
 }
 
 /**
@@ -91,7 +115,7 @@ class AllTrajets {
         trajets.trajetsVoiture.forEach(function (d) {
             svg.append("line")
                 .attr("class","allLines")
-                .attr("stroke","#FF0000")
+                .attr("stroke","#686868")
                 .attr("stroke-width","0.5")
                 .attr("id",city.replace(/\s/g, '')+dict[city][i].replace(/\s/g, ''))
                 .attr("x1", villes.getVille(d.depart).getX(projection))
@@ -105,7 +129,7 @@ class AllTrajets {
         trajets.trajetsTrain.forEach(function (d) {
             svg.append("line")
                 .attr("class","allLines")
-                .attr("stroke","#00FF40")
+                .attr("stroke","#686868")
                 .attr("stroke-width","0.5")
                 .attr("id",city.replace(/\s/g, '')+dict[city][i].replace(/\s/g, ''))
                 .attr("x1", villes.getVille(d.depart).getX(projection))
@@ -119,7 +143,7 @@ class AllTrajets {
         trajets.trajetsAvion.forEach(function (d) {
             svg.append("line")
                 .attr("class","allLines")
-                .attr("stroke","#013ADF")
+                .attr("stroke","#686868")
                 .attr("stroke-width","0.5")
                 .attr("id",city.replace(/\s/g, '')+dict[city][i].replace(/\s/g, ''))
                 .attr("x1", villes.getVille(d.depart).getX(projection))

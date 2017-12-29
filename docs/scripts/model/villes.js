@@ -7,7 +7,7 @@
 /**
  * Définit une ville par son nom. Pour simplifier, le nom est enregistré en minuscule.
  * Les villes adjacentes (i.e. les villes accessibles depuis l'instance),
- * sont enregistrées dans des tableaux associatifs
+ * sont enregistrées dans des tableaux associatifs en tant que trajet
  */
 class Ville {
 
@@ -84,6 +84,12 @@ class Ville {
         {return;}
         this.villesAdjAvion[destination.toLowerCase()] = trajet;
     }
+
+    displayTrajetDepuisVilleCourante () {
+        for (var d in this.villesAdjVoiture) {
+            this.villesAdjVoiture[d].afficherTrajet();
+        }
+    }
 }
 
 
@@ -102,4 +108,10 @@ class Allvilles {
     getVille(name) {
         return this.villes[name.toLowerCase()] || null;
     }
+
+    displayTrajetsDepuisVille(ville, g, projection) {
+        this.villes[ville.toLowerCase()].displayTrajetDepuisVilleCourante(g, projection);
+    }
+
+
 }

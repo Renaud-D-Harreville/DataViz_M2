@@ -114,36 +114,35 @@ function displayMap() {
 		 .attr( "fill", "#ccc" )
 	   .attr("d", path);
   drawlines();
-  displayPathsCurrentPlayer("Paris");
+  //displayPathsCurrentPlayer("Paris");
 }
 
 
 // ----------------------------------------------------------------
 function displayPathsCurrentPlayer(name){
-  listCities=getPossibleCitiesInBlack(name);
-  for(i in listCities){
-    if (listCities[i]<name){
-      d3.select("#"+listCities[i]+name.replace(/\s/g, '').toUpperCase())
-        .attr("stroke","black")
-        .attr("stroke-width","1")
-        .attr("class","current")
-     d3.select("#"+name.replace(/\s/g,'').toUpperCase())
-          .attr("font-weight","bold")
-          .attr("fill","black")
-          .attr("class","current_available")
+    listCities=getPossibleCitiesInBlack(name);
+    for(i in listCities){
+        if (listCities[i]<name){
+            d3.select("#"+listCities[i]+name.replace(/\s/g, '').toUpperCase())
+                .attr("stroke","black")
+                .attr("stroke-width","1")
+                .attr("class","current");
+            d3.select("#"+name.replace(/\s/g,'').toUpperCase())
+                .attr("font-weight","bold")
+                .attr("fill","black")
+                .attr("class","current_available");
+        }
+        else{
+            d3.select("#"+name.replace(/\s/g, '').toUpperCase()+listCities[i])
+                .attr("stroke","black")
+                .attr("stroke-width","1")
+                .attr("class","current");
+            d3.select("#"+name.replace(/\s/g,'').toUpperCase())
+                .attr("font-weight","bold")
+                .attr("fill","black")
+                .attr("class","current_available");
+        }
     }
-    else{
-      d3.select("#"+name.replace(/\s/g, '').toUpperCase()+listCities[i])
-         .attr("stroke","black")
-         .attr("stroke-width","1")
-         .attr("class","current")
-      d3.select("#"+name.replace(/\s/g,'').toUpperCase())
-          .attr("font-weight","bold")
-          .attr("fill","black")
-          .attr("class","current_available")
-    }
-  }
-
 }
 
 //-----------------------------------------------------------------
@@ -158,6 +157,9 @@ function hidePathsCurrentPlayer(){
     .classed("current_available",false)
 }
 
+/**
+ * dessine tous les trajets en fond gris
+ */
 function drawlines(){
     lines={}
     var dict=getPossibleCitiesInGray();
@@ -179,9 +181,10 @@ function drawlines(){
             .attr("y2",y2)
     }
     }
-    trajets.displayVoitures(g, villes, projection);
-    trajets.displayTrains(g, villes, projection);
-    trajets.displayAvions(g, villes, projection);
+    //trajets.displayVoitures(g, villes, projection);
+    //trajets.displayTrains(g, villes, projection);
+    //trajets.displayAvions(g, villes, projection);
+    villes.displayTrajetsDepuisVille("Toulouse", g, projection);
 }
 
 //----------------------------------------------------------------

@@ -80,7 +80,6 @@ var dataPromise = d3.queue()
 function createVilles() {
 
     var tmpVille;
-    console.log(cities);
     cities.forEach(function (d) {
         tmpVille = new Ville(d.name, d.pos);
         villes.addVille(tmpVille);
@@ -119,7 +118,7 @@ function traitementDonnees() {
         trajets.addTrajet(tmpTrajetAvion);
     });
 
-    console.log(trajets.getAllTrajets());
+    //console.log(villes);
 
 
 }
