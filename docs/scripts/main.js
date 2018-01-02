@@ -60,11 +60,11 @@ var dataPromise = d3.queue()
             geoJsonFrance = franceJson;
             let p1 = new Promise(function(resolve, reject) {
                 createVilles(); });
-            p1.then(traitementDonnees());
+            p1.then(traitementDonnees()); // on traite les données après avoir créer les villes
 
             let p2 = new Promise(function(resolve, reject) {
                 createmap(); });
-            p2.then(displayMap());
+            p2.then(displayMap()); // on affiche la carte après l'avoir créée
         }
     });
 
@@ -109,7 +109,7 @@ function traitementDonnees() {
         trajets.addTrajet(tmpTrajetTrain);
     });
 
-    // Instanciation des trajets en voiture, et ajout de ceux ci à leurs villes de depart et d'arrivee.
+    // Instanciation des trajets en avion, et ajout de ceux ci à leurs villes de depart et d'arrivee.
     var tmpTrajetAvion;
     flights.forEach(function (f) {
         tmpTrajetAvion = new TrajetAvion(f.depart, f.arrivee, f.temps, f.prix, f.CO2);
@@ -117,10 +117,6 @@ function traitementDonnees() {
         villes.getVille(f.arrivee.toLowerCase()).addVilleAdjAvion(tmpTrajetAvion);
         trajets.addTrajet(tmpTrajetAvion);
     });
-
-    //console.log(villes);
-
-
 }
 
 
