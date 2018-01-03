@@ -1,0 +1,39 @@
+setNumberOfPlayer(nb); // initialise le nb de joueurs, toutes données à 0, nom des joueurs= joueuri, cache la div formulaire, lance start()
+start(); //init le jeu avec les fonctions suivantes , lance suivant(joueur1)
+getDepartArrivee(); // deux villes a au moins 3 chemins d'écart
+displayMap(); // affiche la carte
+drawlines(); // affiche les chemins existants
+getPossibleCitiesInGray(); // donne la liste des chemins sans doublons, utile dans drawlines
+
+// ici on a une carte avec les chemins en gris
+
+
+//jeu
+//pour la carte
+displayPathsCurrentPlayer(ville); // affiche en noir les trais (classe : current_available)
+getPossibleCitiesInBlack(ville); // donne la liste des chemins disponibles
+hidePathsCurrentPlayer(); // retire tous les current_available pour la fin du tour
+onclickoncity(); // donne la ville du joueur, la ville du clique et le joueur aux deux fonctions suivantes 
+completeform(depart,arrivee,joueur); // remplit le formulaire de jeu en bas à droite
+
+//graphe
+getchart(depart,arrivee,joueur); // affiche un svg avec les infos suivantes
+getPathByTrain(depart,arrivee, joueur); // retourne null ou le chemin en train
+getPathByFlight(depart,arrivee, joueur); // retourne null ou le chemin en avion
+getPathByCar(depart,arrivee, joueur); // retourne null ou le chemin en voiture
+co2vsTime(trajetTrain,trajetavion,trajetCar); // donne le graphique co2vs
+pricevsTime(trajetTrain,trajetavion,trajetCar); // donne le graphique co2vs
+co2vsprice(trajetTrain,trajetavion,trajetCar); // donne le graphique co2vs
+deletesvg();
+
+//jeu 
+play(joueur,trajet); // change les données du joueur, avec le bouton du formulaire, updatehistoric(); updatecores(historic); 
+suivant(nameplayer); // test si arrivee, si non displayPathsCurrentPlayer(ville); si oui test si finished() si oui displayscores() si non suivant(joueur+1) 
+finished(); // test si tous les joueurs sont arrivés
+
+//scores
+displayscores(); // affiche la div du svg au milieu de la page
+updatecores(historic); // met à jour le svg
+startscores(); // create svg
+hidescores(); 
+

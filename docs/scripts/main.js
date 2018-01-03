@@ -5,8 +5,6 @@
 //----------------------------------------------------------------
 
 
-
-
 //-------------------------------------------------
 //-------------------------------------------------
 // Récupération des différentes données nécessaires.
@@ -28,7 +26,7 @@ var geoJsonFrance;
 //
 
 // la liste des joueurs
-var joueurs = new AllJoueurs();
+//var joueurs = new AllJoueurs();
 // la liste des villes
 var villes = new Allvilles();
 // Liste des différents trajets sur la France entière
@@ -78,7 +76,6 @@ var dataPromise = d3.queue()
  * Instanciation des villes à partir du fichier villes.csv
  */
 function createVilles() {
-
     var tmpVille;
     console.log(cities);
     cities.forEach(function (d) {
@@ -91,7 +88,6 @@ function createVilles() {
  * Instanciation des trajets fournis par les fichiers voitures.csv, tgv.csv et avion.csv
  */
 function traitementDonnees() {
-
     // Instanciation des trajets en voiture, et ajout de ceux ci à leurs villes de depart et d'arrivee.
     var tmpTrajetVoiture;
     cars.forEach(function (c) {
@@ -121,36 +117,5 @@ function traitementDonnees() {
 
     console.log(trajets.getAllTrajets());
 
-
 }
-
-
-
-
-/*
-//var trains;
-d3.csv( "./ressources/data/tgv.csv", function(data) {
-  trains=data;
-});
-
-
-//----------------------------------------------------------------
-// get the list of the cars 
-//var cars;
-d3.csv( "./ressources/data/voiture.csv", function(data) {
-  cars=data;
-});
-
-//----------------------------------------------------------------
-// get the list of the flights
-//var flights;
-d3.csv( "./ressources/data/avion.csv", function(data) {
-  flights=data;
-});
-*/
-
-//----------------------------------------------------------------
-// get the list of the cities
-//var cities;
-
 

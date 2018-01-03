@@ -4,22 +4,6 @@
 // File : display the map
 //----------------------------------------------------------------
 
-/*
-// data of the cities
-var cities;
-d3.queue()
-	.defer(d3.json, "ressources/data/coordVilles.json")
-	.await(function(error,villes) {
-		if (error) {
-			console.error('Oh dear, something went wrong: ' + error);
-		}
-		else {
-			cities = villes;
-            createmap();
-		}
-});
-*/
-
 //----------------------------------------------------------------
 // create the svg 
 var width = 700, height = 580;
@@ -40,23 +24,7 @@ var path = d3.geoPath()
 
 //----------------------------------------------------------------
 // d3 visualisation of the map
-//var geoJsonFrance;
 function createmap(){
-    /*
-  //-------------------------------------------------------------
-  //launch data of the map
-  d3.queue()
-    .defer(d3.json, "ressources/data/france.json")
-    .await(function(error,france) {
-      if (error) {
-        console.error('Oh dear, something went wrong: ' + error);
-      }
-      else {
-        geoJsonFrance = france;
-        displayMap();
-      }
-  });
-*/
   //-------------------------------------------------------------
   // create cities 
   var city_labels = svg.selectAll(".city_label")
@@ -98,8 +66,6 @@ function createmap(){
                             d3.selectAll("."+d.name.replace(/\s/g, '')).attr("fill","#585858")
           
       });
-
-
 }
 
 //----------------------------------------------------------------
@@ -114,6 +80,7 @@ function displayMap() {
 		 .attr( "fill", "#ccc" )
 	   .attr("d", path);
   drawlines();
+  //exemple
   displayPathsCurrentPlayer("Paris");
 }
 
