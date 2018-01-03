@@ -33,3 +33,4 @@ Une autre partie s'est penchée sur la définition des classes, ainsi que de l'e
 | Nom | Action |
 | --- | ------ |
 | Renaud | Ecriture-début |
+| Mathilde | Lecture- validation |
