@@ -1,40 +1,32 @@
 //----------------------------------------------------------------
-// Auteurs : Renaud, Alice, Mathilde 
+// Auteurs :  Alice
 // Date : Decembre 2017 
 //----------------------------------------------------------------
 
 //----------------------------------------------------------------
-//  affiche un svg avec les infos suivantes
+//   creation du svg
 //----------------------------------------------------------------
-function creationGraphe(){
+function creationSvgScores(){
     //TODO
 }
 
 //----------------------------------------------------------------
-// donne le graphique co2vs
+// Modifie les données du svg à chaque tour
 //----------------------------------------------------------------
-function co2vsTemps(trajetTrain,trajetavion,trajetCar){
+function miseAjourSvg(){
     //TODO
 }
 
 //----------------------------------------------------------------
-// 
+// div en plein milieu de l'écran
 //----------------------------------------------------------------
-function prixvsTemps(trajetTrain,trajetavion,trajetCar){
+function affichageScores(){
     //TODO
 }
 
 //----------------------------------------------------------------
-// 
+// cache la div
 //----------------------------------------------------------------
-function co2vsPrix(trajetTrain,trajetavion,trajetCar){   
-     //TODO
-}
-
-//----------------------------------------------------------------
-// 
-//----------------------------------------------------------------
-function supprimeSvg(){
+function cacheScores(){
     //TODO
-
 }

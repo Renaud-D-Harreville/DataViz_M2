@@ -87,6 +87,16 @@ class Trajets {
             .concat(this.trajetsVoiture);
     }
 
+    getTrajetEnTrain(depart,arrivee){
+        //TODO
+    }
+    getTrajetEnVoiture(depart,arrivee){
+        //TODO
+    }
+    getTrajetEnAvion(depart,arrivee){
+        //TODO
+    }
+
     // retourne un dictionnaire avec tous les trajets possibles sans doublon
     // dictionnaire de la forme :
     // dict[ville]=[listeVilleAdjacentes] avec ville>villesAdjacentes
