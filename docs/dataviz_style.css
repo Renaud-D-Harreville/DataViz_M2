@@ -1,0 +1,20 @@
+#popup{
+  top: 50%;
+  position:fixed;
+  left: 50%;
+  width:50%;
+  transform: translate(-50%, -50%); 
+  text-align: center;
+}
+
+#game{
+   opacity: 0.4; 
+}
+
+#selectNombreJoueurs{
+    width: 50px;
+    color:#607d8b  ;
+    text-align: center;
+    margin-left: 50%;
+    transform: translate(-50%, 10%);
+}

@@ -10,8 +10,9 @@ var arrivee;
 //----------------------------------------------------------------
 //  initialise le nb de joueurs, toutes données à 0, cache la div formulaire, lance start() 
 //----------------------------------------------------------------
-function initialisation(nombreJoueurs){
-    //TODO
+function initialisation(){
+    document.getElementById("popup").style.display = "none"; 
+    document.getElementById("game").style.opacity="1";
 }
 
 //----------------------------------------------------------------

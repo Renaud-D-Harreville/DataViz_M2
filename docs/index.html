@@ -6,46 +6,72 @@
   <link rel="stylesheet" href="dataviz_style.css">
   <link rel="shortcut icon" href="ressources/img/france.ico">
   <script src="https://d3js.org/d3.v4.min.js"></script>
-   <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-</head>
+   
+  <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
 <body>
-<div class="row">
-  <div id="titre"> RACO2 </div>
-</div>
-<div class="row">
-  <div id="joueurs" class="col s2">
-    <ul class="collapsible" data-collapsible="accordion">
-      <li class="active">
-        <div class="collapsible-header active"><i class="material-icons">filter_drama</i>Player 1</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
-      <li>
-        <div class="collapsible-header"><i class="material-icons">place</i>Player 2</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
-      <li>
-        <div class="collapsible-header"><i class="material-icons">whatshot</i>Player 3</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
-    </ul>
-  </div>
-  <div id="carte" class="col s5"></div>
-  <div id="graphe" class="col s5">graph</div>
-</div>
+<div id="game">
+    <div class="row">
+      <nav>
+      <div class="nav-wrapper center ">
+        <div id="titre"> RACO2 </div>
+      </div>
+      </nav>
+    </div>
 
-<div class="row">
-  <div id="copyright" class="col s1">copyright</div>
-  <div id="scores" class="col s11">footer</div>
+    <div class="row">
+      <div id="joueurs" class="col s2">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li class="active">
+            <div class="collapsible-header active"><i class="material-icons">filter_drama</i>Player 1</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+          </li>
+          <li>
+            <div class="collapsible-header"><i class="material-icons">place</i>Player 2</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+          </li>
+          <li>
+            <div class="collapsible-header"><i class="material-icons">whatshot</i>Player 3</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+          </li>
+        </ul>
+      </div>
+      <div id="carte" class="col s5"></div>
+      <div id="graphe" class="col s5">graph</div>
+    </div>
+
+    <div class="row">
+      <div id="copyright" class="col s1">copyright</div>
+      <div id="scores" class="col s11">footer</div>
+    </div>
 </div>
 
 <div id="popup">
-  popup
+    <div class="card blue-grey ">
+            <div class="card-content white-text">
+                <span class="card-title">Bienvenue sur RACO2</span>
+                  <p>Nous avons l'honneur de vous présenter ce superbe jeu.</p>
+                  <form>
+                    Combien de joueurs êtes-vous ?
+                    <div class="center">
+                      <select class=" browser-default center" id="selectNombreJoueurs" name="nombreJoueurs">
+                          <option selected value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                      </select>
+                    </div>
+                    <br>
+                    <a class="btn-floating btn-medium waves-effect red accent-2" onclick="initialisation()"><i class="material-icons">check</i></a>
+                  </form>
+            </div>
+      </div>
+    </div>
 </div>
+
+
+
 
 <script language="javascript" type="text/javascript" src="./scripts/model/trajets.js"></script>
 <script language="javascript" type="text/javascript" src="./scripts/model/villes.js"></script>
@@ -54,6 +80,11 @@
 <script language="javascript" type="text/javascript" src="./scripts/main.js"></script>
 <script language="javascript" type="text/javascript" src="./scripts/comparaisons.js"></script>
 <script language="javascript" type="text/javascript" src="./scripts/france.js"></script>
+<script language="javascript" type="text/javascript" src="./scripts/game.js"></script>
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
 
 </body>
 </html>
