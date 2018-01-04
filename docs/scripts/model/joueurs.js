@@ -11,11 +11,11 @@ class Joueurs {
         this.joueurs = [];
     }
 
-    addPlayer(joueur) {
+    addJoueur(joueur) {
         this.joueurs[joueur.id] = joueur;
     }
 
-    getplayer(id) { return this.joueurs[id]; }
+    getJoueur(id) { return this.joueurs[id]; }
 }
 
 

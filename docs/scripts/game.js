@@ -5,6 +5,7 @@
 
 var depart;
 var arrivee;
+//nombre de div disponible dans la page html
 var nombreJoueursMax=3;
 
 
@@ -12,14 +13,20 @@ var nombreJoueursMax=3;
 //  initialise le nb de joueurs, toutes données à 0, cache la div formulaire, lance start() 
 //----------------------------------------------------------------
 function initialisation(){
+    // cache la div
     document.getElementById("popup").style.display = "none"; 
     document.getElementById("game").style.opacity="1";
 
+    // garde le bon nombre de div dans la barre de gauche
     var nombreJoueurs=document.getElementById("selectNombreJoueurs").value;
-    console.log(nombreJoueurs)
-    console.log(nombreJoueursMax)
     for(var i=parseInt(nombreJoueurs)+1;i<=nombreJoueursMax;i++){
        document.getElementsByClassName("joueur"+i)[0].style.display="none";
+    }
+
+    // crée les joueurs
+    for(var i=1;i<=parseInt(nombreJoueurs);i++){
+        var joueur= new Joueur(i,null);
+        joueurs.addJoueur(joueur);
     }
 
 }
