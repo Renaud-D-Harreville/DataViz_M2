@@ -5,6 +5,7 @@
 
 var depart;
 var arrivee;
+var nombreJoueursMax=3;
 
 
 //----------------------------------------------------------------
@@ -13,6 +14,14 @@ var arrivee;
 function initialisation(){
     document.getElementById("popup").style.display = "none"; 
     document.getElementById("game").style.opacity="1";
+
+    var nombreJoueurs=document.getElementById("selectNombreJoueurs").value;
+    console.log(nombreJoueurs)
+    console.log(nombreJoueursMax)
+    for(var i=parseInt(nombreJoueurs)+1;i<=nombreJoueursMax;i++){
+       document.getElementsByClassName("joueur"+i)[0].style.display="none";
+    }
+
 }
 
 //----------------------------------------------------------------
