@@ -151,14 +151,19 @@ function jouer(){
 function suivant(numeroJoueur){
     console.log(numeroJoueur)
     if(joueurs.getJoueur(numeroJoueur).position!=arrivee){
+        $('.collapsible').collapsible('open', numeroJoueurCourant-1);
         numeroJoueurCourant=numeroJoueur;
         retirerCheminsAccessibles();
-        //TODO la barre de gauche
+        $('.collapsible').collapsible('open', numeroJoueur-1);
+        console.log("joueur"+numeroJoueur+"prix")
+        document.getElementById("joueur"+numeroJoueur+"prix").innerHTML=joueurs.getJoueur(numeroJoueur).prix;
+        document.getElementById("joueur"+numeroJoueur+"co2").innerHTML=joueurs.getJoueur(numeroJoueur).co2;
+        document.getElementById("joueur"+numeroJoueur+"temps").innerHTML=joueurs.getJoueur(numeroJoueur).temps;
         afficherCheminsAccessiblesDepuisVille(joueurs.getJoueur(numeroJoueur).position);
     }
     else{
         if(finished()){
-            //TODO
+            //TODO afficher les scores
         }
         else{
             suivant(numeroSuivant(numeroJoueur))
