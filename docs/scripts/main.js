@@ -79,7 +79,7 @@ function traitementDonnees(trains,voitures,avions) {
         villes.getVille(c.arrivee.toUpperCase()).addVilleAdjVoiture(tmpTrajetVoiture);
         trajets.addTrajet(tmpTrajetVoiture);
     });
-
+    
     // Instanciation des trajets en train, et ajout de ceux ci à leurs villes de depart et d'arrivee.
     var tmpTrajetTrain;
     trains.forEach(function (t) {

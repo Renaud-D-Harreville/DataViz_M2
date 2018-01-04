@@ -3,9 +3,10 @@
 // Date : Decembre 2017 
 //----------------------------------------------------------------
 
-var depart="PARIS";
-var arrivee;
+var depart="LE HAVRE";
+var arrivee="STRASBOURG";
 var numeroJoueurCourant;
+var trajetCourant;
 //nombre de div disponible dans la page html
 var nombreJoueursMax=3;
 
@@ -60,6 +61,27 @@ function getDepartArrivee(){
 //----------------------------------------------------------------
 function completeformulaire(arriveeSelectionnee){
     document.getElementById("nomVilleChoisie").value=arriveeSelectionnee;
+
+    // si un bouton radio est déjà là, afficher le trajet 
+    var radios = document.getElementsByName('moyenTransport');
+    for(x = 0; x < radios.length; x++){
+       if (radios[x].checked){
+           var id=radios[x].id;
+            switch(id) {
+            case "train":
+               completeDataFormTrain();
+                break;
+            case "avion":
+                completeDataFormAvion();
+                break;
+            case "voiture":
+                completeDataFormVoiture();
+                break;
+            default:
+                break;
+        }           
+       } 
+    }
 }
 
 //----------------------------------------------------------------
@@ -69,7 +91,7 @@ function completeDataFormTrain(){
     var depart=joueurs.getJoueur(numeroJoueurCourant).position;
     var arrivee=document.getElementById("nomVilleChoisie").value;
     var trajet=trajets.getTrajetEnTrain(depart,arrivee);
-    afficheTrajet(trajet)
+    afficheTrajet(trajet);
 }
 
 //----------------------------------------------------------------
@@ -79,7 +101,7 @@ function completeDataFormVoiture(){
     var depart=joueurs.getJoueur(numeroJoueurCourant).position;
     var arrivee=document.getElementById("nomVilleChoisie").value;
     var trajet=trajets.getTrajetEnVoiture(depart,arrivee);
-    afficheTrajet(trajet)
+    afficheTrajet(trajet);
 }
 
 //----------------------------------------------------------------
@@ -89,7 +111,7 @@ function completeDataFormAvion(){
     var depart=joueurs.getJoueur(numeroJoueurCourant).position;
     var arrivee=document.getElementById("nomVilleChoisie").value;
     var trajet=trajets.getTrajetEnAvion(depart,arrivee);
-    afficheTrajet(trajet)
+    afficheTrajet(trajet);
 }
 
 //----------------------------------------------------------------
@@ -104,29 +126,86 @@ function afficheTrajet(trajet){
     else{
         document.getElementById("trajetco2").innerHTML=trajet.co2;
         document.getElementById("trajetprix").innerHTML=trajet.prix;
-        document.getElementById("trajettemps").innerHTML=trajet.temps;
+        document.getElementById("trajettemps").innerHTML=trajet.duree;
     }
+    trajetCourant=trajet;
 }
 
 //----------------------------------------------------------------
 //  modifie le score, l'historique du joueur
 //----------------------------------------------------------------
-function jouer(joueur,trajet){
-    //TODO
+function jouer(){
+    if(trajetCourant !=undefined){
+        joueurs.getJoueur(numeroJoueurCourant).position=document.getElementById("nomVilleChoisie").value;
+        joueurs.getJoueur(numeroJoueurCourant).actions.push(trajetCourant);
+        joueurs.getJoueur(numeroJoueurCourant).temps=additionHeure(joueurs.getJoueur(numeroJoueurCourant).temps,document.getElementById("trajettemps").innerHTML);
+        joueurs.getJoueur(numeroJoueurCourant).prix+=parseFloat(document.getElementById("trajetprix").innerHTML);
+        joueurs.getJoueur(numeroJoueurCourant).co2+=parseFloat(document.getElementById("trajetco2").innerHTML);
+        suivant(numeroSuivant(numeroJoueurCourant));
+    }
 }
 
 //----------------------------------------------------------------
-// test si arrivee, si non displayPathsCurrentPlayer(ville); si oui test si finished() si oui displayscores() si non suivant(joueur+1)
+// test si arrivee, si non afficherCheminsAccessiblesDepuisVille(ville); si oui test si finished() si oui displayscores() si non suivant(joueur+1)
 //----------------------------------------------------------------
 function suivant(numeroJoueur){
-    //TODO
+    if(joueurs.getJoueur(numeroJoueur).position!=arrivee){
+        numeroJoueurCourant=numeroJoueur;
+        retirerCheminsAccessibles();
+        //TODO la barre de gauche
+        afficherCheminsAccessiblesDepuisVille(joueurs.getJoueur(numeroJoueur).position);
+    }
+    else{
+        if(finished()){
+            //TODO
+        }
+        else{
+            suivant(numeroSuivant(numeroJoueur+1))
+        }
+    }
 
 }
 
 //----------------------------------------------------------------
-// 
+// indique que la partie est finie
 //----------------------------------------------------------------
 function finished(){
-    //TODO
+    for( i in joueurs.joueurs){
+        if(joueurs.getJoueur(i).position!=arrivee){
+            return false;
+        }
+    }
+    return true;
+}
 
+//----------------------------------------------------------------
+// fait l'addition des heures minutes
+//----------------------------------------------------------------
+function additionHeure(heure1,heure2){
+    console.log(heure1)
+    var h1=parseInt(heure1.split("h")[0]);
+    var h2=parseInt(heure2.split("h")[0]);
+    var mins1=parseInt(heure1.split("h")[1]);
+    var mins2=parseInt(heure1.split("h")[1]);
+    if((mins1+mins2)>60){
+        var mins=(mins1+mins2)%60;
+        var h=h1+h2+1;
+    }
+    else{
+        var mins=(mins1+mins2);
+        var h=h1+h2;
+    }
+    return h+"h"+mins;
+}
+
+//----------------------------------------------------------------
+// un modulo un peu spécial pour avoir le numero du joueur suivant
+//----------------------------------------------------------------
+function numeroSuivant(num) {
+    if((num+1)%(joueurs.joueurs.length-1) == 0){
+        return joueurs.joueurs.length-1;
+    }
+    else {
+        return (num+1)%(joueurs.joueurs.length-1) ;
+    }
 }

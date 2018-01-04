@@ -30,8 +30,11 @@ class Trajet {
  */
 class TrajetVoiture extends Trajet {
     constructor(depart, arrivee, duree, prix, co2) {
-        super(depart, arrivee, duree, prix, co2);
+        super(depart,arrivee,"","","");
         this.type = "V";
+        this.prix=parseFloat(prix);
+        this.co2=parseFloat(co2);
+        this.duree=duree;
     }
 }
 

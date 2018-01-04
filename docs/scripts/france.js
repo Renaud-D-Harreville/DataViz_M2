@@ -119,13 +119,13 @@ function afficherCheminsAccessiblesDepuisVille(nom){
   for(i in listeVillesAdjacentes){
     if(listeVillesAdjacentes[i]!=undefined){
         if (listeVillesAdjacentes[i]<nom){
-          d3.select("#"+listeVillesAdjacentes[i]+nom.replace(/\s/g, '').toUpperCase())
+          d3.select("#"+listeVillesAdjacentes[i].replace(/\s/g, '')+nom.replace(/\s/g, '').toUpperCase())
             .attr("stroke","black")
             .attr("stroke-width","1")
             .attr("class","lignesActuelles")
         }
         else{
-          d3.select("#"+nom.replace(/\s/g, '').toUpperCase()+listeVillesAdjacentes[i])
+          d3.select("#"+nom.replace(/\s/g, '').toUpperCase()+listeVillesAdjacentes[i].replace(/\s/g, ''))
             .attr("stroke","black")
             .attr("stroke-width","1")
             .attr("class","lignesActuelles")
@@ -163,6 +163,13 @@ function retirerCheminsAccessibles(){
     .attr("font-weight","normal")
     .attr("fill","#585858")
     .classed("villes_accessibles",false)
+  d3.selectAll(".villesCourrante")
+    .attr("font-weight","normal")
+    .attr("color","#585858")
+    .classed("villesCourrante",false);
+  d3.selectAll(".villesCourrante")
+    .attr("fill","black")
+    .classed("villesCourrante",false);  
 }
 
 

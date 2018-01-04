@@ -28,7 +28,7 @@ class Joueur {
         this.id = id;
         this.prix = 0 ; // prix dépensé en euros
         this.co2 = 0 ; // co2 dépensé en kg
-        this.temps = 0 ; // temps dépensé en heure, minutes
+        this.temps = "0h0" ; // temps dépensé en heure, minutes
         this.position = depart ; // position du joueurs
         this.actions = []; // historique des trajets du joueurs, liste de trajets
     }
