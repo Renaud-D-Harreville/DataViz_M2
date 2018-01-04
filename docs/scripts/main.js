@@ -100,5 +100,3 @@ function traitementDonnees(trains,voitures,avions) {
 
 }
 
-
-

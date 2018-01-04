@@ -6,18 +6,19 @@
 
 //----------------------------------------------------------------
 // crée la div svg 
-var largeur = 700, hauteur = 580;
+var largeur = 600, hauteur = 580;
 var svg = d3.select( "#carte" )
 	.append( "svg" )
-	.attr( "width", hauteur )
+	.attr( "width", largeur )
 	.attr( "height", hauteur );
 var g = svg.append( "g" ); 
 
 //----------------------------------------------------------------
 // crée le polygone de la France 
 var projection =  d3.geoConicConformal()
-					          .center([3.454071, 46.279229])
-			            	.scale(2900); 
+					          .center([3.399341, 46.082508])
+			            	.scale(2900) 
+                    .translate([largeur / 2, hauteur / 2])
 var path = d3.geoPath()
 			 .projection(projection);
 

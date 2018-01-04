@@ -13,7 +13,7 @@
 <div id="game">
     <div class="row">
       <nav>
-      <div class="nav-wrapper center ">
+      <div class="nav-wrapper center   red accent-1">
         <div id="titre"> RACO2 </div>
       </div>
       </nav>
@@ -21,9 +21,9 @@
 
     <div class="row">
       <div id="joueurs" class="col s2">
-         <ul class="collapsible" data-collapsible="accordion">
+         <ul class="collapsible" data-collapsible="expandable">
               <li class="active joueur1">
-                <div class="collapsible-header active joueur1"><i class="material-icons">person</i>Joueur 1</div>
+                <div class="collapsible-header active"><i class="material-icons">person</i>Joueur 1</div>
                 <div class="collapsible-body">
                   <span>
                     <i class="tiny material-icons">cloud_queue</i> CO2 : <span id="joueur1co2">  </span><br>
@@ -32,8 +32,8 @@
                   </span>
                   </div>
               </li>
-              <li class="joueur2">
-                <div class="collapsible-header joueur2"><i class="material-icons">person</i>Joueur 2</div>
+              <li class="joueur2 ">
+                <div class="collapsible-header joueur2 "><i class="material-icons">person</i>Joueur 2</div>
                 <div class="collapsible-body">
                   <span>
                     <i class="tiny material-icons">cloud_queue</i> CO2 : <span id="joueur1co2">  </span><br>
@@ -42,8 +42,8 @@
                   </span>
                   </div>
               </li>
-              <li class="joueur3">
-                <div class="collapsible-header joueur3"><i class="material-icons">person</i>Joueur 3</div>
+              <li class="joueur3 ">
+                <div class="collapsible-header joueur3 "><i class="material-icons">person</i>Joueur 3</div>
                 <div class="collapsible-body">
                   <span>
                     <i class="tiny material-icons">cloud_queue</i> CO2 : <span id="joueur1co2">  </span><br>
@@ -55,7 +55,28 @@
         </ul>
       </div>
       <div id="carte" class="col s5"></div>
-      <div id="graphe" class="col s5">graph</div>
+      <div  class="col s5">
+          <div id="graphe">graph</div>
+          <div id="jouer">
+              <div class="card blue-grey ">
+                 <div class="card-content white-text ">
+                    <p> Ville choisie :   <input class="browser-default blue-grey-text" disabled type="text" value="aucune" id="nomVilleChoisie"></p>
+                    <p>Moyen de transport :<input name="moyenTransport" type="radio" id="train" />   <label for="train">train</label> 
+                                           <input name="moyenTransport" type="radio" id="voiture" />  <label for="voiture">voiture</label>
+                                          <input name="moyenTransport" type="radio" id="avion" />  <label for="avion">avion</label></p>
+                    <p>
+                       <table><tr>
+                           <td> <i class="tiny material-icons">cloud_queue</i> CO2 : <span id="joueur1co2">  </span></td>
+                           <td> <i class="tiny material-icons">monetization_on</i> Prix : <span id="joueur1prix">  </span></td>
+                           <td> <i class="tiny material-icons">access_time</i> Temps : <span id="joueur1temps">  </span></td>
+                       </tr></table>
+                    </p>
+                    <a class="waves-effect red accent-2 btn right">button</a>
+                 </div>
+              </div>
+          </div>
+      </div>
+
     </div>
 
     <div class="row">
