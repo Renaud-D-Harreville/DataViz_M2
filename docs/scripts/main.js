@@ -1,7 +1,6 @@
 //----------------------------------------------------------------
-// Author : Renaud, Alice, Mathilde 
-// Date : December 2017 
-// File : main file 
+// Auteurs : Renaud, Alice, Mathilde 
+// Date : Decembre 2017 
 //----------------------------------------------------------------
 
 
@@ -12,25 +11,14 @@
 //-------------------------------------------------
 //-------------------------------------------------
 
-
-// get the list of the trains
-var trains;
-// get the list of the cars
-var cars;
-// get the list of the flights
-var flights;
-// get the list of the cities
-var cities;
-// d3 visualisation of the map
+// d3 coordonnées de la France
 var geoJsonFrance;
-//
-
 // la liste des joueurs
-//var joueurs = new AllJoueurs();
+var joueurs = new Joueurs();
 // la liste des villes
-var villes = new Allvilles();
+var villes = new Villes();
 // Liste des différents trajets sur la France entière
-var trajets = new AllTrajets();
+var trajets = new Trajets();
 
 //----------------------------------------------------------
 // C'est ici que tout le code commence !
@@ -46,23 +34,19 @@ var dataPromise = d3.queue()
     .defer(d3.csv, "./ressources/data/avion.csv")
     .defer(d3.json, "ressources/data/france.json")
     .defer(d3.json, "ressources/data/coordVilles.json")
-    .await(function(error, tgv, voitures, avion, franceJson, coordVilles) {
+    .await(function(error, tgv, voitures, avions, franceJson, villesJson) {
         if (error) {
             console.error('Oh dear, something went wrong: ' + error);
         }
         else {
-            trains = tgv;
-            cars = voitures;
-            flights = avion;
-            cities = coordVilles;
             geoJsonFrance = franceJson;
             let p1 = new Promise(function(resolve, reject) {
-                createVilles(); });
-            p1.then(traitementDonnees());
+                creationVilles(villesJson); });
+            p1.then(traitementDonnees(tgv,voitures,avions));
 
             let p2 = new Promise(function(resolve, reject) {
-                createmap(); });
-            p2.then(displayMap());
+                creationCarte(); });
+            p2.then(affichageCarte());
         }
     });
 
@@ -75,10 +59,9 @@ var dataPromise = d3.queue()
 /**
  * Instanciation des villes à partir du fichier villes.csv
  */
-function createVilles() {
+function creationVilles(villesJson) {
     var tmpVille;
-    console.log(cities);
-    cities.forEach(function (d) {
+    villesJson.forEach(function (d) {
         tmpVille = new Ville(d.name, d.pos);
         villes.addVille(tmpVille);
     });
@@ -87,13 +70,13 @@ function createVilles() {
 /**
  * Instanciation des trajets fournis par les fichiers voitures.csv, tgv.csv et avion.csv
  */
-function traitementDonnees() {
+function traitementDonnees(trains,voitures,avions) {
     // Instanciation des trajets en voiture, et ajout de ceux ci à leurs villes de depart et d'arrivee.
     var tmpTrajetVoiture;
-    cars.forEach(function (c) {
+    voitures.forEach(function (c) {
         tmpTrajetVoiture = new TrajetVoiture(c.depart, c.arrivee, c.temps, c.prix, c.CO2);
-        villes.getVille(c.depart.toLowerCase()).addVilleAdjVoiture(tmpTrajetVoiture);
-        villes.getVille(c.arrivee.toLowerCase()).addVilleAdjVoiture(tmpTrajetVoiture);
+        villes.getVille(c.depart.toUpperCase()).addVilleAdjVoiture(tmpTrajetVoiture);
+        villes.getVille(c.arrivee.toUpperCase()).addVilleAdjVoiture(tmpTrajetVoiture);
         trajets.addTrajet(tmpTrajetVoiture);
     });
 
@@ -101,21 +84,18 @@ function traitementDonnees() {
     var tmpTrajetTrain;
     trains.forEach(function (t) {
         tmpTrajetTrain = new TrajetTrain(t.depart, t.arrivee, t.temps, t.prix, t.CO2);
-        villes.getVille(t.depart.toLowerCase()).addVilleAdjTrain(tmpTrajetTrain);
-        villes.getVille(t.arrivee.toLowerCase()).addVilleAdjTrain(tmpTrajetTrain);
+        villes.getVille(t.depart.toUpperCase()).addVilleAdjTrain(tmpTrajetTrain);
+        villes.getVille(t.arrivee.toUpperCase()).addVilleAdjTrain(tmpTrajetTrain);
         trajets.addTrajet(tmpTrajetTrain);
     });
 
     // Instanciation des trajets en voiture, et ajout de ceux ci à leurs villes de depart et d'arrivee.
     var tmpTrajetAvion;
-    flights.forEach(function (f) {
+    avions.forEach(function (f) {
         tmpTrajetAvion = new TrajetAvion(f.depart, f.arrivee, f.temps, f.prix, f.CO2);
-        villes.getVille(f.depart.toLowerCase()).addVilleAdjAvion(tmpTrajetAvion);
-        villes.getVille(f.arrivee.toLowerCase()).addVilleAdjAvion(tmpTrajetAvion);
+        villes.getVille(f.depart.toUpperCase()).addVilleAdjAvion(tmpTrajetAvion);
+        villes.getVille(f.arrivee.toUpperCase()).addVilleAdjAvion(tmpTrajetAvion);
         trajets.addTrajet(tmpTrajetAvion);
     });
 
-    console.log(trajets.getAllTrajets());
-
 }
-

@@ -15,13 +15,13 @@
  * @property coutCo2 : le cout en CO2 du trajet.
  */
 class Trajet {
-    constructor(start, end, duree, prix, coutCo2) {
-        this.depart = start.toLowerCase();
-        this.arrivee = end.toLowerCase();
+    constructor(depart, arrivee, duree, prix, co2) {
+        this.depart = depart.toUpperCase();
+        this.arrivee = arrivee.toUpperCase();
         this.type = "";
         this.duree = duree;
         this.prix = prix;
-        this.coutCo2 = coutCo2;
+        this.co2 = co2;
     }
 }
 
@@ -29,8 +29,8 @@ class Trajet {
  * Un trajet en voiture
  */
 class TrajetVoiture extends Trajet {
-    constructor(start, end) {
-        super(start, end);
+    constructor(depart, arrivee, duree, prix, co2) {
+        super(depart, arrivee, duree, prix, co2);
         this.type = "V";
     }
 }
@@ -39,8 +39,8 @@ class TrajetVoiture extends Trajet {
  * Un trajet en train
  */
 class TrajetTrain extends Trajet {
-    constructor(start, end) {
-        super(start, end);
+    constructor(depart, arrivee, duree, prix, co2) {
+        super(depart, arrivee, duree, prix, co2);
         this.type = "T";
     }
 }
@@ -49,8 +49,8 @@ class TrajetTrain extends Trajet {
  * Un trajet en avion
  */
 class TrajetAvion extends Trajet {
-    constructor(start, end) {
-        super(start, end);
+    constructor(depart, arrivee, duree, prix, co2){
+        super(depart, arrivee, duree, prix, co2);
         this.type = "A";
     }
 }
@@ -58,7 +58,7 @@ class TrajetAvion extends Trajet {
 /**
  * Classe contenant tous les trajets. Ils sont organisés par type.
  */
-class AllTrajets {
+class Trajets {
     constructor() {
         this.trajetsVoiture = [];
         this.trajetsTrain = [];
@@ -81,51 +81,108 @@ class AllTrajets {
         }
     }
 
-    getAllTrajets() {
+    getTrajets() {
         return this.trajetsAvion
             .concat(this.trajetsTrain)
             .concat(this.trajetsVoiture);
     }
 
-    displayVoitures(svg, villes, projection) {
-        trajets.trajetsVoiture.forEach(function (d) {
-            svg.append("line")
-                .attr("class","allLines")
-                .attr("stroke","#FF0000")
-                .attr("stroke-width","0.5")
-                .attr("id",city.replace(/\s/g, '')+dict[city][i].replace(/\s/g, ''))
-                .attr("x1", villes.getVille(d.depart).getX(projection))
-                .attr("y1",villes.getVille(d.depart).getY(projection))
-                .attr("x2",villes.getVille(d.arrivee).getX(projection))
-                .attr("y2",villes.getVille(d.arrivee).getY(projection))
-        });
-    }
-
-    displayTrains(svg, villes, projection) {
-        trajets.trajetsTrain.forEach(function (d) {
-            svg.append("line")
-                .attr("class","allLines")
-                .attr("stroke","#00FF40")
-                .attr("stroke-width","0.5")
-                .attr("id",city.replace(/\s/g, '')+dict[city][i].replace(/\s/g, ''))
-                .attr("x1", villes.getVille(d.depart).getX(projection))
-                .attr("y1",villes.getVille(d.depart).getY(projection))
-                .attr("x2",villes.getVille(d.arrivee).getX(projection))
-                .attr("y2",villes.getVille(d.arrivee).getY(projection))
-        });
-    }
-
-    displayAvions(svg, villes, projection) {
-        trajets.trajetsAvion.forEach(function (d) {
-            svg.append("line")
-                .attr("class","allLines")
-                .attr("stroke","#013ADF")
-                .attr("stroke-width","0.5")
-                .attr("id",city.replace(/\s/g, '')+dict[city][i].replace(/\s/g, ''))
-                .attr("x1", villes.getVille(d.depart).getX(projection))
-                .attr("y1",villes.getVille(d.depart).getY(projection))
-                .attr("x2",villes.getVille(d.arrivee).getX(projection))
-                .attr("y2",villes.getVille(d.arrivee).getY(projection))
-        });
-    }
+    // retourne un dictionnaire avec tous les trajets possibles sans doublon
+    // dictionnaire de la forme :
+    // dict[ville]=[listeVilleAdjacentes] avec ville>villesAdjacentes
+    trajetsPossibles(){
+        var dict={}
+        for(i in this.trajetsAvion){
+            if( this.trajetsAvion[i].depart<this.trajetsAvion[i].arrivee ){
+            // si on a deja dans le dict 
+            if(dict[this.trajetsAvion[i].depart]!=undefined){
+                // mais pas dans la liste 
+                if(dict[this.trajetsAvion[i].depart].indexOf(this.trajetsAvion[i].arrivee)<=0){
+                // on ajoute 
+                dict[this.trajetsAvion[i].depart].push(this.trajetsAvion[i].arrivee)
+                }
+            }
+            else{
+                dict[this.trajetsAvion[i].depart]=[]
+                dict[this.trajetsAvion[i].depart].push(this.trajetsAvion[i].arrivee)
+            }
+            }
+            else{
+            // si on a deja dans le dict 
+            if(dict[this.trajetsAvion[i].arrivee]!=undefined){
+                // mais pas dans la liste 
+                if(dict[this.trajetsAvion[i].arrivee].indexOf(this.trajetsAvion[i].depart)<=0){
+                // on ajoute 
+                dict[this.trajetsAvion[i].arrivee].push(this.trajetsAvion[i].depart)
+                }
+            }
+            else{
+                dict[this.trajetsAvion[i].arrivee]=[]
+                dict[this.trajetsAvion[i].arrivee].push(this.trajetsAvion[i].depart)
+            }
+            } 
+        }
+        for(i in this.trajetsTrain){
+            if( this.trajetsTrain[i].depart<this.trajetsTrain[i].arrivee ){
+            // si on a deja dans le dict 
+            if(dict[this.trajetsTrain[i].depart]!=undefined){
+                // mais pas dans la liste 
+                if(dict[this.trajetsTrain[i].depart].indexOf(this.trajetsTrain[i].arrivee)<=0){
+                // on ajoute 
+                dict[this.trajetsTrain[i].depart].push(this.trajetsTrain[i].arrivee)
+                }
+            }
+            else{
+                dict[this.trajetsTrain[i].depart]=[]
+                dict[this.trajetsTrain[i].depart].push(this.trajetsTrain[i].arrivee)
+            }
+            }
+            else{
+            // si on a deja dans le dict 
+            if(dict[this.trajetsTrain[i].arrivee]!=undefined){
+                // mais pas dans la liste 
+                if(dict[this.trajetsTrain[i].arrivee].indexOf(this.trajetsTrain[i].depart)<=0){
+                // on ajoute 
+                dict[this.trajetsTrain[i].arrivee].push(this.trajetsTrain[i].depart)
+                }
+            }
+            else{
+                dict[this.trajetsTrain[i].arrivee]=[]
+                dict[this.trajetsTrain[i].arrivee].push(this.trajetsTrain[i].depart)
+            }
+            } 
+        }
+        for(var i=0;i<this.trajetsVoiture.length;i++){
+            if( this.trajetsVoiture[i].depart.toUpperCase()<this.trajetsVoiture[i].arrivee.toUpperCase() ){
+            // si on a deja dans le dict 
+            if(dict[this.trajetsVoiture[i].depart.toUpperCase()]!=undefined){
+                // mais pas dans la liste 
+                if(dict[this.trajetsVoiture[i].depart.toUpperCase()].indexOf(this.trajetsVoiture[i].arrivee.toUpperCase())<=0){
+                // on ajoute 
+                dict[this.trajetsVoiture[i].depart.toUpperCase()].push(this.trajetsVoiture[i].arrivee.toUpperCase())
+                }
+            }
+            else{
+                dict[this.trajetsVoiture[i].depart.toUpperCase()]=[]
+                dict[this.trajetsVoiture[i].depart.toUpperCase()].push(this.trajetsVoiture[i].arrivee.toUpperCase())
+            }
+            }
+            else{
+            // si on a deja dans le dict 
+            if(dict[this.trajetsVoiture[i].arrivee.toUpperCase()]!=undefined){
+                // mais pas dans la liste 
+                if(dict[this.trajetsVoiture[i].arrivee.toUpperCase()].indexOf(this.trajetsVoiture[i].depart.toUpperCase())<=0){
+                // on ajoute 
+                dict[this.trajetsVoiture[i].arrivee.toUpperCase()].push(this.trajetsVoiture[i].depart.toUpperCase())
+                }
+            }
+            else{
+                dict[this.trajetsVoiture[i].arrivee.toUpperCase()]=[]
+                dict[this.trajetsVoiture[i].arrivee.toUpperCase()].push(this.trajetsVoiture[i].depart.toUpperCase())
+            }
+            } 
+        }
+        delete dict["undefined"]
+        return (dict)
+        }
 }

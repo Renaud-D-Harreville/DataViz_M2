@@ -1,300 +1,162 @@
 //----------------------------------------------------------------
-// Author : Mathilde 
-// Date : December 2017 
-// File : display the map
+// Auteur : Mathilde 
+// Date : Decembre 2017 
+// fichier contenant tous les élements pour l'affichage de la carte
 //----------------------------------------------------------------
 
 //----------------------------------------------------------------
-// create the svg 
-var width = 700, height = 580;
-var svg = d3.select( "#map" )
+// crée la div svg 
+var largeur = 700, hauteur = 580;
+var svg = d3.select( "#carte" )
 	.append( "svg" )
-	.attr( "width", width )
-	.attr( "height", height );
+	.attr( "width", hauteur )
+	.attr( "height", hauteur );
 var g = svg.append( "g" ); 
 
 //----------------------------------------------------------------
-// create the projection of France 
+// crée le polygone de la France 
 var projection =  d3.geoConicConformal()
-					          .center([3.454071, 46.279229]) // le centre de la France a été changé (2.454 à 3.454)
-			            	.scale(2900); // et un tout petit peu l'échelle aussi (de 2800 à 2900)
+					          .center([3.454071, 46.279229])
+			            	.scale(2900); 
 var path = d3.geoPath()
 			 .projection(projection);
 
 
 //----------------------------------------------------------------
-// d3 visualisation of the map
-function createmap(){
-  //-------------------------------------------------------------
-  // create cities 
-  var city_labels = svg.selectAll(".city_label")
-      .data(cities)
-      .enter();
+// Crée la carte avec les noms des villes et les routes
+//---------------------------------------------------------------- 
 
-  //-------------------------------------------------------------
-  // labels of the cities 
-    city_labels
+function creationCarte(){
+  // création des villes 
+  var villesd3 = svg.selectAll(".villes")
+      .data(villes.villes)
+      .enter();
+      
+  // labels des villes 
+  // id html : nom de la ville sans espace en petit caractère 
+  // classes html : nom de la ville sans espace (classe commune label + rond) + "villes" 
+    villesd3
       .append("text")
-      .attr("class", "city_label")
-      .attr("id",function(d){return d.name.replace(/\s/g, '').toUpperCase();})
-      .attr("class",function(d){  return d.name.replace(/\s/g, '');})
-      .text(function(d){return d.name;})
+      .attr("class", "villes")
+      .attr("id",function(d){return d.nom.replace(/\s/g, '').toUpperCase();})
+      .attr("class",function(d){  return d.nom.replace(/\s/g, '');})
+      .text(function(d){return d.nom;})
       .attr("font-size", "11px")
       .attr("fill", "#585858")
       .attr("x",function(d){return projection(d.pos)[0];})
       .attr("y",function(d){return projection(d.pos)[1];})
       .on("mouseover", function(d){
-                            d3.selectAll("."+d.name.replace(/\s/g, '')).attr("fill","black")
+                            d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","black")
       })
       .on("mouseout",function(d){
-                            d3.selectAll("."+d.name.replace(/\s/g, '')).attr("fill","#585858")
+                            d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#585858")
           
       });
-  //-------------------------------------------------------------
-  // circles of the cities 
-    city_labels
+
+  // rond représentant les villes 
+  // classe html : nom de la ville sans espace (classe commune label + rond) 
+    villesd3
       .append("circle")
       .attr("r", 3)
-      .attr("class",function(d){return d.name.replace(/\s/g, '');})
+      .attr("class",function(d){return d.nom.replace(/\s/g, '');})
       .attr("fill", "#585858")
       .attr("cx",function(d){return projection(d.pos)[0];})
       .attr("cy",function(d){return projection(d.pos)[1];})
       .on("mouseover", function(d){
-                            d3.selectAll("."+d.name.replace(/\s/g, '')).attr("fill","black")
+                            d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","black")
       })
       .on("mouseout",function(d){
-                            d3.selectAll("."+d.name.replace(/\s/g, '')).attr("fill","#585858")
+                            d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#585858")
           
       });
 }
 
 //----------------------------------------------------------------
-// launch the map
-function displayMap() {
+// affiche la carte
+//----------------------------------------------------------------
+function affichageCarte() {
 	g.selectAll("path")
 	   .data(geoJsonFrance.features)
 	   .enter()
 	   .append("path")
-     .attr("class","map")
-  g.selectAll(".map")
+     .attr("class","france")
+  g.selectAll(".france")
 		 .attr( "fill", "#ccc" )
 	   .attr("d", path);
-  drawlines();
+  dessinerTrajets();
+
   //exemple
-  displayPathsCurrentPlayer("Paris");
-}
-
-
-// ----------------------------------------------------------------
-function displayPathsCurrentPlayer(name){
-  listCities=getPossibleCitiesInBlack(name);
-  for(i in listCities){
-    if (listCities[i]<name){
-      d3.select("#"+listCities[i]+name.replace(/\s/g, '').toUpperCase())
-        .attr("stroke","black")
-        .attr("stroke-width","1")
-        .attr("class","current")
-     d3.select("#"+name.replace(/\s/g,'').toUpperCase())
-          .attr("font-weight","bold")
-          .attr("fill","black")
-          .attr("class","current_available")
-    }
-    else{
-      d3.select("#"+name.replace(/\s/g, '').toUpperCase()+listCities[i])
-         .attr("stroke","black")
-         .attr("stroke-width","1")
-         .attr("class","current")
-      d3.select("#"+name.replace(/\s/g,'').toUpperCase())
-          .attr("font-weight","bold")
-          .attr("fill","black")
-          .attr("class","current_available")
-    }
-  }
-
-}
-
-//-----------------------------------------------------------------
-function hidePathsCurrentPlayer(){
-  d3.selectAll(".current")
-    .attr("stroke","#686868")
-    .attr("stroke-width","0.5")
-    .classed("current",false)
-  d3.selectAll(".current_available")
-    .attr("font-weight","normal")
-    .attr("fill","#585858")
-    .classed("current_available",false)
-}
-
-function drawlines(){
-    lines={}
-    var dict=getPossibleCitiesInGray();
-    console.log(dict);
-    for(city in dict){
-    var x1 = d3.select("#"+city.replace(/\s/g, '')).attr("x");
-    var y1 = d3.select("#"+city.replace(/\s/g, '')).attr("y");
-    for( i in dict[city]){
-        var x2 = d3.select("#"+dict[city][i].replace(/\s/g, '')).attr("x");
-        var y2 = d3.select("#"+dict[city][i].replace(/\s/g, '')).attr("y");
-        g.append("line")
-            .attr("class","allLines")
-            .attr("stroke","#686868")
-            .attr("stroke-width","0.5")
-            .attr("id",city.replace(/\s/g, '')+dict[city][i].replace(/\s/g, ''))
-            .attr("x1",x1)
-            .attr("y1",y1)
-            .attr("x2",x2)
-            .attr("y2",y2)
-    }
-    }
-    trajets.displayVoitures(g, villes, projection);
-    trajets.displayTrains(g, villes, projection);
-    trajets.displayAvions(g, villes, projection);
+  afficherCheminsAccessiblesDepuisVille("PARIS");
 }
 
 //----------------------------------------------------------------
-function getPossibleCitiesInGray(){
-   dict={}
-   for(i in flights){
-     if( flights[i].depart<flights[i].arrivee ){
-       // si on a deja dans le dict 
-       if(dict[flights[i].depart]!=undefined){
-         // mais pas dans la liste 
-         if(dict[flights[i].depart].indexOf(flights[i].arrivee)<=0){
-         // on ajoute 
-           dict[flights[i].depart].push(flights[i].arrivee)
-         }
-       }
-       else{
-         dict[flights[i].depart]=[]
-         dict[flights[i].depart].push(flights[i].arrivee)
-       }
-     }
-     else{
-      // si on a deja dans le dict 
-      if(dict[flights[i].arrivee]!=undefined){
-        // mais pas dans la liste 
-        if(dict[flights[i].arrivee].indexOf(flights[i].depart)<=0){
-        // on ajoute 
-          dict[flights[i].arrivee].push(flights[i].depart)
-        }
+// avec la liste des trajets, affiche la carte 
+//----------------------------------------------------------------
+function dessinerTrajets(){
+    lignes={}
+    var dict=trajets.trajetsPossibles();
+    for(ville in dict){
+      var x1 = d3.select("#"+ville.replace(/\s/g, '')).attr("x");
+      var y1 = d3.select("#"+ville.replace(/\s/g, '')).attr("y");
+      for( i in dict[ville]){
+          var x2 = d3.select("#"+dict[ville][i].replace(/\s/g, '')).attr("x");
+          var y2 = d3.select("#"+dict[ville][i].replace(/\s/g, '')).attr("y");
+          g.append("line")
+              .attr("class","trajets")
+              .attr("stroke","#686868")
+              .attr("stroke-width","0.5")
+              .attr("id",ville.replace(/\s/g, '')+dict[ville][i].replace(/\s/g, ''))
+              .attr("x1",x1)
+              .attr("y1",y1)
+              .attr("x2",x2)
+              .attr("y2",y2)
       }
-      else{
-        dict[flights[i].arrivee]=[]
-        dict[flights[i].arrivee].push(flights[i].depart)
-      }
-    } 
-   }
-  for(i in trains){
-     if( trains[i].depart<trains[i].arrivee ){
-       // si on a deja dans le dict 
-       if(dict[trains[i].depart]!=undefined){
-         // mais pas dans la liste 
-         if(dict[trains[i].depart].indexOf(trains[i].arrivee)<=0){
-         // on ajoute 
-           dict[trains[i].depart].push(trains[i].arrivee)
-         }
-       }
-       else{
-         dict[trains[i].depart]=[]
-         dict[trains[i].depart].push(trains[i].arrivee)
-       }
-     }
-     else{
-      // si on a deja dans le dict 
-      if(dict[trains[i].arrivee]!=undefined){
-        // mais pas dans la liste 
-        if(dict[trains[i].arrivee].indexOf(trains[i].depart)<=0){
-        // on ajoute 
-          dict[trains[i].arrivee].push(trains[i].depart)
-        }
-      }
-      else{
-        dict[trains[i].arrivee]=[]
-        dict[trains[i].arrivee].push(trains[i].depart)
-      }
-    } 
-   }
-  for(var i=0;i<cars.length;i++){
-     if( cars[i].depart.toUpperCase()<cars[i].arrivee.toUpperCase() ){
-       // si on a deja dans le dict 
-       if(dict[cars[i].depart.toUpperCase()]!=undefined){
-         // mais pas dans la liste 
-         if(dict[cars[i].depart.toUpperCase()].indexOf(cars[i].arrivee.toUpperCase())<=0){
-         // on ajoute 
-           dict[cars[i].depart.toUpperCase()].push(cars[i].arrivee.toUpperCase())
-         }
-       }
-       else{
-         dict[cars[i].depart.toUpperCase()]=[]
-         dict[cars[i].depart.toUpperCase()].push(cars[i].arrivee.toUpperCase())
-       }
-     }
-     else{
-      // si on a deja dans le dict 
-      if(dict[cars[i].arrivee.toUpperCase()]!=undefined){
-        // mais pas dans la liste 
-        if(dict[cars[i].arrivee.toUpperCase()].indexOf(cars[i].depart.toUpperCase())<=0){
-        // on ajoute 
-          dict[cars[i].arrivee.toUpperCase()].push(cars[i].depart.toUpperCase())
-        }
-      }
-      else{
-        dict[cars[i].arrivee.toUpperCase()]=[]
-        dict[cars[i].arrivee.toUpperCase()].push(cars[i].depart.toUpperCase())
-      }
-    } 
-   }
-   delete dict["undefined"]
-   return (dict)
+    }
+}
+
+
+//----------------------------------------------------------------
+// avec la liste des villes adjacentes, affiche les lignes possibles 
+//----------------------------------------------------------------
+function afficherCheminsAccessiblesDepuisVille(nom){
+  listeVillesAdjacentes=villes.getVille(nom).listeVillesAdjacentes();
+  for(i in listeVillesAdjacentes){
+    if (listeVillesAdjacentes[i]<nom){
+      d3.select("#"+listeVillesAdjacentes[i]+nom.replace(/\s/g, '').toUpperCase())
+        .attr("stroke","black")
+        .attr("stroke-width","1")
+        .attr("class","positionActuelle")
+     d3.select("#"+nom.replace(/\s/g,'').toUpperCase())
+          .attr("font-weight","bold")
+          .attr("fill","black")
+          .attr("class","villes_accessibles")
+    }
+    else{
+      d3.select("#"+nom.replace(/\s/g, '').toUpperCase()+listeVillesAdjacentes[i])
+         .attr("stroke","black")
+         .attr("stroke-width","1")
+         .attr("class","positionActuelle")
+      d3.select("#"+nom.replace(/\s/g,'').toUpperCase())
+          .attr("font-weight","bold")
+          .attr("fill","black")
+          .attr("class","villes_accessibles")
+    }
+  }
 
 }
-//-----------------------------------------------------------------
-function getPossibleCitiesInBlack(name){
-  list_cities_black=[]
-  for(i in flights){
-    if(flights[i].depart==name.toUpperCase()){
-      if(list_cities_black.indexOf(flights[i].arrivee)<=0){
-       list_cities_black.push(flights[i].arrivee)
-      }
-    }
-    else{
-      if(flights[i].arrivee==name.toUpperCase()){
-        if(list_cities_black.indexOf(flights[i].depart)<=0){
-          list_cities_black.push(flights[i].depart)
-        }
-      }
-    }
-  }
-  for(i in trains){
-    if(trains[i].depart==name.toUpperCase()){
-      if(list_cities_black.indexOf(trains[i].arrivee)<=0){
-        list_cities_black.push(trains[i].arrivee)
-      }
-    }
-    else{
-      if(trains[i].arrivee==name.toUpperCase()){
-          if(list_cities_black.indexOf(trains[i].depart)<=0){
-            list_cities_black.push(trains[i].depart)
-          }
-      }
-    }
-    
-  }
-  for(i in cars){
-    if(cars[i].depart==name){
-      if(list_cities_black.indexOf(cars[i].arrivee.toUpperCase())<=0){
-       list_cities_black.push(cars[i].arrivee.toUpperCase())
-      }
-    }
-    else{
-      if(cars[i].arrivee==name){
-        if(list_cities_black.indexOf(cars[i].depart.toUpperCase())<=0){
-          list_cities_black.push(cars[i].depart.toUpperCase())
-        }
-      }
-    }
-  }
-  return list_cities_black;
+
+//----------------------------------------------------------------
+// retire les trais en noirs
+//----------------------------------------------------------------
+function retirerCheminsAccessibles(){
+  d3.selectAll(".positionActuelle")
+    .attr("stroke","#686868")
+    .attr("stroke-width","0.5")
+    .classed("positionActuelle",false)
+  d3.selectAll(".villes_accessibles")
+    .attr("font-weight","normal")
+    .attr("fill","#585858")
+    .classed("villes_accessibles",false)
 }
 
 

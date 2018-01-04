@@ -2,45 +2,34 @@
 // Fichier contenant les descriptions des objets se rapportant aux joueurs.
 //----------------------------------------------------------------
 
-
-
 /**
- * Classe contenant la liste des joueurs
+ * Classe contenant la liste des players
  */
-class AllJoueurs {
+class Joueurs {
 
     constructor () {
-        this.players = [];
+        this.joueurs = [];
     }
 
     addPlayer(joueur) {
-        this.players[joueur.name] = joueur;
+        this.joueurs[joueur.id] = joueur;
     }
 
-    getJoueur(name) { return this.players[name]; }
+    getplayer(id) { return this.joueurs[id]; }
 }
 
 
 /**
- * définit un joueur, son placement sur la carte ainsi que ses actions faites au cours du jeu.
+ * définit un player, son placement sur la carte ainsi que ses actions faites au cours du jeu.
  */
 class Joueur {
 
-    constructor(name, start){
-        this.name = name; // name est l'identifiant du joueur.
-        this.monnaie = 500; //somme de départ en euros
-        this.start = start || "";
-        this.currentPlace = start || "";
-        this.actions = [];
-    }
-}
-
-
-/**
- * Définit une action faite par un joueur
- */
-class ActionsJoueur {
-    constructor () {
-        //TODO
+    constructor(id, depart){
+        this.id = id;
+        this.prix = 0 ; // prix dépensé en euros
+        this.co2 = 0 ; // co2 dépensé en kg
+        this.temps = 0 ; // temps dépensé en heure, minutes
+        this.position = depart ; // position du joueurs
+        this.actions = []; // historique des trajets du joueurs, liste de trajets
     }
 }

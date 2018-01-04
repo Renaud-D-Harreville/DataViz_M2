@@ -11,8 +11,8 @@
  */
 class Ville {
 
-    constructor (name, pos) {
-        this.name = name.toLowerCase();
+    constructor (nom, pos) {
+        this.nom = nom.toUpperCase();
         this.pos = pos; // les coordonnées terrestres
         this.villesAdjVoiture =  []; // tableau associatif des villes accessibles (adjacentes) en voiture.
         this.villesAdjTrain =  []; // tableau associatif des villes accessibles (adjacentes) en Train.
@@ -44,13 +44,13 @@ class Ville {
      */
     addVilleAdjVoiture (trajet) {
         var destination;
-        if (trajet.depart.toLowerCase() == this.name)
+        if (trajet.depart.toUpperCase() == this.nom)
         { destination = trajet.arrivee; }
-        else if (trajet.arrivee.toLowerCase() == this.name)
+        else if (trajet.arrivee.toUpperCase() == this.nom)
         { destination = trajet.depart; }
         else
         {return;}
-        this.villesAdjVoiture[destination.toLowerCase()] = trajet;
+        this.villesAdjVoiture.push(destination.toUpperCase());
 
     }
 
@@ -60,13 +60,13 @@ class Ville {
      */
     addVilleAdjTrain (trajet) {
         var destination;
-        if (trajet.depart.toLowerCase() == this.name)
+        if (trajet.depart.toUpperCase() == this.nom)
         { destination = trajet.arrivee; }
-        else if (trajet.arrivee.toLowerCase() == this.name)
+        else if (trajet.arrivee.toUpperCase() == this.nom)
         { destination = trajet.depart; }
         else
         {return;}
-        this.villesAdjTrain[destination.toLowerCase()] = trajet;
+        this.villesAdjTrain.push(destination.toUpperCase());
 
     }
 
@@ -76,30 +76,46 @@ class Ville {
      */
     addVilleAdjAvion (trajet) {
         var destination;
-        if (trajet.depart.toLowerCase() == this.name)
+        if (trajet.depart.toUpperCase() == this.nom)
         { destination = trajet.arrivee; }
-        else if (trajet.arrivee.toLowerCase() == this.name)
+        else if (trajet.arrivee.toUpperCase() == this.nom)
         { destination = trajet.depart; }
         else
         {return;}
-        this.villesAdjAvion[destination.toLowerCase()] = trajet;
+        this.villesAdjAvion.push(destination.toUpperCase());
+    }
+
+    listeVillesAdjacentes(){
+        var liste= this.villesAdjVoiture.concat(this.villesAdjVoiture).concat(this.villeAdjAvion);
+        var uniqueArray = liste.filter(function(item, pos) {
+            return liste.indexOf(item) == pos;
+        })
+        return uniqueArray;
     }
 }
 
 
 /**
- * Classe contenant la liste des villes
+ * Classe contenant un dictionnaire des villes
  */
-class Allvilles {
+class Villes {
     constructor() {
         this.villes = []
     }
 
     addVille(ville) {
-        this.villes[ville.name.toLowerCase()] = ville;
+        this.villes.push(ville);
     }
 
-    getVille(name) {
-        return this.villes[name.toLowerCase()] || null;
+    getVille(nom) {
+        for(var i=0; i<this.villes.length;i++){
+            if(nom==this.villes[i].nom){
+                return this.villes[i]
+            }
+        }
+        return null;
+    }
+    getVilles(){
+        return this.villes;
     }
 }
