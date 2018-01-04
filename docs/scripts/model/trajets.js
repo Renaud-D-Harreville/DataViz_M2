@@ -88,13 +88,52 @@ class Trajets {
     }
 
     getTrajetEnTrain(depart,arrivee){
-        //TODO
+        if(depart<arrivee){
+            var first=depart;
+            var second=arrivee;
+        }
+        else{
+            var first=arrivee;
+            var second=depart;
+        }
+        for(i in this.trajetsTrain){
+           if(this.trajetsTrain[i].depart==first && this.trajetsTrain[i].arrivee==second) {
+               return this.trajetsTrain[i];
+           }
+        }
+        return null;
     }
     getTrajetEnVoiture(depart,arrivee){
-        //TODO
+        if(depart<arrivee){
+            var first=depart;
+            var second=arrivee;
+        }
+        else{
+            var first=arrivee;
+            var second=depart;
+        }
+        for(i in this.trajetsVoiture){
+           if(this.trajetsVoiture[i].depart==first && this.trajetsVoiture[i].arrivee==second) {
+               return this.trajetsVoiture[i];
+           }
+        }
+        return null;
     }
     getTrajetEnAvion(depart,arrivee){
-        //TODO
+        if(depart<arrivee){
+            var first=depart;
+            var second=arrivee;
+        }
+        else{
+            var first=arrivee;
+            var second=depart;
+        }
+        for(i in this.trajetsAvion){
+           if(this.trajetsAvion[i].depart==first && this.trajetsAvion[i].arrivee==second) {
+               return this.trajetsAvion[i];
+           }
+        }
+        return null;
     }
 
     // retourne un dictionnaire avec tous les trajets possibles sans doublon

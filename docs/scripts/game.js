@@ -63,6 +63,52 @@ function completeformulaire(arriveeSelectionnee){
 }
 
 //----------------------------------------------------------------
+// cherche le trajet en train et appelle afficheTrajet
+//----------------------------------------------------------------
+function completeDataFormTrain(){
+    var depart=joueurs.getJoueur(numeroJoueurCourant).position;
+    var arrivee=document.getElementById("nomVilleChoisie").value;
+    var trajet=trajets.getTrajetEnTrain(depart,arrivee);
+    afficheTrajet(trajet)
+}
+
+//----------------------------------------------------------------
+// cherche le trajet en voiture et appelle afficheTrajet
+//----------------------------------------------------------------
+function completeDataFormVoiture(){
+    var depart=joueurs.getJoueur(numeroJoueurCourant).position;
+    var arrivee=document.getElementById("nomVilleChoisie").value;
+    var trajet=trajets.getTrajetEnVoiture(depart,arrivee);
+    afficheTrajet(trajet)
+}
+
+//----------------------------------------------------------------
+// cherche le trajet en avion et appelle afficheTrajet
+//----------------------------------------------------------------
+function completeDataFormAvion(){
+    var depart=joueurs.getJoueur(numeroJoueurCourant).position;
+    var arrivee=document.getElementById("nomVilleChoisie").value;
+    var trajet=trajets.getTrajetEnAvion(depart,arrivee);
+    afficheTrajet(trajet)
+}
+
+//----------------------------------------------------------------
+// complete co2, temps, prix
+//----------------------------------------------------------------
+function afficheTrajet(trajet){
+    if(trajet==null){
+        document.getElementById("trajetco2").innerHTML="";
+        document.getElementById("trajetprix").innerHTML="";
+        document.getElementById("trajettemps").innerHTML="";
+    }
+    else{
+        document.getElementById("trajetco2").innerHTML=trajet.co2;
+        document.getElementById("trajetprix").innerHTML=trajet.prix;
+        document.getElementById("trajettemps").innerHTML=trajet.temps;
+    }
+}
+
+//----------------------------------------------------------------
 //  modifie le score, l'historique du joueur
 //----------------------------------------------------------------
 function jouer(joueur,trajet){
