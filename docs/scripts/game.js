@@ -149,6 +149,7 @@ function jouer(){
 // test si arrivee, si non afficherCheminsAccessiblesDepuisVille(ville); si oui test si finished() si oui displayscores() si non suivant(joueur+1)
 //----------------------------------------------------------------
 function suivant(numeroJoueur){
+    console.log(numeroJoueur)
     if(joueurs.getJoueur(numeroJoueur).position!=arrivee){
         numeroJoueurCourant=numeroJoueur;
         retirerCheminsAccessibles();
@@ -160,7 +161,7 @@ function suivant(numeroJoueur){
             //TODO
         }
         else{
-            suivant(numeroSuivant(numeroJoueur+1))
+            suivant(numeroSuivant(numeroJoueur))
         }
     }
 
