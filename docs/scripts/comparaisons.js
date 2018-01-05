@@ -3,6 +3,10 @@
 // Date : Decembre 2017 
 //----------------------------------------------------------------
 
+//compare les trajets en train / avion / voiture
+// faire 3 graphes CO2vsTps, CO2vsPrix et TpsvsPrix
+
+
 //----------------------------------------------------------------
 //  affiche un svg avec les infos suivantes
 //----------------------------------------------------------------

@@ -7,11 +7,11 @@
 //----------------------------------------------------------------
 // crée la div svg 
 var largeur = 600, hauteur = 580;
-var svg = d3.select( "#carte" )
+var svgFrance = d3.select( "#carte" )
 	.append( "svg" )
 	.attr( "width", largeur )
 	.attr( "height", hauteur );
-var g = svg.append( "g" ); 
+var g = svgFrance.append( "g" );
 
 //----------------------------------------------------------------
 // crée le polygone de la France 
@@ -29,7 +29,7 @@ var path = d3.geoPath()
 
 function creationCarte(){
   // création des villes 
-  var villesd3 = svg.selectAll(".villes")
+  var villesd3 = svgFrance.selectAll(".villes")
       .data(villes.villes)
       .enter();
       
@@ -134,7 +134,7 @@ function afficherCheminsAccessiblesDepuisVille(nom){
           .attr("class","villes_accessibles "+listeVillesAdjacentes[i].replace(/\s/g,'').toUpperCase())
     }
   }
-  var accessibles = svg.selectAll(".villes_accessibles")         
+  var accessibles = svgFrance.selectAll(".villes_accessibles")
                       .on("mouseover", function(d){
                                             d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#FF5252")
                                             d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("color","#FF5252")
@@ -152,17 +152,17 @@ function afficherCheminsAccessiblesDepuisVille(nom){
 }
 
 //----------------------------------------------------------------
-// retire les trais en noirs
+// retire les traits en noirs
 //----------------------------------------------------------------
 function retirerCheminsAccessibles(){
   d3.selectAll(".lignesActuelles")
     .attr("stroke","#686868")
     .attr("stroke-width","0.5")
-    .classed("lignesActuelles",false)
+    .classed("lignesActuelles",false);
   d3.selectAll(".villes_accessibles")
     .attr("font-weight","normal")
     .attr("fill","#585858")
-    .classed("villes_accessibles",false)
+    .classed("villes_accessibles",false);
   d3.selectAll(".villesCourrante")
     .attr("font-weight","normal")
     .attr("color","#585858")

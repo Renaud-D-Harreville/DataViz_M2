@@ -106,6 +106,7 @@ class Trajets {
         }
         return null;
     }
+
     getTrajetEnVoiture(depart,arrivee){
         if(depart<arrivee){
             var first=depart;
@@ -122,6 +123,7 @@ class Trajets {
         }
         return null;
     }
+
     getTrajetEnAvion(depart,arrivee){
         if(depart<arrivee){
             var first=depart;
@@ -155,7 +157,7 @@ class Trajets {
                 }
             }
             else{
-                dict[this.trajetsAvion[i].depart]=[]
+                dict[this.trajetsAvion[i].depart]=[];
                 dict[this.trajetsAvion[i].depart].push(this.trajetsAvion[i].arrivee)
             }
             }
@@ -169,7 +171,7 @@ class Trajets {
                 }
             }
             else{
-                dict[this.trajetsAvion[i].arrivee]=[]
+                dict[this.trajetsAvion[i].arrivee]=[];
                 dict[this.trajetsAvion[i].arrivee].push(this.trajetsAvion[i].depart)
             }
             } 
@@ -185,7 +187,7 @@ class Trajets {
                 }
             }
             else{
-                dict[this.trajetsTrain[i].depart]=[]
+                dict[this.trajetsTrain[i].depart]=[];
                 dict[this.trajetsTrain[i].depart].push(this.trajetsTrain[i].arrivee)
             }
             }
@@ -199,7 +201,7 @@ class Trajets {
                 }
             }
             else{
-                dict[this.trajetsTrain[i].arrivee]=[]
+                dict[this.trajetsTrain[i].arrivee]=[];
                 dict[this.trajetsTrain[i].arrivee].push(this.trajetsTrain[i].depart)
             }
             } 
@@ -215,7 +217,7 @@ class Trajets {
                 }
             }
             else{
-                dict[this.trajetsVoiture[i].depart.toUpperCase()]=[]
+                dict[this.trajetsVoiture[i].depart.toUpperCase()]=[];
                 dict[this.trajetsVoiture[i].depart.toUpperCase()].push(this.trajetsVoiture[i].arrivee.toUpperCase())
             }
             }
@@ -229,7 +231,7 @@ class Trajets {
                 }
             }
             else{
-                dict[this.trajetsVoiture[i].arrivee.toUpperCase()]=[]
+                dict[this.trajetsVoiture[i].arrivee.toUpperCase()]=[];
                 dict[this.trajetsVoiture[i].arrivee.toUpperCase()].push(this.trajetsVoiture[i].depart.toUpperCase())
             }
             } 

@@ -7,7 +7,7 @@
 /**
  * Définit une ville par son nom. Pour simplifier, le nom est enregistré en minuscule.
  * Les villes adjacentes (i.e. les villes accessibles depuis l'instance),
- * sont enregistrées dans des tableaux associatifs
+ * sont enregistrées dans des tableaux associatifs en tant que trajet
  */
 class Ville {
 
@@ -89,8 +89,14 @@ class Ville {
         var liste= this.villesAdjVoiture.concat(this.villesAdjTrain).concat(this.villeAdjAvion);
         var uniqueArray = liste.filter(function(item, pos) {
             return liste.indexOf(item) == pos;
-        })
+        });
         return uniqueArray;
+    }
+
+    displayTrajetDepuisVilleCourante () {
+        for (var d in this.villesAdjVoiture) {
+            this.villesAdjVoiture[d].afficherTrajet();
+        }
     }
 }
 
@@ -109,13 +115,20 @@ class Villes {
 
     getVille(nom) {
         for(var i=0; i<this.villes.length;i++){
-            if(nom==this.villes[i].nom){
+            if(nom == this.villes[i].nom){
                 return this.villes[i]
             }
         }
         return null;
     }
+
     getVilles(){
         return this.villes;
     }
+
+    displayTrajetsDepuisVille(ville) {
+        this.villes[ville.toLowerCase()].displayTrajetDepuisVilleCourante();
+    }
+
+
 }
