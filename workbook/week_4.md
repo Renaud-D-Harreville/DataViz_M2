@@ -35,4 +35,4 @@ Nous sommes plutôt d'accord sur l'aspect global que doit avoir le jeu. Nous pou
 | Nom | Action |
 | --- | ------ |
 | Mathilde | Ecriture |
-| Alice | Lecture - correction |
+| Alice | Lecture & correction |
