@@ -45,6 +45,7 @@ function start(){
     document.getElementById("joueur1temps").innerHTML=joueurs.getJoueur(1).temps;
     document.getElementById("joueur1prix").innerHTML=joueurs.getJoueur(1).prix;
     afficherCheminsAccessiblesDepuisVille(joueurs.getJoueur(1).position);
+    colorieDepartArrive();
     numeroJoueurCourant=1;
 }
 
@@ -149,7 +150,6 @@ function jouer(){
 // test si arrivee, si non afficherCheminsAccessiblesDepuisVille(ville); si oui test si finished() si oui displayscores() si non suivant(joueur+1)
 //----------------------------------------------------------------
 function suivant(numeroJoueur){
-    console.log(numeroJoueur)
     if(joueurs.getJoueur(numeroJoueur).position!=arrivee){
         $('.collapsible').collapsible('open', numeroJoueurCourant-1);
         numeroJoueurCourant=numeroJoueur;
@@ -160,6 +160,7 @@ function suivant(numeroJoueur){
         document.getElementById("joueur"+numeroJoueur+"co2").innerHTML=joueurs.getJoueur(numeroJoueur).co2;
         document.getElementById("joueur"+numeroJoueur+"temps").innerHTML=joueurs.getJoueur(numeroJoueur).temps;
         afficherCheminsAccessiblesDepuisVille(joueurs.getJoueur(numeroJoueur).position);
+        colorieDepartArrive();
     }
     else{
         if(finished()){

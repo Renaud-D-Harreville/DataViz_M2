@@ -110,7 +110,7 @@ function afficherCheminsAccessiblesDepuisVille(nom){
 
   d3.select("."+nom.replace(/\s/g,'').toUpperCase())
     .attr("font-weight","bold")
-    .attr("color","black")
+    .attr("fill","black")
     .attr("class","villesCourrante");
 
   d3.select("."+nom.replace(/\s/g,'').toUpperCase())
@@ -136,16 +136,21 @@ function afficherCheminsAccessiblesDepuisVille(nom){
   }
   var accessibles = svgFrance.selectAll(".villes_accessibles")
                       .on("mouseover", function(d){
-                                            d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#FF5252")
-                                            d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("color","#FF5252")
+                                            d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#FF5252");
+                                            d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("color","#FF5252");
+                                            colorieDepartArrive();
+                                            d3.select(this).style("cursor", "pointer");
                       })
                       .on("mouseout",function(d){
-                                            d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#585858")
-                                            d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("color","#585858")
+                                            d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#585858");
+                                            d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("color","#585858");
+                                            colorieDepartArrive();
+                                            d3.select(this).style("cursor", "default");
                           
                       })
                       .on("click",function(d){
                          completeformulaire(d.nom);
+                         colorieDepartArrive()
                       });
 
 
@@ -173,3 +178,10 @@ function retirerCheminsAccessibles(){
 }
 
 
+function colorieDepartArrive(){
+  d3.select("#"+depart.replace(/\s/g, ''))
+    .attr("fill","green");
+  d3.select("#"+arrivee.replace(/\s/g, ''))
+    .attr("font-weight","bold")
+    .attr("fill","green");
+}
