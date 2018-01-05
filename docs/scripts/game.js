@@ -158,6 +158,9 @@ function suivant(numeroJoueur){
         numeroJoueurCourant=numeroJoueur;
         retirerCheminsAccessibles();
         $('.collapsible').collapsible('open', numeroJoueur-1);
+        document.getElementById("joueur"+numeroJoueurCourant+"prix").innerHTML=joueurs.getJoueur(numeroJoueurCourant).prix;
+        document.getElementById("joueur"+numeroJoueurCourant+"co2").innerHTML=joueurs.getJoueur(numeroJoueurCourant).co2;
+        document.getElementById("joueur"+numeroJoueurCourant+"temps").innerHTML=joueurs.getJoueur(numeroJoueurCourant).temps;
         afficherCheminsAccessiblesDepuisVille(joueurs.getJoueur(numeroJoueur).position);
         colorieDepartArrive();
     }
