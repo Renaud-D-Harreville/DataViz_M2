@@ -1,4 +1,3 @@
-
 # Rapport de la semaine du 29 décembre 2017 au 4 janvier 2018 
 
 ## Objectifs de la semaine : 
