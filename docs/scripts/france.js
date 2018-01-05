@@ -11,14 +11,14 @@ var svgFrance = d3.select( "#carte" )
 	.append( "svg" )
 	.attr( "width", largeur )
 	.attr( "height", hauteur );
-var g = svgFrance.append( "g" );
+var g = svgFrance.append("g");
 
 //----------------------------------------------------------------
 // crée le polygone de la France 
 var projection =  d3.geoConicConformal()
 					          .center([3.399341, 46.082508])
 			            	.scale(2900) 
-                    .translate([largeur / 2, hauteur / 2])
+                    .translate([largeur / 2, hauteur / 2]);
 var path = d3.geoPath()
 			 .projection(projection);
 
@@ -69,7 +69,7 @@ function affichageCarte() {
 	   .data(geoJsonFrance.features)
 	   .enter()
 	   .append("path")
-     .attr("class","france")
+     .attr("class","france");
   g.selectAll(".france")
 		 .attr( "fill", "#ccc" )
 	   .attr("d", path);
