@@ -15,6 +15,8 @@
 var geoJsonFrance;
 // la liste des joueurs
 var joueurs = new Joueurs();
+// la liste des scores 
+var scores = new Scores();
 // la liste des villes
 var villes = new Villes();
 // Liste des différents trajets sur la France entière

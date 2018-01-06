@@ -26,13 +26,14 @@ function initialisation(){
     }
 
     let p1 = new Promise(function(resolve, reject) {
-        // crée les joueurs
+        // crée les joueurs et les scores 
         for(var i=1;i<=parseInt(nombreJoueurs);i++){
             var joueur= new Joueur(i,depart);
+            var score = new Score(i);
             joueurs.addJoueur(joueur);
+            scores.addScore(score);
         }
     });
-
     p1.then(start());
 
 }
@@ -141,6 +142,7 @@ function jouer(){
         joueurs.getJoueur(numeroJoueurCourant).temps=additionHeure(joueurs.getJoueur(numeroJoueurCourant).temps,document.getElementById("trajettemps").innerHTML);
         joueurs.getJoueur(numeroJoueurCourant).prix+=parseFloat(document.getElementById("trajetprix").innerHTML);
         joueurs.getJoueur(numeroJoueurCourant).co2+=parseFloat(document.getElementById("trajetco2").innerHTML);
+        miseAjourScores(joueurs.getJoueur(numeroJoueurCourant), trajetCourant);
         suivant(numeroSuivant(numeroJoueurCourant));
     }
 }
@@ -155,7 +157,6 @@ function suivant(numeroJoueur){
         numeroJoueurCourant=numeroJoueur;
         retirerCheminsAccessibles();
         $('.collapsible').collapsible('open', numeroJoueur-1);
-        console.log("joueur"+numeroJoueur+"prix")
         document.getElementById("joueur"+numeroJoueur+"prix").innerHTML=joueurs.getJoueur(numeroJoueur).prix;
         document.getElementById("joueur"+numeroJoueur+"co2").innerHTML=joueurs.getJoueur(numeroJoueur).co2;
         document.getElementById("joueur"+numeroJoueur+"temps").innerHTML=joueurs.getJoueur(numeroJoueur).temps;
@@ -189,10 +190,11 @@ function finished(){
 //----------------------------------------------------------------
 function additionHeure(heure1,heure2){
     console.log(heure1)
+    console.log(heure2)
     var h1=parseInt(heure1.split("h")[0]);
     var h2=parseInt(heure2.split("h")[0]);
     var mins1=parseInt(heure1.split("h")[1]);
-    var mins2=parseInt(heure1.split("h")[1]);
+    var mins2=parseInt(heure2.split("h")[1]);
     if((mins1+mins2)>60){
         var mins=(mins1+mins2)%60;
         var h=h1+h2+1;
