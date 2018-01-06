@@ -59,8 +59,6 @@ function creationCarte(){
     
 }
 
-// TODO faire le onclick de ville 
-
 //----------------------------------------------------------------
 // affiche la carte
 //----------------------------------------------------------------
@@ -116,6 +114,7 @@ function afficherCheminsAccessiblesDepuisVille(nom){
   d3.select("."+nom.replace(/\s/g,'').toUpperCase())
     .attr("fill","black")
     .attr("class","villeCourrante "+nom.replace(/\s/g,'').toUpperCase());
+
   for(i in listeVillesAdjacentes){
     if(listeVillesAdjacentes[i]!=undefined){
         if (listeVillesAdjacentes[i]<nom){
@@ -133,7 +132,7 @@ function afficherCheminsAccessiblesDepuisVille(nom){
         d3.select("."+listeVillesAdjacentes[i].replace(/\s/g,'').toUpperCase())
           .attr("class","villes_accessibles "+listeVillesAdjacentes[i].replace(/\s/g,'').toUpperCase())
     }
-  }
+  }                     
   var accessibles = svgFrance.selectAll(".villes_accessibles")
                       .on("mouseover", function(d){
                                             d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#FF5252");
@@ -165,7 +164,11 @@ function retirerCheminsAccessibles(){
   d3.selectAll(".lignesActuelles").classed("lignesActuelles",false);
   d3.selectAll(".villes_accessibles")
     .attr("font-weight","normal")
-    .attr("fill","#585858");
+    .attr("fill","#585858")
+    .on("mouseover", null)
+    .on("click",null)
+    .on("mouseout",null);
+  $(".villes_accessibles").removeClass("villes_accessibles");
   d3.selectAll(".villes_accessibles").classed("villes_accessibles",false);
   d3.selectAll(".villeCourrante")
     .attr("font-weight","normal");
