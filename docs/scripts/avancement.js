@@ -1,10 +1,10 @@
 //----------------------------------------------------------------
 // Auteurs :  Alice
-// Date : Decembre 2017 
+// Date : Janvier 2018
 //----------------------------------------------------------------
 
 //----------------------------------------------------------------
-//   création du svg
+//  création & affichage svg à l'initialisation du jeu 
 //----------------------------------------------------------------
 largeurSvg = 600 ; hauteurSvg = 300;
 var marges = {haut: 20, droite: 50, bas: 30, gauche: 20},
@@ -37,32 +37,26 @@ s.append("g")
 
 var c = ["#C201D8","#88CEF2","#177B0C"];
 
-//----------------------------------------------------------------
-//  affichage svg à l'initialisation du jeu 
-//----------------------------------------------------------------
-function affichageSvgScores(){
- //TODO
-}
 
 //----------------------------------------------------------------
 // Modifie les données du svg à chaque tour
 //----------------------------------------------------------------
 function miseAjourSvg(){
-    console.log("je suis passé ici");
-
-    var transport = ["A","V","T"];
-    var data =  scores.getScore(1) ; 
 
     // domaines de définition  
-    y.domain([0, d3.max(data, function(d) { return d.Vprix; })]);
+    //y.domain([0, d3.max(data, function(d) { return d.Vprix; })]);
 
-    s.append("rect")
-        .attr("x",data.id )
-        .attr("width", 10)
-        .attr("y", data.Vprix)
-        .attr("height", data.Vprix)
-        .attr("fill", "black");
+    console.log(scores.scores.length)
+    for(i=0; i<scores.scores.length-1;i++){
+        var score = scores.getScore(i+1);
+        s.append("rect")
+            .attr("x", score.id )
+            .attr("width", 10)
+            .attr("y", score.Vprix)
+            .attr("height", score.Vprix)
+            .attr("fill", c[score.id]);
 
+    }
 }
 //----------------------------------------------------------------
 // div en plein milieu de l'écran

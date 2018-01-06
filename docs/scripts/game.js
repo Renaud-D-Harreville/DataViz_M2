@@ -8,7 +8,7 @@ var arrivee="STRASBOURG";
 var numeroJoueurCourant;
 var trajetCourant;
 //nombre de div disponible dans la page html
-var nombreJoueursMax=3;
+var nombreJoueursMax=4;
 
 
 //----------------------------------------------------------------
