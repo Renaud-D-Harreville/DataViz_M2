@@ -116,7 +116,6 @@ function afficherCheminsAccessiblesDepuisVille(nom){
   d3.select("."+nom.replace(/\s/g,'').toUpperCase())
     .attr("fill","black")
     .attr("class","villeCourrante "+nom.replace(/\s/g,'').toUpperCase());
-
   for(i in listeVillesAdjacentes){
     if(listeVillesAdjacentes[i]!=undefined){
         if (listeVillesAdjacentes[i]<nom){
@@ -138,13 +137,12 @@ function afficherCheminsAccessiblesDepuisVille(nom){
   var accessibles = svgFrance.selectAll(".villes_accessibles")
                       .on("mouseover", function(d){
                                             d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#FF5252");
-                                            d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("color","#FF5252");
-                                            colorieDepartArrive();
+                                            d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("fill","#FF5252");
                                             d3.select(this).style("cursor", "pointer");
                       })
                       .on("mouseout",function(d){
                                             d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#585858");
-                                            d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("color","#585858");
+                                            d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("fill","#585858");
                                             colorieDepartArrive();
                                             d3.select(this).style("cursor", "default");
                           
