@@ -7,6 +7,19 @@
   text-align: center;
 }
 
+#scores{
+  top: 50%;
+  position:fixed;
+  left: 50%;
+  width:50%;
+  transform: translate(-50%, -50%); 
+  text-align: center;
+  background-color: white;
+  border-radius: 5px ; 
+  border : 2px solid black ;
+  padding : 10px ; 
+}
+
 #game{
    opacity: 0.4; 
 }

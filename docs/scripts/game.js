@@ -143,6 +143,7 @@ function jouer(){
         joueurs.getJoueur(numeroJoueurCourant).prix+=parseFloat(document.getElementById("trajetprix").innerHTML);
         joueurs.getJoueur(numeroJoueurCourant).co2+=parseFloat(document.getElementById("trajetco2").innerHTML);
         miseAjourScores(joueurs.getJoueur(numeroJoueurCourant), trajetCourant);
+        miseAjourSvg();
         suivant(numeroSuivant(numeroJoueurCourant));
     }
 }
