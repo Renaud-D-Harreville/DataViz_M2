@@ -10,6 +10,8 @@ var trajetCourant;
 //nombre de div disponible dans la page html
 var nombreJoueursMax=3;
 
+var couleurs = d3.scaleOrdinal(d3.schemeCategory10);
+
 
 //----------------------------------------------------------------
 //  initialise le nb de joueurs, toutes données à 0, cache la div formulaire, lance start() 
@@ -30,6 +32,7 @@ function initialisation(){
         for(var i=1;i<=parseInt(nombreJoueurs);i++){
             var joueur= new Joueur(i,depart);
             joueurs.addJoueur(joueur);
+            document.getElementById("joueur"+i+"icone").style.color=couleurs(i);
         }
     });
 
@@ -43,10 +46,10 @@ function start(){
     document.getElementById("joueur1co2").innerHTML=joueurs.getJoueur(1).co2;
     document.getElementById("joueur1temps").innerHTML=joueurs.getJoueur(1).temps;
     document.getElementById("joueur1prix").innerHTML=joueurs.getJoueur(1).prix;
+    numeroJoueurCourant=1;
     afficherCheminsAccessiblesDepuisVille(joueurs.getJoueur(1).position);
     colorieDepartArrive();
     annonceJoueurSuivant(1);
-    numeroJoueurCourant=1;
 }
 
 //----------------------------------------------------------------
@@ -224,6 +227,7 @@ function numeroSuivant(num) {
 function annonceJoueurSuivant(numeroJoueur){
     document.getElementById("numeroJoueurPopup").innerHTML=numeroJoueur;
     var div=document.getElementById("nouveauJoueurPopup");
+    document.getElementById("nouveauJoueurCard").style.backgroundColor=couleurs(numeroJoueur);
     var div=$("#nouveauJoueurPopup");
     setTimeout(afficheDivAnnimee,1000,div);
 }

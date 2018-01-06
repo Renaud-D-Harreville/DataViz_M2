@@ -23,7 +23,7 @@
       <div id="joueurs" class="col s2">
          <ul class="collapsible" data-collapsible="expandable">
               <li class="active joueur1">
-                <div class="collapsible-header active"><i class="material-icons">person</i>Joueur 1</div>
+                <div class="collapsible-header active"><i id="joueur1icone" class="material-icons">person</i>Joueur 1</div>
                 <div class="collapsible-body">
                   <span>
                     <i class="tiny material-icons">cloud_queue</i> CO2 : <span id="joueur1co2">  </span><br>
@@ -33,7 +33,7 @@
                   </div>
               </li>
               <li class="joueur2 ">
-                <div class="collapsible-header joueur2 "><i class="material-icons">person</i>Joueur 2</div>
+                <div class="collapsible-header joueur2 "><i  id="joueur2icone" class="material-icons">person</i>Joueur 2</div>
                 <div class="collapsible-body">
                   <span>
                     <i class="tiny material-icons">cloud_queue</i> CO2 : <span id="joueur2co2">  </span><br>
@@ -43,7 +43,7 @@
                   </div>
               </li>
               <li class="joueur3 ">
-                <div class="collapsible-header joueur3 "><i class="material-icons">person</i>Joueur 3</div>
+                <div class="collapsible-header joueur3 "><i id="joueur3icone" class="material-icons">person</i>Joueur 3</div>
                 <div class="collapsible-body">
                   <span>
                     <i class="tiny material-icons">cloud_queue</i> CO2 : <span id="joueur3co2">  </span><br>
@@ -110,7 +110,7 @@
     </div>
 </div>
 <div id="nouveauJoueurPopup" class="col s2">
-  <div class="card blue-grey ">
+  <div class="card" id="nouveauJoueurCard">
       <div class="card-content white-text">
         <p>Au joueur <spam id="numeroJoueurPopup"></spam> de jouer ! </p>
       </div>

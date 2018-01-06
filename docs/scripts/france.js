@@ -52,6 +52,7 @@ function creationCarte(){
     villesd3
       .append("circle")
       .attr("r", 3)
+      .attr("id",function(d){return "rond"+d.nom.replace(/\s/g, '');})
       .attr("class",function(d){return d.nom.replace(/\s/g, '');})
       .attr("fill", "#585858")
       .attr("cx",function(d){return projection(d.pos)[0];})
@@ -104,16 +105,14 @@ function dessinerTrajets(){
 // avec la liste des villes adjacentes, affiche les lignes possibles 
 //----------------------------------------------------------------
 function afficherCheminsAccessiblesDepuisVille(nom){
+
   listeVillesAdjacentes=villes.getVille(nom).listeVillesAdjacentes();
-
-  d3.select("."+nom.replace(/\s/g,'').toUpperCase())
+  d3.selectAll("."+nom.replace(/\s/g,'').toUpperCase())
     .attr("font-weight","bold")
-    .attr("fill","black")
     .attr("class","villeCourrante "+nom.replace(/\s/g,'').toUpperCase());
 
-  d3.select("."+nom.replace(/\s/g,'').toUpperCase())
-    .attr("fill","black")
-    .attr("class","villeCourrante "+nom.replace(/\s/g,'').toUpperCase());
+  d3.selectAll("#rond"+nom.replace(/\s/g,'').toUpperCase())
+      .attr("fill",couleurs(numeroJoueurCourant));
 
   for(i in listeVillesAdjacentes){
     if(listeVillesAdjacentes[i]!=undefined){
@@ -181,7 +180,8 @@ function retirerCheminsAccessibles(){
 
 function colorieDepartArrive(){
   d3.select("#"+depart.replace(/\s/g, ''))
-    .attr("fill","green");
+    .attr("font-weight","bold")
+    .attr("fill","black");
   d3.select("#"+arrivee.replace(/\s/g, ''))
     .attr("font-weight","bold")
     .attr("fill","green");
