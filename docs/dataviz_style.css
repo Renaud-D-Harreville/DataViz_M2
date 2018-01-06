@@ -70,3 +70,10 @@ label{
   color:#ff8a80;
   display: none;
 }
+
+#nouveauJoueurPopup{
+  opacity: 0;
+  position:absolute;
+  top:10px;
+  left:10px;
+}

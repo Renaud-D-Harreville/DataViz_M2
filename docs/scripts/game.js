@@ -34,7 +34,6 @@ function initialisation(){
     });
 
     p1.then(start());
-
 }
 
 //----------------------------------------------------------------
@@ -46,6 +45,7 @@ function start(){
     document.getElementById("joueur1prix").innerHTML=joueurs.getJoueur(1).prix;
     afficherCheminsAccessiblesDepuisVille(joueurs.getJoueur(1).position);
     colorieDepartArrive();
+    annonceJoueurSuivant(1);
     numeroJoueurCourant=1;
 }
 
@@ -155,6 +155,7 @@ function jouer(){
 //----------------------------------------------------------------
 function suivant(numeroJoueur){
     if(joueurs.getJoueur(numeroJoueur).position!=arrivee){
+        annonceJoueurSuivant(numeroJoueur);
         $('.collapsible').collapsible('open', numeroJoueurCourant-1);
         numeroJoueurCourant=numeroJoueur;
         retirerCheminsAccessibles();
@@ -218,4 +219,24 @@ function numeroSuivant(num) {
     else {
         return (num+1)%(joueurs.joueurs.length-1) ;
     }
+}
+
+
+function annonceJoueurSuivant(numeroJoueur){
+    document.getElementById("numeroJoueurPopup").innerHTML=numeroJoueur;
+    var div=document.getElementById("nouveauJoueurPopup");
+    var div=$("#nouveauJoueurPopup");
+    setTimeout(afficheDivAnnimee,1000,div);
+}
+
+function afficheDivAnnimee(target) {
+  target.animate({
+    opacity: "+=0.9"
+  }, 2000, function() {
+    setTimeout(function(){
+        target.animate({
+            opacity:"0"
+        },1000)
+    },1000)
+  });
 }
