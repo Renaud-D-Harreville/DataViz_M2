@@ -120,11 +120,12 @@ function completeDataFormAvion(){
 //----------------------------------------------------------------
 function afficheTrajet(trajet){
     if(trajet==null){
-        document.getElementById("trajetco2").innerHTML="";
-        document.getElementById("trajetprix").innerHTML="";
-        document.getElementById("trajettemps").innerHTML="";
+        document.getElementById("infostrajet").style.display="none";
+        document.getElementById("reponseTransport").style.display="block";
     }
     else{
+        document.getElementById("infostrajet").style.display="block";
+        document.getElementById("reponseTransport").style.display="none";
         document.getElementById("trajetco2").innerHTML=trajet.co2;
         document.getElementById("trajetprix").innerHTML=trajet.prix;
         document.getElementById("trajettemps").innerHTML=trajet.duree;

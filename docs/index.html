@@ -64,8 +64,11 @@
                     <p>Moyen de transport :<input name="moyenTransport" type="radio" id="train"  />   <label onclick="completeDataFormTrain()" for="train">train</label> 
                                            <input name="moyenTransport" type="radio" id="voiture" onclick="completeDataFormVoiture()" />  <label for="voiture">voiture</label>
                                           <input name="moyenTransport" type="radio" id="avion" onclick="completeDataFormAvion()" />  <label for="avion">avion</label></p>
+                    <p id="reponseTransport">
+                      Erreur : Le moyen de transport que vous avez sélectionné n'existe pas pour ce trajet.
+                    </p>
                     <p>
-                       <table><tr>
+                       <table id="infostrajet"><tr>
                            <td> <i class="tiny material-icons">cloud_queue</i> CO2 : <span id="trajetco2">  </span></td>
                            <td> <i class="tiny material-icons">monetization_on</i> Prix : <span id="trajetprix">  </span></td>
                            <td> <i class="tiny material-icons">access_time</i> Temps : <span id="trajettemps">  </span></td>
