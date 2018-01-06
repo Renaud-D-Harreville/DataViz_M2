@@ -111,10 +111,11 @@ function afficherCheminsAccessiblesDepuisVille(nom){
   d3.select("."+nom.replace(/\s/g,'').toUpperCase())
     .attr("font-weight","bold")
     .attr("fill","black")
-    .attr("class","villesCourrante");
+    .attr("class","villeCourrante "+nom.replace(/\s/g,'').toUpperCase());
 
   d3.select("."+nom.replace(/\s/g,'').toUpperCase())
-    .attr("fill","black");
+    .attr("fill","black")
+    .attr("class","villeCourrante "+nom.replace(/\s/g,'').toUpperCase());
 
   for(i in listeVillesAdjacentes){
     if(listeVillesAdjacentes[i]!=undefined){
@@ -162,19 +163,18 @@ function afficherCheminsAccessiblesDepuisVille(nom){
 function retirerCheminsAccessibles(){
   d3.selectAll(".lignesActuelles")
     .attr("stroke","#686868")
-    .attr("stroke-width","0.5")
-    .classed("lignesActuelles",false);
+    .attr("stroke-width","0.5");
+  d3.selectAll(".lignesActuelles").classed("lignesActuelles",false);
   d3.selectAll(".villes_accessibles")
     .attr("font-weight","normal")
-    .attr("fill","#585858")
-    .classed("villes_accessibles",false);
-  d3.selectAll(".villesCourrante")
-    .attr("font-weight","normal")
-    .attr("color","#585858")
-    .classed("villesCourrante",false);
-  d3.selectAll(".villesCourrante")
-    .attr("fill","black")
-    .classed("villesCourrante",false);  
+    .attr("fill","#585858");
+  d3.selectAll(".villes_accessibles").classed("villes_accessibles",false);
+  d3.selectAll(".villeCourrante")
+    .attr("font-weight","normal");
+  d3.selectAll(".villeCourrante")
+    .attr("fill","#585858");
+  d3.selectAll(".villeCourrante").classed("villeCourrante",false);
+
 }
 
 

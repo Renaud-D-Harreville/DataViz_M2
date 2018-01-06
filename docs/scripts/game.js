@@ -195,7 +195,7 @@ function additionHeure(heure1,heure2){
     var h1=parseInt(heure1.split("h")[0]);
     var h2=parseInt(heure2.split("h")[0]);
     var mins1=parseInt(heure1.split("h")[1]);
-    var mins2=parseInt(heure1.split("h")[1]);
+    var mins2=parseInt(heure2.split("h")[1]);
     if((mins1+mins2)>60){
         var mins=(mins1+mins2)%60;
         var h=h1+h2+1;
