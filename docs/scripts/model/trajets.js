@@ -23,6 +23,14 @@ class Trajet {
         this.prix = prix;
         this.co2 = co2;
     }
+
+    getTemps() {
+        var parseTime = d3.timeParse("%Hh%M");
+        var time = parseTime(this.duree);
+        var tmp = time.getHours() + (time.getMinutes()/60);
+        //console.log(tmp);
+        return tmp;
+    }
 }
 
 /**
@@ -47,6 +55,8 @@ class TrajetTrain extends Trajet {
     constructor(depart, arrivee, duree, prix, co2) {
         super(depart, arrivee, duree, prix, co2);
         this.type = "T";
+        this.prix=parseFloat(prix);
+        this.co2=parseFloat(co2);
         this.legende = "train";
         this.couleur = "#46ff49";
     }
@@ -59,6 +69,8 @@ class TrajetAvion extends Trajet {
     constructor(depart, arrivee, duree, prix, co2){
         super(depart, arrivee, duree, prix, co2);
         this.type = "A";
+        this.prix=parseFloat(prix);
+        this.co2=parseFloat(co2);
         this.legende = "avion";
         this.couleur = "#ff213f";
     }
