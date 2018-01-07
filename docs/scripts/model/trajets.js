@@ -2,8 +2,6 @@
 // Description des classes concernant les trajets.
 //----------------------------------------------------------------
 
-
-
 /**
  * Classe définissant un trajet.
  * Un trajet est définit par
@@ -23,6 +21,14 @@ class Trajet {
         this.prix = prix;
         this.co2 = co2;
     }
+
+    getTemps() {
+        var parseTime = d3.timeParse("%Hh%M");
+        var time = parseTime(this.duree);
+        var tmp = time.getHours() + (time.getMinutes()/60);
+        //console.log(tmp);
+        return tmp;
+    }
 }
 
 /**
@@ -35,6 +41,8 @@ class TrajetVoiture extends Trajet {
         this.prix=parseFloat(prix);
         this.co2=parseFloat(co2);
         this.duree=duree;
+        this.couleur = "#4848ff";
+        this.legende = "voiture";
     }
 }
 
@@ -48,6 +56,8 @@ class TrajetTrain extends Trajet {
         this.prix=parseFloat(prix);
         this.co2=parseFloat(co2);
         this.duree=duree;
+        this.legende = "train";
+        this.couleur = "#46ff49";
     }
 }
 
@@ -61,6 +71,8 @@ class TrajetAvion extends Trajet {
         this.prix=parseFloat(prix);
         this.co2=parseFloat(co2);
         this.duree=duree;
+        this.legende = "avion";
+        this.couleur = "#ff213f";
     }
 }
 

@@ -52,14 +52,13 @@ function creationCarte(){
     villesd3
       .append("circle")
       .attr("r", 3)
+      .attr("id",function(d){return "rond"+d.nom.replace(/\s/g, '');})
       .attr("class",function(d){return d.nom.replace(/\s/g, '');})
       .attr("fill", "#585858")
       .attr("cx",function(d){return projection(d.pos)[0];})
       .attr("cy",function(d){return projection(d.pos)[1];});
     
 }
-
-// TODO faire le onclick de ville 
 
 //----------------------------------------------------------------
 // affiche la carte
@@ -106,15 +105,14 @@ function dessinerTrajets(){
 // avec la liste des villes adjacentes, affiche les lignes possibles 
 //----------------------------------------------------------------
 function afficherCheminsAccessiblesDepuisVille(nom){
+
   listeVillesAdjacentes=villes.getVille(nom).listeVillesAdjacentes();
-
-  d3.select("."+nom.replace(/\s/g,'').toUpperCase())
+  d3.selectAll("."+nom.replace(/\s/g,'').toUpperCase())
     .attr("font-weight","bold")
-    .attr("color","black")
-    .attr("class","villesCourrante");
+    .attr("class","villeCourrante "+nom.replace(/\s/g,'').toUpperCase());
 
-  d3.select("."+nom.replace(/\s/g,'').toUpperCase())
-    .attr("fill","black");
+  d3.selectAll("#rond"+nom.replace(/\s/g,'').toUpperCase())
+      .attr("fill",couleurs(numeroJoueurCourant));
 
   for(i in listeVillesAdjacentes){
     if(listeVillesAdjacentes[i]!=undefined){
@@ -133,19 +131,23 @@ function afficherCheminsAccessiblesDepuisVille(nom){
         d3.select("."+listeVillesAdjacentes[i].replace(/\s/g,'').toUpperCase())
           .attr("class","villes_accessibles "+listeVillesAdjacentes[i].replace(/\s/g,'').toUpperCase())
     }
-  }
+  }                     
   var accessibles = svgFrance.selectAll(".villes_accessibles")
                       .on("mouseover", function(d){
-                                            d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#FF5252")
-                                            d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("color","#FF5252")
+                                            d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#FF5252");
+                                            d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("fill","#FF5252");
+                                            d3.select(this).style("cursor", "pointer");
                       })
                       .on("mouseout",function(d){
-                                            d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#585858")
-                                            d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("color","#585858")
+                                            d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#585858");
+                                            d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("fill","#585858");
+                                            colorieDepartArrive();
+                                            d3.select(this).style("cursor", "default");
                           
                       })
                       .on("click",function(d){
                          completeformulaire(d.nom);
+                         colorieDepartArrive()
                       });
 
 
@@ -157,19 +159,30 @@ function afficherCheminsAccessiblesDepuisVille(nom){
 function retirerCheminsAccessibles(){
   d3.selectAll(".lignesActuelles")
     .attr("stroke","#686868")
-    .attr("stroke-width","0.5")
-    .classed("lignesActuelles",false);
+    .attr("stroke-width","0.5");
+  d3.selectAll(".lignesActuelles").classed("lignesActuelles",false);
   d3.selectAll(".villes_accessibles")
     .attr("font-weight","normal")
     .attr("fill","#585858")
-    .classed("villes_accessibles",false);
-  d3.selectAll(".villesCourrante")
-    .attr("font-weight","normal")
-    .attr("color","#585858")
-    .classed("villesCourrante",false);
-  d3.selectAll(".villesCourrante")
-    .attr("fill","black")
-    .classed("villesCourrante",false);  
+    .on("mouseover", null)
+    .on("click",null)
+    .on("mouseout",null);
+  $(".villes_accessibles").removeClass("villes_accessibles");
+  d3.selectAll(".villes_accessibles").classed("villes_accessibles",false);
+  d3.selectAll(".villeCourrante")
+    .attr("font-weight","normal");
+  d3.selectAll(".villeCourrante")
+    .attr("fill","#585858");
+  d3.selectAll(".villeCourrante").classed("villeCourrante",false);
+
 }
 
 
+function colorieDepartArrive(){
+  d3.select("#"+depart.replace(/\s/g, ''))
+    .attr("font-weight","bold")
+    .attr("fill","black");
+  d3.select("#"+arrivee.replace(/\s/g, ''))
+    .attr("font-weight","bold")
+    .attr("fill","green");
+}

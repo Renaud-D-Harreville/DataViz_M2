@@ -1,133 +1,133 @@
 depart,arrivee,temps,prix,CO2
-Lyon,Paris,04h29,71.23,27.96
-Nantes,Paris,03h54,68.09,23.16
-Paris,Strasbourg,04h39,77.00,29.28
-Paris,Rennes,03h41,57.84,21.0
-Le Havre,Paris,02h22,37.38,11.76
-Paris,Reims,01h32,22.69,8.58
-Lille,Paris,02h24,34.92,13.2
-Angers,Paris,02h54,51.98,17.82
-Dijon,Paris,03h08,43.77,18.9
-Le Mans,Paris,02h15,35.62,12.54
-Clermont-Ferrand,Paris,04h11,72.31,25.44
-Amiens,Paris,01h52,20.67,7.98
-Limoges,Paris,03h49,51.20,23.64
-Lyon,Marseille,03h09,50.20,18.84
-Marseille,Toulouse,04h05,65.31,24.3
-Marseille,Nice,02h28,34.46,11.4
-Marseille,Montpellier,01h52,24.38,9.96
-Marseille,Saint-etienne,03h24,52.04,19.86
-Marseille,Toulon,00h51,13.04,3.888
-Grenoble,Marseille,03h00,51.54,18.36
-Dijon,Marseille,04h53,80.07,30.18
-Clermont-Ferrand,Marseille,04h46,74.19,28.5
-Aix-en-Provence,Marseille,00h40,3.86,2.004
-Marseille,Nimes,01h41,22.39,7.62
-Lyon,Nice,04h43,80.36,28.38
-Lyon,Strasbourg,04h51,69.73,29.52
-Lyon,Montpellier,03h02,49.93,18.06
-Lyon,Reims,04h30,79.95,29.4
-Lyon,Saint-etienne,01h04,6.75,3.798
-Lyon,Toulon,03h40,62.98,22.74
-Grenoble,Lyon,01h23,21.34,6.66
-Dijon,Lyon,02h06,31.38,11.7
-Clermont-Ferrand,Lyon,01h59,29.80,10.08
-Aix-en-Provence,Lyon,02h59,49.12,18.12
-Limoges,Lyon,04h06,65.02,24.3
-Lyon,Nimes,02h39,44.09,15.48
-Montpellier,Toulouse,02h34,43.03,14.58
-Bordeaux,Toulouse,02h30,39.01,14.64
-Toulon,Toulouse,04h38,78.85,28.2
-Clermont-Ferrand,Toulouse,03h58,59.71,22.56
-Montpellier,Toulouse,02h34,43.03,14.58
-Bordeaux,Toulouse,02h30,39.01,14.64
-Toulon,Toulouse,04h38,78.85,28.2
-Clermont-Ferrand,Toulouse,03h58,59.71,22.56
-Aix-en-Provence,Toulouse,03h58,64.98,23.58
-Limoges,Toulouse,02h57,39.65,17.4
-Nimes,Toulouse,03h01,49.89,17.4
-Montpellier,Nice,03h27,54.56,19.5
-Nice,Saint-etienne,04h59,82.22,29.4
-Nice,Toulon,01h46,26.91,9.0
-Grenoble,Nice,01h48,27.03,9.0
-Angers,Nice,01h48,27.03,9.0
-Aix-en-Provence,Nice,02h00,32.42,10.56
-Nice,Nimes,03h02,46.92,16.74
-Bordeaux,Nantes,03h34,52.86,19.8
-Nantes,Rennes,01h35,10.32,6.54
-Le Havre,Nantes,04h12,42.40,23.04
-Angers,Nantes,01h06,16.53,5.418
-Brest,Nantes,03h43,26.12,17.82
-Le Mans,Nantes,02h07,33.10,11.1
-Limoges,Nantes,04h18,42.52,19.32
-Reims,Strasbourg,03h21,54.82,20.88
-Dijon,Strasbourg,03h25,43.78,19.86
-Amiens,Strasbourg,04h56,82.76,31.38
-Bordeaux,Montpellier,04h34,80.18,28.92
-Montpellier,Saint-etienne,03h22,52.09,19.26
-Montpellier,Toulon,02h30,37.58,14.04
-Grenoble,Montpellier,02h57,51.39,17.76
-Dijon,Montpellier,04h50,80.12,29.58
-Clermont-Ferrand,Montpellier,03h30,37.68,19.98
-Aix-en-Provence,Montpellier,01h49,23.71,9.42
-Montpellier,Nimes,00h52,8.62,3.246
-Bordeaux,Rennes,04h44,61.99,26.52
-Angers,Bordeaux,03h53,60.00,22.62
-Bordeaux,Le Mans,04h13,75.65,26.82
-Bordeaux,Clermont-Ferrand,03h48,60.56,22.08
-Bordeaux,Limoges,02h49,19.29,13.2
-Bordeaux,Nimes,04h59,87.67,31.8
-Le Havre,Rennes,02h56,33.37,16.8
-Reims,Rennes,04h48,78.69,28.98
-Angers,Rennes,02h00,12.65,8.04
-Brest,Rennes,02h56,20.92,14.52
-Le Mans,Rennes,01h50,24.40,9.24
-Amiens,Rennes,04h15,59.42,26.4
-Le Havre,Reims,03h23,54.59,20.7
-Le Havre,Lille,03h10,48.54,19.02
-Angers,Le Havre,03h15,58.95,18.06
-Dijon,Le Havre,04h57,78.03,30.12
-Le Havre,Le Mans,02h35,42.71,12.72
-Amiens,Le Havre,01h59,29.36,11.1
-Lille,Reims,02h01,31.86,12.0
-Angers,Reims,04h05,73.09,25.86
-Dijon,Reims,02h51,48.63,17.94
-Le Mans,Reims,03h26,56.72,20.58
-Amiens,Reims,01h46,27.02,10.26
-Angers,Lille,04h54,85.29,30.72
-Dijon,Lille,04h37,80.78,30.06
-Le Mans,Lille,04h15,68.92,25.44
-Amiens,Lille,01h44,14.55,7.26
-Saint-etienne,Toulon,03h56,64.91,23.82
-Grenoble,Saint-etienne,01h49,25.05,9.24
-Dijon,Saint-etienne,02h47,36.59,15.12
-Clermont-Ferrand,Saint-etienne,01h45,23.53,8.76
-Aix-en-Provence,Saint-etienne,03h15,51.04,19.26
-Limoges,Saint-etienne,03h52,58.75,22.92
-Nimes,Saint-etienne,02h55,46.01,16.56
-Grenoble,Toulon,03h33,64.45,22.26
-Aix-en-Provence,Toulon,00h58,15.15,4.902
-Nimes,Toulon,02h00,29.66,11.1
-Dijon,Grenoble,02h58,52.26,18.06
-Clermont-Ferrand,Grenoble,03h01,51.82,16.56
-Aix-en-Provence,Grenoble,03h21,36.15,14.58
-Grenoble,Nimes,02h28,43.63,15.0
-Angers,Brest,04h11,40.19,22.62
-Angers,Le Mans,01h07,16.96,5.754
-Angers,Clermont-Ferrand,04h12,75.38,26.88
-Amiens,Angers,04h07,76.24,25.32
-Angers,Limoges,04h03,23.93,15.9
-Dijon,Le Mans,04h32,74.56,28.62
-Clermont-Ferrand,Dijon,03h30,52.10,19.38
-Amiens,Dijon,04h22,75.96,28.38
-Aix-en-Provence,Dijon,04h40,78.91,29.58
-Dijon,Limoges,04h53,43.80,26.04
-Dijon,Nimes,04h20,73.89,26.94
-Brest,Le Mans,04h24,44.17,23.82
-Clermont-Ferrand,Le Mans,04h15,72.91,26.34
-Amiens,Le Mans,03h28,60.15,20.16
-Le Mans,Limoges,03h54,46.08,19.68
-Aix-en-Provence,Clermont-Ferrand,04h34,77.32,27.9
-Clermont-Ferrand,Limoges,02h33,29.89,13.32
-Clermont-Ferrand,Nimes,04h04,46.67,23.4
-Aix-en-Provence,Nimes,01h17,15.54,6.36
+Lyon,Paris,04h29,35,27.96
+Nantes,Paris,03h54,34,23.16
+Paris,Strasbourg,04h39,38,29.28
+Paris,Rennes,03h41,28,21.0
+Le Havre,Paris,02h22,18,11.76
+Paris,Reims,01h32,11,8.58
+Lille,Paris,02h24,17,13.2
+Angers,Paris,02h54,25,17.82
+Dijon,Paris,03h08,21,18.9
+Le Mans,Paris,02h15,17,12.54
+Clermont-Ferrand,Paris,04h11,36,25.44
+Amiens,Paris,01h52,10,7.98
+Limoges,Paris,03h49,25,23.64
+Lyon,Marseille,03h09,25,18.84
+Marseille,Toulouse,04h05,32,24.3
+Marseille,Nice,02h28,17,11.4
+Marseille,Montpellier,01h52,12,9.96
+Marseille,Saint-etienne,03h24,26,19.86
+Marseille,Toulon,00h51,6,3.888
+Grenoble,Marseille,03h00,25,18.36
+Dijon,Marseille,04h53,40,30.18
+Clermont-Ferrand,Marseille,04h46,37,28.5
+Aix-en-Provence,Marseille,00h40,1,2.004
+Marseille,Nimes,01h41,11,7.62
+Lyon,Nice,04h43,40,28.38
+Lyon,Strasbourg,04h51,34,29.52
+Lyon,Montpellier,03h02,24,18.06
+Lyon,Reims,04h30,39,29.4
+Lyon,Saint-etienne,01h04,3,3.798
+Lyon,Toulon,03h40,31,22.74
+Grenoble,Lyon,01h23,10,6.66
+Dijon,Lyon,02h06,15,11.7
+Clermont-Ferrand,Lyon,01h59,14,10.08
+Aix-en-Provence,Lyon,02h59,24,18.12
+Limoges,Lyon,04h06,32,24.3
+Lyon,Nimes,02h39,22,15.48
+Montpellier,Toulouse,02h34,21,14.58
+Bordeaux,Toulouse,02h30,19,14.64
+Toulon,Toulouse,04h38,39,28.2
+Clermont-Ferrand,Toulouse,03h58,29,22.56
+Montpellier,Toulouse,02h34,21,14.58
+Bordeaux,Toulouse,02h30,19,14.64
+Toulon,Toulouse,04h38,39,28.2
+Clermont-Ferrand,Toulouse,03h58,29,22.56
+Aix-en-Provence,Toulouse,03h58,32,23.58
+Limoges,Toulouse,02h57,19,17.4
+Nimes,Toulouse,03h01,24,17.4
+Montpellier,Nice,03h27,27,19.5
+Nice,Saint-etienne,04h59,41,29.4
+Nice,Toulon,01h46,13,9.0
+Grenoble,Nice,01h48,13,9.0
+Angers,Nice,01h48,13,9.0
+Aix-en-Provence,Nice,02h00,16,10.56
+Nice,Nimes,03h02,23,16.74
+Bordeaux,Nantes,03h34,26,19.8
+Nantes,Rennes,01h35,5,6.54
+Le Havre,Nantes,04h12,21,23.04
+Angers,Nantes,01h06,8,5.418
+Brest,Nantes,03h43,13,17.82
+Le Mans,Nantes,02h07,16,11.1
+Limoges,Nantes,04h18,21,19.32
+Reims,Strasbourg,03h21,27,20.88
+Dijon,Strasbourg,03h25,21,19.86
+Amiens,Strasbourg,04h56,41,31.38
+Bordeaux,Montpellier,04h34,40,28.92
+Montpellier,Saint-etienne,03h22,26,19.26
+Montpellier,Toulon,02h30,18,14.04
+Grenoble,Montpellier,02h57,25,17.76
+Dijon,Montpellier,04h50,40,29.58
+Clermont-Ferrand,Montpellier,03h30,18,19.98
+Aix-en-Provence,Montpellier,01h49,11,9.42
+Montpellier,Nimes,00h52,4,3.246
+Bordeaux,Rennes,04h44,30,26.52
+Angers,Bordeaux,03h53,30,22.62
+Bordeaux,Le Mans,04h13,37,26.82
+Bordeaux,Clermont-Ferrand,03h48,30,22.08
+Bordeaux,Limoges,02h49,9,13.2
+Bordeaux,Nimes,04h59,43,31.8
+Le Havre,Rennes,02h56,16,16.8
+Reims,Rennes,04h48,39,28.98
+Angers,Rennes,02h00,6,8.04
+Brest,Rennes,02h56,10,14.52
+Le Mans,Rennes,01h50,12,9.24
+Amiens,Rennes,04h15,29,26.4
+Le Havre,Reims,03h23,27,20.7
+Le Havre,Lille,03h10,24,19.02
+Angers,Le Havre,03h15,29,18.06
+Dijon,Le Havre,04h57,39,30.12
+Le Havre,Le Mans,02h35,21,12.72
+Amiens,Le Havre,01h59,14,11.1
+Lille,Reims,02h01,15,12.0
+Angers,Reims,04h05,36,25.86
+Dijon,Reims,02h51,24,17.94
+Le Mans,Reims,03h26,28,20.58
+Amiens,Reims,01h46,13,10.26
+Angers,Lille,04h54,42,30.72
+Dijon,Lille,04h37,40,30.06
+Le Mans,Lille,04h15,34,25.44
+Amiens,Lille,01h44,7,7.26
+Saint-etienne,Toulon,03h56,32,23.82
+Grenoble,Saint-etienne,01h49,12,9.24
+Dijon,Saint-etienne,02h47,18,15.12
+Clermont-Ferrand,Saint-etienne,01h45,11,8.76
+Aix-en-Provence,Saint-etienne,03h15,25,19.26
+Limoges,Saint-etienne,03h52,29,22.92
+Nimes,Saint-etienne,02h55,23,16.56
+Grenoble,Toulon,03h33,32,22.26
+Aix-en-Provence,Toulon,00h58,7,4.902
+Nimes,Toulon,02h00,14,11.1
+Dijon,Grenoble,02h58,26,18.06
+Clermont-Ferrand,Grenoble,03h01,25,16.56
+Aix-en-Provence,Grenoble,03h21,18,14.58
+Grenoble,Nimes,02h28,21,15.0
+Angers,Brest,04h11,20,22.62
+Angers,Le Mans,01h07,8,5.754
+Angers,Clermont-Ferrand,04h12,37,26.88
+Amiens,Angers,04h07,38,25.32
+Angers,Limoges,04h03,11,15.9
+Dijon,Le Mans,04h32,37,28.62
+Clermont-Ferrand,Dijon,03h30,26,19.38
+Amiens,Dijon,04h22,37,28.38
+Aix-en-Provence,Dijon,04h40,39,29.58
+Dijon,Limoges,04h53,21,26.04
+Dijon,Nimes,04h20,36,26.94
+Brest,Le Mans,04h24,22,23.82
+Clermont-Ferrand,Le Mans,04h15,36,26.34
+Amiens,Le Mans,03h28,30,20.16
+Le Mans,Limoges,03h54,23,19.68
+Aix-en-Provence,Clermont-Ferrand,04h34,38,27.9
+Clermont-Ferrand,Limoges,02h33,14,13.32
+Clermont-Ferrand,Nimes,04h04,23,23.4
+Aix-en-Provence,Nimes,01h17,7,6.36

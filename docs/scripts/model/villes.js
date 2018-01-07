@@ -86,7 +86,8 @@ class Ville {
     }
 
     listeVillesAdjacentes(){
-        var liste= this.villesAdjVoiture.concat(this.villesAdjTrain).concat(this.villeAdjAvion);
+        var liste1= this.villesAdjVoiture.concat(this.villesAdjTrain);
+        var liste=liste1.concat(this.villesAdjAvion);
         var uniqueArray = liste.filter(function(item, pos) {
             return liste.indexOf(item) == pos;
         });

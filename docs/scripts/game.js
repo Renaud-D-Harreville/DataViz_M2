@@ -10,6 +10,8 @@ var trajetCourant;
 //nombre de div disponible dans la page html
 var nombreJoueursMax=4;
 
+var couleurs = d3.scaleOrdinal(d3.schemeCategory10);
+
 
 //----------------------------------------------------------------
 //  initialise le nb de joueurs, toutes données à 0, cache la div formulaire, lance start() 
@@ -32,11 +34,11 @@ function initialisation(){
             var score = new Score(i);
             joueurs.addJoueur(joueur);
             scores.addScore(score);
+            document.getElementById("joueur"+i+"icone").style.color=couleurs(i);
         }
         creationAxesSvg();
     });
     p1.then(start());
-
 }
 
 //----------------------------------------------------------------
@@ -46,8 +48,10 @@ function start(){
     document.getElementById("joueur1co2").innerHTML=joueurs.getJoueur(1).co2;
     document.getElementById("joueur1temps").innerHTML=joueurs.getJoueur(1).temps;
     document.getElementById("joueur1prix").innerHTML=joueurs.getJoueur(1).prix;
-    afficherCheminsAccessiblesDepuisVille(joueurs.getJoueur(1).position);
     numeroJoueurCourant=1;
+    afficherCheminsAccessiblesDepuisVille(joueurs.getJoueur(1).position);
+    colorieDepartArrive();
+    annonceJoueurSuivant(1);
 }
 
 //----------------------------------------------------------------
@@ -63,6 +67,8 @@ function getDepartArrivee(){
 //----------------------------------------------------------------
 function completeformulaire(arriveeSelectionnee){
     document.getElementById("nomVilleChoisie").value=arriveeSelectionnee;
+
+    afficherComparaisons(); // à modifier
 
     // si un bouton radio est déjà là, afficher le trajet 
     var radios = document.getElementsByName('moyenTransport');
@@ -121,11 +127,12 @@ function completeDataFormAvion(){
 //----------------------------------------------------------------
 function afficheTrajet(trajet){
     if(trajet==null){
-        document.getElementById("trajetco2").innerHTML="";
-        document.getElementById("trajetprix").innerHTML="";
-        document.getElementById("trajettemps").innerHTML="";
+        document.getElementById("infostrajet").style.display="none";
+        document.getElementById("reponseTransport").style.display="block";
     }
     else{
+        document.getElementById("infostrajet").style.display="block";
+        document.getElementById("reponseTransport").style.display="none";
         document.getElementById("trajetco2").innerHTML=trajet.co2;
         document.getElementById("trajetprix").innerHTML=trajet.prix;
         document.getElementById("trajettemps").innerHTML=trajet.duree;
@@ -145,6 +152,9 @@ function jouer(){
         joueurs.getJoueur(numeroJoueurCourant).co2+=parseFloat(document.getElementById("trajetco2").innerHTML);
         miseAjourScores(joueurs.getJoueur(numeroJoueurCourant), trajetCourant);
         miseAjourSvg();
+        document.getElementById("joueur"+numeroJoueurCourant+"prix").innerHTML=joueurs.getJoueur(numeroJoueurCourant).prix;
+        document.getElementById("joueur"+numeroJoueurCourant+"co2").innerHTML=joueurs.getJoueur(numeroJoueurCourant).co2;
+        document.getElementById("joueur"+numeroJoueurCourant+"temps").innerHTML=joueurs.getJoueur(numeroJoueurCourant).temps;
         suivant(numeroSuivant(numeroJoueurCourant));
     }
 }
@@ -153,16 +163,17 @@ function jouer(){
 // test si arrivee, si non afficherCheminsAccessiblesDepuisVille(ville); si oui test si finished() si oui displayscores() si non suivant(joueur+1)
 //----------------------------------------------------------------
 function suivant(numeroJoueur){
-    console.log(numeroJoueur)
     if(joueurs.getJoueur(numeroJoueur).position!=arrivee){
+        annonceJoueurSuivant(numeroJoueur);
         $('.collapsible').collapsible('open', numeroJoueurCourant-1);
         numeroJoueurCourant=numeroJoueur;
         retirerCheminsAccessibles();
         $('.collapsible').collapsible('open', numeroJoueur-1);
-        document.getElementById("joueur"+numeroJoueur+"prix").innerHTML=joueurs.getJoueur(numeroJoueur).prix;
-        document.getElementById("joueur"+numeroJoueur+"co2").innerHTML=joueurs.getJoueur(numeroJoueur).co2;
-        document.getElementById("joueur"+numeroJoueur+"temps").innerHTML=joueurs.getJoueur(numeroJoueur).temps;
+        document.getElementById("joueur"+numeroJoueurCourant+"prix").innerHTML=joueurs.getJoueur(numeroJoueurCourant).prix;
+        document.getElementById("joueur"+numeroJoueurCourant+"co2").innerHTML=joueurs.getJoueur(numeroJoueurCourant).co2;
+        document.getElementById("joueur"+numeroJoueurCourant+"temps").innerHTML=joueurs.getJoueur(numeroJoueurCourant).temps;
         afficherCheminsAccessiblesDepuisVille(joueurs.getJoueur(numeroJoueur).position);
+        colorieDepartArrive();
     }
     else{
         if(finished()){
@@ -216,4 +227,25 @@ function numeroSuivant(num) {
     else {
         return (num+1)%(joueurs.joueurs.length-1) ;
     }
+}
+
+
+function annonceJoueurSuivant(numeroJoueur){
+    document.getElementById("numeroJoueurPopup").innerHTML=numeroJoueur;
+    var div=document.getElementById("nouveauJoueurPopup");
+    document.getElementById("nouveauJoueurCard").style.backgroundColor=couleurs(numeroJoueur);
+    var div=$("#nouveauJoueurPopup");
+    setTimeout(afficheDivAnnimee,1000,div);
+}
+
+function afficheDivAnnimee(target) {
+  target.animate({
+    opacity: "+=0.9"
+  }, 2000, function() {
+    setTimeout(function(){
+        target.animate({
+            opacity:"0"
+        },1000)
+    },1000)
+  });
 }
