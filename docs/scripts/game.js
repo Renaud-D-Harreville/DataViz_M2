@@ -66,6 +66,8 @@ function getDepartArrivee(){
 function completeformulaire(arriveeSelectionnee){
     document.getElementById("nomVilleChoisie").value=arriveeSelectionnee;
 
+    co2vsTemps(); // à modifier
+
     // si un bouton radio est déjà là, afficher le trajet 
     var radios = document.getElementsByName('moyenTransport');
     for(x = 0; x < radios.length; x++){

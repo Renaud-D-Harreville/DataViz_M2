@@ -7,31 +7,106 @@
 // faire 3 graphes CO2vsTps, CO2vsPrix et TpsvsPrix
 
 
+// set the dimensions and margins of the graph
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = 350 - margin.left - margin.right,
+    height = 250 - margin.top - margin.bottom;
+
+// parse the date / time
+var parseTime = d3.timeParse("%d-%b-%y");
+
+
+
+
+// append the svg obgect to the body of the page
+// appends a 'group' element to 'svg'
+// moves the 'group' element to the top left margin
+var svgComparaison = d3.select("#graphe").append( "svg" )
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform",
+        "translate(" + margin.left + "," + margin.top + ")");
+
+creationGraphe();
+
 //----------------------------------------------------------------
 //  affiche un svg avec les infos suivantes
 //----------------------------------------------------------------
 function creationGraphe(){
-    //TODO
+
+    // set the ranges
+    var x = d3.scaleLinear().range([0, width]);
+    var y = d3.scaleLinear().range([height, 0]);
+
+// Scale the range of the data
+    x.domain([0, 200]);
+    y.domain([0, 300]);
+
+
+    // add the X Axis
+    svgComparaison.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+
+    // add the Y Axis
+    svgComparaison.append("g")
+        .call(d3.axisLeft(y));
+
+
 }
 
 //----------------------------------------------------------------
 // donne le graphique co2vs
 //----------------------------------------------------------------
-function co2vsTemps(trajetTrain,trajetavion,trajetCar){
+function co2vsTemps(){
+    // set the ranges
+    var x = d3.scaleLinear().range([0, width]);
+    var y = d3.scaleLinear().range([height, 0]);
+
+// Scale the range of the data
+    x.domain([0, 200]);
+    y.domain([0, 300]);
+
+
+    // add the X Axis
+    svgComparaison.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+
+    // add the Y Axis
+    svgComparaison.append("g")
+        .call(d3.axisLeft(y));
+
+
+
+
+    data = getData();
+    console.log(data);
+    supprimeSvg();
+
+    // add the dots
+    svgComparaison.selectAll("dot")
+        .data(data)
+        .enter().append("circle")
+        .attr("r", 5)
+        .attr("cx", function(d) { return x(d.co2); })
+        .attr("cy", function(d) { return y(d.prix); });
+
     //TODO
 }
 
 //----------------------------------------------------------------
 // 
 //----------------------------------------------------------------
-function prixvsTemps(trajetTrain,trajetavion,trajetCar){
+function prixvsTemps(trajetTrain,trajetAvion,trajetCar){
     //TODO
 }
 
 //----------------------------------------------------------------
 // 
 //----------------------------------------------------------------
-function co2vsPrix(trajetTrain,trajetavion,trajetCar){   
+function co2vsPrix(trajetTrain,trajetAvion,trajetCar){
      //TODO
 }
 
@@ -39,6 +114,22 @@ function co2vsPrix(trajetTrain,trajetavion,trajetCar){
 // 
 //----------------------------------------------------------------
 function supprimeSvg(){
+    // delete the dots
+    svgComparaison.selectAll("circle").remove();
     //TODO
 
+}
+
+function getData(){
+    var depart=joueurs.getJoueur(numeroJoueurCourant).position;
+    var arrivee=document.getElementById("nomVilleChoisie").value;
+    var trajetTrain=trajets.getTrajetEnTrain(depart,arrivee);
+    var trajetVoiture=trajets.getTrajetEnVoiture(depart,arrivee);
+    var trajetAvion=trajets.getTrajetEnAvion(depart,arrivee);
+
+    var tab = [];
+    if (trajetTrain != null) {tab.push(trajetTrain); }
+    if (trajetAvion != null) {tab.push(trajetAvion); }
+    if (trajetVoiture != null) {tab.push(trajetVoiture); }
+    return tab;
 }
