@@ -177,10 +177,11 @@ function suivant(numeroJoueur){
     }
     else{
         if(finished()){
-            //TODO afficher les scores
+            afficheScores();
+            document.getElementById("iconescores").style.display = "none";
         }
         else{
-            suivant(numeroSuivant(numeroJoueur))
+            suivant(numeroSuivant(numeroJoueur));
         }
     }
 
