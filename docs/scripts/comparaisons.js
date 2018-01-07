@@ -193,11 +193,25 @@ yCT.domain([0, 5]);
 // add the X Axis
 svgCo2vsTemps.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(xCT));
+    .call(d3.axisBottom(xCT))
+    .append("text")
+        .attr("fill", "#000")
+        .attr("x", width)
+        .attr("y", -12)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("Co2 (Kg)");
 
 // add the Y Axis
 svgCo2vsTemps.append("g")
-    .call(d3.axisLeft(yCT));
+    .call(d3.axisLeft(yCT))
+    .append("text")
+        .attr("fill", "#000")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("Durée (heures)");
 
 /**
  * Construction du graphique 'Prix VS Temps'
@@ -222,11 +236,25 @@ yPT.domain([0, 5]);
 // add the X Axis
 svgPrixvsTemps.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(xPT));
+    .call(d3.axisBottom(xPT))
+    .append("text")
+        .attr("fill", "#000")
+        .attr("x", width)
+        .attr("y", -12)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("Prix (€)");
 
 // add the Y Axis
 svgPrixvsTemps.append("g")
-    .call(d3.axisLeft(yPT));
+    .call(d3.axisLeft(yPT))
+    .append("text")
+        .attr("fill", "#000")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("Durée (heures)");
 
 
 /**
@@ -252,11 +280,25 @@ yCP.domain([0, 200]);
 // add the X Axis
 svgCo2vsPrix.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(xCP));
+    .call(d3.axisBottom(xCP))
+    .append("text")
+        .attr("fill", "#000")
+        .attr("x", width)
+        .attr("y", -12)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("Co2 (Kg)");
 
 // add the Y Axis
 svgCo2vsPrix.append("g")
-    .call(d3.axisLeft(yCP));
+    .call(d3.axisLeft(yCP))
+    .append("text")
+        .attr("fill", "#000")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("Prix (€)");
 
 
 
