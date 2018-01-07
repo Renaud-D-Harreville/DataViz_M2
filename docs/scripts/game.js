@@ -21,6 +21,8 @@ function initialisation(){
     document.getElementById("popup").style.display = "none"; 
     document.getElementById("game").style.opacity="1";
 
+    document.getElementById("popupfin").style.visibility = "hidden";
+
     // garde le bon nombre de div dans la barre de gauche
     var nombreJoueurs=document.getElementById("selectNombreJoueurs").value;
     for(var i=parseInt(nombreJoueurs)+1;i<=nombreJoueursMax;i++){
@@ -39,6 +41,21 @@ function initialisation(){
         creationAxesSvg();
     });
     p1.then(start());
+}
+
+//----------------------------------------------------------------
+//  Pour lancer une nouvelle partie : afficher popup du départ 
+//----------------------------------------------------------------
+function rejouer(){
+    console.log("rejouer");
+    //TODO 
+    // cacher div popupfin, cacher scores, afficher popup
+    /*
+    document.getElementById("popup").visibility = "visible";
+    document.getElementById("popupfin").display = "none";
+    document.getElementById("scores").display = "none";
+    document.getElementById("iconescores").visibility = "visible";
+    */
 }
 
 //----------------------------------------------------------------
@@ -179,6 +196,7 @@ function suivant(numeroJoueur){
         if(finished()){
             afficheScores();
             document.getElementById("iconescores").style.display = "none";
+            document.getElementById("popupfin").style.visibility = "visible";
         }
         else{
             suivant(numeroSuivant(numeroJoueur));

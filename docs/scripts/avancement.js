@@ -19,7 +19,7 @@ var s = svgScores.append("g")
     .attr("transform", "translate(" + marges.gauche+ "," + marges.haut + ")");
 
 // couleur pour chaque moyen de transport
-var c = {"T":"#C201D8", "A":"#88CEF2", "V":"#177B0C"};
+var c = {"T":"#46ff49", "A":"#ff213f", "V":"#4848ff"};
 
 var listeTransports = ["T","A","V"];
 var listeCriteres = ["prix","duree","co2"] ;
