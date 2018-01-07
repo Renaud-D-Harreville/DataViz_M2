@@ -35,6 +35,8 @@ class TrajetVoiture extends Trajet {
         this.prix=parseFloat(prix);
         this.co2=parseFloat(co2);
         this.duree=duree;
+        this.couleur = "#4848ff";
+        this.legende = "voiture";
     }
 }
 
@@ -45,6 +47,8 @@ class TrajetTrain extends Trajet {
     constructor(depart, arrivee, duree, prix, co2) {
         super(depart, arrivee, duree, prix, co2);
         this.type = "T";
+        this.legende = "train";
+        this.couleur = "#46ff49";
     }
 }
 
@@ -55,6 +59,8 @@ class TrajetAvion extends Trajet {
     constructor(depart, arrivee, duree, prix, co2){
         super(depart, arrivee, duree, prix, co2);
         this.type = "A";
+        this.legende = "avion";
+        this.couleur = "#ff213f";
     }
 }
 

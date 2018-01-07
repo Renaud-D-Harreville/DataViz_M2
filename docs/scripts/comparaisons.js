@@ -54,6 +54,8 @@ function creationGraphe(){
         .call(d3.axisLeft(y));
 
 
+
+
 }
 
 //----------------------------------------------------------------
@@ -91,8 +93,10 @@ function co2vsTemps(){
         .enter().append("circle")
         .attr("r", 5)
         .attr("cx", function(d) { return x(d.co2); })
-        .attr("cy", function(d) { return y(d.prix); });
+        .attr("cy", function(d) { return y(d.prix); })
+        .style("fill", function(d) { return d.couleur; });
 
+    legende();
     //TODO
 }
 
@@ -116,6 +120,7 @@ function co2vsPrix(trajetTrain,trajetAvion,trajetCar){
 function supprimeSvg(){
     // delete the dots
     svgComparaison.selectAll("circle").remove();
+    svgComparaison.selectAll(".legend").remove();
     //TODO
 
 }
@@ -132,4 +137,31 @@ function getData(){
     if (trajetAvion != null) {tab.push(trajetAvion); }
     if (trajetVoiture != null) {tab.push(trajetVoiture); }
     return tab;
+}
+
+
+function legende() {
+
+
+    // draw legend
+    var legend = svgComparaison.selectAll(".legend")
+        .data(getData())
+        .enter().append("g")
+        .attr("class", "legend")
+        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+    // draw legend colored rectangles
+    legend.append("rect")
+        .attr("x", width - 18)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", function (d) { return d.couleur;} );
+
+    // draw legend text
+    legend.append("text")
+        .attr("x", width - 24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+        .text(function(d) { return d.legende;})
 }
