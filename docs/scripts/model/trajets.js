@@ -45,6 +45,9 @@ class TrajetTrain extends Trajet {
     constructor(depart, arrivee, duree, prix, co2) {
         super(depart, arrivee, duree, prix, co2);
         this.type = "T";
+        this.prix=parseFloat(prix);
+        this.co2=parseFloat(co2);
+        this.duree=duree;
     }
 }
 
@@ -55,6 +58,9 @@ class TrajetAvion extends Trajet {
     constructor(depart, arrivee, duree, prix, co2){
         super(depart, arrivee, duree, prix, co2);
         this.type = "A";
+        this.prix=parseFloat(prix);
+        this.co2=parseFloat(co2);
+        this.duree=duree;
     }
 }
 

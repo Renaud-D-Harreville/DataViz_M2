@@ -33,6 +33,7 @@ function initialisation(){
             joueurs.addJoueur(joueur);
             scores.addScore(score);
         }
+        creationAxesSvg();
     });
     p1.then(start());
 
@@ -190,8 +191,6 @@ function finished(){
 // fait l'addition des heures minutes
 //----------------------------------------------------------------
 function additionHeure(heure1,heure2){
-    console.log(heure1)
-    console.log(heure2)
     var h1=parseInt(heure1.split("h")[0]);
     var h2=parseInt(heure2.split("h")[0]);
     var mins1=parseInt(heure1.split("h")[1]);

@@ -26,14 +26,17 @@ class Score {
 
     constructor(id){
         this.id = id;
-        this.Aprix = 0 ; //prix dépensé en avion
-        this.Aduree = "0h0"; // temps passé en avion
-        this.Aco2 = 0; // co2 émis en avion
-        this.Tprix = 0 ; //prix dépensé en train
-        this.Tduree = "0h0"; // temps passé en train
-        this.Tco2 = 0; // co2 émis en train
-        this.Vprix = 0 ; //prix dépensé en voiture
-        this.Vduree = "0h0"; // temps passé en voiture
-        this.Vco2 = 0; // co2 émis en voiture
+        this.A = [];
+        this.A.prix = 0; //prix dépensé en avion
+        this.A.duree = "0h0"; // temps passé en avion
+        this.A.co2 = 0; // co2 émis en avion
+        this.T = [];
+        this.T.prix = 0 ; //prix dépensé en train
+        this.T.duree = "0h0"; // temps passé en train
+        this.T.co2 = 0; // co2 émis en train
+        this.V = [];
+        this.V.prix = 0 ; //prix dépensé en voiture
+        this.V.duree = "0h0"; // temps passé en voiture
+        this.V.co2 = 0; // co2 émis en voiture
     }
 }
