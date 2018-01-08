@@ -12,13 +12,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 <body>
 <div id="game">
-    <div class="row">
-      <nav>
-      <div class="nav-wrapper center green lighten-1">
-        <div id="titre"> RACO2 </div>
+  <div class="row">
+  <!-- Dropdown Structure -->
+  <ul id="about" class="dropdown-content largeabout">
+    <li><a href="#!">one</a></li>
+    <li><a href="#!">two</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">three</a></li>
+  </ul>
+  <nav>
+    <div class="nav-wrapper green lighten-1">
+      <a href="#!" class="brand-logo col s2">RACO2</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="dropdown-button" href="#!" data-activates="about">About<i class="material-icons right">arrow_drop_down</i></a></li>
+      </ul>
       </div>
-      </nav>
-    </div>
+    </nav>
+  </div>
 
     <div class="row">
       <div id="joueurs" class="col s2">

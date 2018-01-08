@@ -140,3 +140,15 @@ label{
   padding : 10px !important ; 
 }
 
+.largeabout{
+  width : 41%;
+  margin-top : 65px !important;
+}
+
+.tab a{
+  color : #4caf50 !important ;
+}
+
+.indicator{
+  background-color: #4caf50 !important ;
+}
