@@ -216,7 +216,7 @@ function suivant(numeroJoueur){
     }
     else{
         if(finished()){
-            afficheScores();            
+            afficherScoresFinaux();            
         }
         else{
             suivant(numeroSuivant(numeroJoueur));
