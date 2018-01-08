@@ -70,7 +70,7 @@ function affichageCarte() {
 	   .append("path")
      .attr("class","france");
   g.selectAll(".france")
-		 .attr( "fill", "#ccc" )
+		 .attr( "fill", "#cfd8dc" )
 	   .attr("d", path);
   dessinerTrajets();
 }
