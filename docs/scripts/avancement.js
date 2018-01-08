@@ -120,17 +120,17 @@ function miseAjourScores(joueuri, d){
     switch(d.type) {
         case "A": 
             scorei.A.prix = scorei.A.prix + d.prix ;  
-            scorei.A.duree = castHeure(additionHeure(scorei.A.duree, d.duree));  
+            scorei.A.duree = castHeure(additionHeure(castHeureToString(scorei.A.duree), d.duree));  
             scorei.A.co2 = scorei.A.co2 + d.co2 ;  
             break;
         case "T":
             scorei.T.prix = scorei.T.prix + d.prix ; 
-            scorei.T.duree = castHeure(additionHeure(scorei.T.duree,d.duree)) ;  
+            scorei.T.duree = castHeure(additionHeure(castHeureToString(scorei.T.duree),d.duree)) ;  
             scorei.T.co2 = scorei.T.co2 + d.co2 ;              
             break;
         case "V": 
             scorei.V.prix = scorei.V.prix + d.prix ;  
-            scorei.V.duree = castHeure(additionHeure(scorei.V.duree, d.duree)) ;  
+            scorei.V.duree = castHeure(additionHeure(castHeureToString(scorei.V.duree), d.duree)) ;  
             scorei.V.co2 = scorei.V.co2 + d.co2 ;  
             break;
         default:
@@ -148,6 +148,20 @@ function castHeure(heure){
         var m=parseInt(heure.split("h")[1]);
         var minutes = parseFloat(h*60 + m) ;
         return minutes ; 
+    } 
+    else {
+        return heure ; 
+    } 
+}
+//----------------------------------------------------------------
+//   fonction auxiliaire pour récupérer l'heure au format string
+//----------------------------------------------------------------
+function castHeureToString(heure){
+    if(typeof(heure)!='string'){
+        var minutes= heure%60;
+        var heures=(heure-minutes)/60;
+        console.log(heures+""+minutes)
+        return heures+""+minutes;
     } 
     else {
         return heure ; 
