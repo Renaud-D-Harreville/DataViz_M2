@@ -11,7 +11,10 @@ var marges = {haut: 20, droite: 30, bas: 20, gauche: 25},
     largeur = largeurSvg - marges.gauche - marges.droite,
     hauteur = hauteurSvg - marges.haut - marges.bas;
 
-var svgScores = d3.select( "#scores" )
+var tooltip = d3.select('#scores').append('div')
+    .attr('class', 'hidden tooltip');
+
+var svgScores = d3.select("#scores")
     .append( "svg" )
     .attr( "width", largeurSvg )
     .attr( "height", hauteurSvg );
@@ -95,6 +98,18 @@ function miseAjourSvg(){
                 .attr("y", function(d) { return y(d[1]); })
                 .attr("width", x0.bandwidth()/3)
                 .attr("height", function(d) { return y(d[0])-y(d[1]); })
+                .on('mousemove', function(d) {
+                    var mouse = d3.mouse(section.node()).map(function(d) {
+                        return parseInt(d);
+                    });
+                    tooltip.classed('hidden', false)
+                        .attr('style', 'left:' + (mouse[0] + 15) +
+                                'px; top:' + (mouse[1] - 35) + 'px')
+                        .html(d.data.index +"<br/>"+ d[1]);
+                })
+                .on('mouseout', function() {
+                    tooltip.classed('hidden', true);
+                });
     }
 }
 
@@ -119,7 +134,7 @@ function afficherScoresFinaux(){
     document.getElementById("scores").style.textAlign = "center";
     // afficher la div
     document.getElementById("scores").style.visibility = "visible";
-    //  TODO  désactiver le mouseover du bouton Scores 
+    // TODO  désactiver le mouseover du bouton Scores 
     document.getElementById("btn score").onmouseover = null ; 
     document.getElementById("btn score").onclick = null ;
 }
