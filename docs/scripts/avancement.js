@@ -11,7 +11,7 @@ var marges = {haut: 20, droite: 30, bas: 20, gauche: 25},
     largeur = largeurSvg - marges.gauche - marges.droite,
     hauteur = hauteurSvg - marges.haut - marges.bas;
 
-var tooltip = d3.select('#scores').append('div')
+var tooltip = d3.select('body').append('div')
     .attr('class', 'hidden tooltip');
 
 var svgScores = d3.select("#scores")
@@ -103,13 +103,13 @@ function miseAjourSvg(){
                         return parseInt(d);
                     });
                     tooltip.classed('hidden', false)
-                        .attr('style', 'left:' + (mouse[0] + 15) +
-                                'px; top:' + (mouse[1] - 35) + 'px')
-                        .html(d.data.index +"<br/>"+ d[1]);
+                        .attr('style', 'left:' + (mouse[0] + 2) +
+                                'px; top:' + (mouse[1] - 2) + 'px')
+                        .html(afficherDonnees(d.data.index, d[1]));
                 })
                 .on('mouseout', function() {
-                    tooltip.classed('hidden', true);
-                });
+                        tooltip.classed('hidden', true);
+                    });
     }
 }
 
@@ -155,17 +155,17 @@ function miseAjourScores(joueuri, d){
     switch(d.type) {
         case "A": 
             scorei.A.prix = scorei.A.prix + d.prix ;  
-            scorei.A.duree = castHeure(additionHeure(scorei.A.duree, d.duree));  
+            scorei.A.duree = castHeure(additionHeure(castHeureToString(scorei.A.duree), d.duree));  
             scorei.A.co2 = scorei.A.co2 + d.co2 ;  
             break;
         case "T":
             scorei.T.prix = scorei.T.prix + d.prix ; 
-            scorei.T.duree = castHeure(additionHeure(scorei.T.duree,d.duree)) ;  
+            scorei.T.duree = castHeure(additionHeure(castHeureToString(scorei.T.duree),d.duree)) ;  
             scorei.T.co2 = scorei.T.co2 + d.co2 ;              
             break;
         case "V": 
             scorei.V.prix = scorei.V.prix + d.prix ;  
-            scorei.V.duree = castHeure(additionHeure(scorei.V.duree, d.duree)) ;  
+            scorei.V.duree = castHeure(additionHeure(castHeureToString(scorei.V.duree), d.duree)) ;  
             scorei.V.co2 = scorei.V.co2 + d.co2 ;  
             break;
         default:
@@ -188,6 +188,20 @@ function castHeure(heure){
         return heure ; 
     } 
 }
+//----------------------------------------------------------------
+//   fonction auxiliaire pour récupérer l'heure au format string
+//----------------------------------------------------------------
+function castHeureToString(heure){
+    if(typeof(heure)!='string'){
+        var minutes= heure%60;
+        var heures=(heure-minutes)/60;
+        console.log(heures+""+minutes)
+        return heures+""+minutes;
+    } 
+    else {
+        return heure ; 
+    } 
+}
 
 //----------------------------------------------------------------
 //   formatage des données pour les files
@@ -201,6 +215,28 @@ function castDonnees(score){
                     "V":castHeure(score.V.duree)},
                    {"index":"co2","T":score.T.co2, "A":score.A.co2, "V":score.V.co2}];
     return donnees ; 
+}
+
+//----------------------------------------------------------------
+// fonction auxiliaire pour l'affichage dans le tooltip
+//----------------------------------------------------------------
+function afficherDonnees(cle, valeur){
+    switch(cle){
+        case "duree" :
+            var heure = Math.floor(valeur/60);
+            var minutes = valeur%60;
+            return "Temps : <br/>"+heure+"h"+minutes;
+            break; 
+        case "co2" : 
+            return "CO2 : <br/>"+valeur+" Kg"; 
+            break ;
+        case "prix" :
+            return "Prix : <br/>"+valeur+" €";
+            break;
+        default :
+            break ;
+    }
+
 }
 
 

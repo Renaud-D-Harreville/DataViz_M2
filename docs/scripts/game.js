@@ -12,7 +12,7 @@ var trajetCourant;
 //nombre de div disponible dans la page html
 var nombreJoueursMax=4;
 
-var couleurs = d3.scaleOrdinal(d3.schemeCategory10);
+var couleurs = ["","#FFC300","#f31506","#3352ff"," #8915b5"]
 
 //----------------------------------------------------------------
 //  choix aléatoire des villes de départ et d'arrivée 
@@ -59,7 +59,7 @@ function initialisation(){
             var score = new Score(i);
             joueurs.addJoueur(joueur);
             scores.addScore(score);
-            document.getElementById("joueur"+i+"icone").style.color=couleurs(i);
+            document.getElementById("joueur"+i+"icone").style.color=couleurs[i];
         }
         creationAxesSvg();
     });
@@ -194,7 +194,14 @@ function jouer(){
         document.getElementById("joueur"+numeroJoueurCourant+"prix").innerHTML=joueurs.getJoueur(numeroJoueurCourant).prix;
         document.getElementById("joueur"+numeroJoueurCourant+"co2").innerHTML=joueurs.getJoueur(numeroJoueurCourant).co2;
         document.getElementById("joueur"+numeroJoueurCourant+"temps").innerHTML=joueurs.getJoueur(numeroJoueurCourant).temps;
-        suivant(numeroSuivant(numeroJoueurCourant));
+        if(joueurs.getJoueur(numeroJoueurCourant).position==arrivee){
+            annonceGagnant(numeroJoueurCourant);
+            var num=numeroSuivant(numeroJoueurCourant);
+            setTimeout(suivant,4000,num);
+        }
+        else{
+             suivant(numeroSuivant(numeroJoueurCourant));
+        }
     }
 }
 
@@ -272,8 +279,16 @@ function numeroSuivant(num) {
 function annonceJoueurSuivant(numeroJoueur){
     document.getElementById("numeroJoueurPopup").innerHTML=numeroJoueur;
     var div=document.getElementById("nouveauJoueurPopup");
-    document.getElementById("nouveauJoueurCard").style.backgroundColor=couleurs(numeroJoueur);
+    document.getElementById("nouveauJoueurCard").style.backgroundColor=couleurs[numeroJoueur];
     var div=$("#nouveauJoueurPopup");
+    setTimeout(afficheDivAnnimee,1000,div);
+}
+
+function annonceGagnant(numeroJoueur){
+    document.getElementById("numeroGagnantPopup").innerHTML=numeroJoueur;
+    var div=document.getElementById("gagnerJoueurPopup");
+    document.getElementById("gagnerJoueurCard").style.backgroundColor=couleurs[numeroJoueur];
+    var div=$("#gagnerJoueurPopup");
     setTimeout(afficheDivAnnimee,1000,div);
 }
 

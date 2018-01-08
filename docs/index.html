@@ -48,9 +48,9 @@
                 <div class="collapsible-header joueur2 "><i  id="joueur2icone" class="material-icons">person</i>Joueur 2</div>
                 <div class="collapsible-body">
                   <span>
-                    <i class="tiny material-icons">cloud_queue</i> CO2 : <span id="joueur2co2">  </span><br>
-                    <i class="tiny material-icons">monetization_on</i> Prix : <span id="joueur2prix">  </span><br>
-                    <i class="tiny material-icons">access_time</i> Temps : <span id="joueur2temps">  </span><br>
+                    <i class="tiny material-icons">cloud_queue</i> CO2 : <span id="joueur2co2"> 0  </span><br>
+                    <i class="tiny material-icons">monetization_on</i> Prix : <span id="joueur2prix"> 0h00 </span><br>
+                    <i class="tiny material-icons">access_time</i> Temps : <span id="joueur2temps"> 0 </span><br>
                   </span>
                   </div>
               </li>
@@ -58,9 +58,9 @@
                 <div class="collapsible-header joueur3 "><i id="joueur3icone" class="material-icons">person</i>Joueur 3</div>
                 <div class="collapsible-body">
                   <span>
-                    <i class="tiny material-icons">cloud_queue</i> CO2 : <span id="joueur3co2">  </span><br>
-                    <i class="tiny material-icons">monetization_on</i> Prix : <span id="joueur3prix">  </span><br>
-                    <i class="tiny material-icons">access_time</i> Temps : <span id="joueur3temps">  </span><br>
+                    <i class="tiny material-icons">cloud_queue</i> CO2 : <span id="joueur3co2"> 0 </span><br>
+                    <i class="tiny material-icons">monetization_on</i> Prix : <span id="joueur3prix">0h00  </span><br>
+                    <i class="tiny material-icons">access_time</i> Temps : <span id="joueur3temps">  0</span><br>
                   </span>
                   </div>            
               </li>
@@ -68,9 +68,9 @@
                   <div class="collapsible-header joueur4 "><i id="joueur4icone" class="material-icons">person</i>Joueur 4</div>
                   <div class="collapsible-body">
                     <span>
-                      <i class="tiny material-icons">cloud_queue</i> CO2 : <span id="joueur4co2">  </span><br>
-                      <i class="tiny material-icons">monetization_on</i> Prix : <span id="joueur4prix">  </span><br>
-                      <i class="tiny material-icons">access_time</i> Temps : <span id="joueur4temps">  </span><br>
+                      <i class="tiny material-icons">cloud_queue</i> CO2 : <span id="joueur4co2"> 0 </span><br>
+                      <i class="tiny material-icons">monetization_on</i> Prix : <span id="joueur4prix"> 0h00 </span><br>
+                      <i class="tiny material-icons">access_time</i> Temps : <span id="joueur4temps">  0</span><br>
                     </span>
                     </div>            
                 </li>
@@ -165,10 +165,17 @@
 
 
 
-<div id="nouveauJoueurPopup" class="col s2">
+<div id="nouveauJoueurPopup" class="col s2 popoutJoueur">
   <div class="card" id="nouveauJoueurCard">
       <div class="card-content white-text">
-        <p>Au joueur <spam id="numeroJoueurPopup"></spam> de jouer ! </p>
+        <p>Joueur <spam id="numeroJoueurPopup"></spam>, à toi de jouer ! </p>
+      </div>
+  </div>
+</div>
+<div id="gagnerJoueurPopup" class="col s2 popoutJoueur">
+  <div class="card" id="gagnerJoueurCard">
+      <div class="card-content white-text">
+        <p>Le joueur <spam id="numeroGagnantPopup"></spam> a gagné !  </p>
       </div>
   </div>
 </div>
