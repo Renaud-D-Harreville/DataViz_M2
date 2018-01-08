@@ -50,12 +50,11 @@ function rejouer(){
     console.log("rejouer");
     //TODO 
     // cacher div popupfin, cacher scores, afficher popup
-    /*
-    document.getElementById("popup").visibility = "visible";
-    document.getElementById("popupfin").display = "none";
+    document.getElementById("popup").display = "initial";
+    document.getElementById("popupfin").visibility = "hidden";
     document.getElementById("scores").display = "none";
     document.getElementById("iconescores").visibility = "visible";
-    */
+    
 }
 
 //----------------------------------------------------------------
@@ -196,7 +195,7 @@ function suivant(numeroJoueur){
         if(finished()){
             afficheScores();
             document.getElementById("iconescores").style.display = "none";
-           // document.getElementById("popupfin").style.visibility = "visible";
+            document.getElementById("popupfin").style.visibility = "visible";
         }
         else{
             suivant(numeroSuivant(numeroJoueur));
