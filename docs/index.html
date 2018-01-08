@@ -14,7 +14,7 @@
 <div id="game">
     <div class="row">
       <nav>
-      <div class="nav-wrapper center   red accent-1">
+      <div class="nav-wrapper center green lighten-1">
         <div id="titre"> RACO2 </div>
       </div>
       </nav>
@@ -22,7 +22,7 @@
 
     <div class="row">
       <div id="joueurs" class="col s2">
-         <ul class="collapsible" data-collapsible="expandable">
+         <ul class="collapsible popout" data-collapsible="expandable">
               <li class="active joueur1">
                 <div class="collapsible-header active"><i id="joueur1icone" class="material-icons">person</i>Joueur 1</div>
                 <div class="collapsible-body">
@@ -67,23 +67,24 @@
       </div>
       <div id="carte" class="col s5"></div>
       <div  class="col s5">
-          <div id="graphe">
-              <ul id="onglets">
-                  <li class="actif">co2vsTemps</li>
-                  <li>prixvsTemps</li>
-                  <li>co2vsPrix</li>
-              </ul>
-              <div id="contenu">
-                  <div class="item" id="co2vsTemps">
-                  </div>
-                  <div class="item" id="prixvsTemps">
-                  </div>
-                  <div class="item" id="co2vsPrix">
-                  </div>
-              </div>
+      <div class="card" id="graphe">
+        <div class="card-content">
+          <div class="card-tabs">
+            <ul class="tabs tabs-fixed-width">
+              <li class="tab"><a class="active" href="#co2vsTemps">CO2 vs Temps</a></li>
+              <li class="tab"><a href="#prixvsTemps">Prix vs Temps</a></li>
+              <li class="tab"><a href="#co2vsPrix">CO2 vs Prix</a></li>
+            </ul>
           </div>
+          <div class="card-content">
+            <div id="co2vsTemps"></div>
+            <div id="prixvsTemps"></div>
+            <div id="co2vsPrix"></div>
+          </div>
+        </div>
+      </div>
           <div id="jouer">
-              <div class="card blue-grey ">
+              <div class="card marron">
                  <div class="card-content white-text ">
                     <p> Ville choisie :   <input class="browser-default blue-grey-text" disabled type="text" value="aucune" id="nomVilleChoisie"></p>
                     <p>Moyen de transport :<input name="moyenTransport" type="radio" id="train"  />   <label onclick="completeDataFormTrain()" for="train">train</label> 
@@ -99,7 +100,7 @@
                            <td> <i class="tiny material-icons">access_time</i> Temps : <span id="trajettemps">  </span></td>
                        </tr></table>
                     </p>
-                    <a class="waves-effect red accent-2 btn right" onclick="jouer()">button</a>
+                    <a class="waves-effect green  btn right" onclick="jouer()">Valider</a>
                  </div>
               </div>
           </div>
@@ -112,7 +113,7 @@
         DataViz - M2DS, UCBL 2017 <br/>
         Auteurs : Renaud D'Harreville, Mathilde Boltenhagen, Alice Montel 
       </div>
-      <a id="drop" class='dropdown-button btn' data-activates='scores'>Scores</a>
+      <a id="drop" class='dropdown-button btn green ' data-activates='scores'>Scores</a>
       <div id="scores" class="dropdown-content"></div>
     </div>
 </div>

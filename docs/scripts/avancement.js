@@ -103,7 +103,6 @@ function miseAjourSvg(){
 //----------------------------------------------------------------
 function afficheScores(){
     console.log("hover");
-    document.getElementById("scores").style.visibility = "visible"; 
 }
 
 //----------------------------------------------------------------
@@ -111,7 +110,6 @@ function afficheScores(){
 //----------------------------------------------------------------
 function cacheScores(){
     console.log("out");
-    document.getElementById("scores").style.visibility = "hidden";
 }
 
 //----------------------------------------------------------------

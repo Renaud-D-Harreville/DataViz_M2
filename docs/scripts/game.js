@@ -18,8 +18,8 @@ var couleurs = d3.scaleOrdinal(d3.schemeCategory10);
 //  choix aléatoire des villes de départ et d'arrivée 
 //----------------------------------------------------------------
 function choixVilles(){
-    var depart= "LE HAVRE";
-    var arrivee="STRASBOURG";
+    var depart= "MARSEILLE";
+    var arrivee="RENNES";
 
     // choix de la ville de départ
     var i = Math.floor((Math.random() * 10) + 1);
@@ -216,8 +216,8 @@ function suivant(numeroJoueur){
     }
     else{
         if(finished()){
-            afficheScores();
-            document.getElementById("scores").display = "inline";
+            document.getElementById("drop").click();
+            
         }
         else{
             suivant(numeroSuivant(numeroJoueur));
