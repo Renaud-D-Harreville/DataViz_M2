@@ -223,8 +223,7 @@ function suivant(numeroJoueur){
     }
     else{
         if(finished()){
-            document.getElementById("drop").click();
-            
+            afficherScoresFinaux();            
         }
         else{
             suivant(numeroSuivant(numeroJoueur));

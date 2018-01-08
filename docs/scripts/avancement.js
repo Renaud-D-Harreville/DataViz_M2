@@ -6,8 +6,8 @@
 //----------------------------------------------------------------
 //  Création & affichage svg à l'initialisation du jeu 
 //----------------------------------------------------------------
-largeurSvg = 600 ; hauteurSvg = 300;
-var marges = {haut: 20, droite: 50, bas: 30, gauche: 20},
+largeurSvg = 500 ; hauteurSvg = 250;
+var marges = {haut: 20, droite: 30, bas: 20, gauche: 25},
     largeur = largeurSvg - marges.gauche - marges.droite,
     hauteur = hauteurSvg - marges.haut - marges.bas;
 
@@ -19,7 +19,7 @@ var s = svgScores.append("g")
     .attr("transform", "translate(" + marges.gauche+ "," + marges.haut + ")");
 
 // couleur pour chaque moyen de transport
-var c = {"T":"#46ff49", "A":"#ff213f", "V":"#4848ff"};
+var c = {"T":"#4e342e", "A":"#b3e5fc", "V":"#ff9100"};
 
 // pour les domaines et les piles
 var listeTransports = ["T","A","V"];
@@ -40,7 +40,7 @@ function creationAxesSvg(){
 
     x0
         .rangeRound([0, largeur])
-        .paddingInner(0.5)
+        .paddingInner(0.1)
         .domain(listeScore);
 
     x1
@@ -99,17 +99,37 @@ function miseAjourSvg(){
 }
 
 //----------------------------------------------------------------
-// div en plein milieu de l'écran
+// div scores pendant le jeu
 //----------------------------------------------------------------
-function afficheScores(){
-    console.log("hover");
+function afficherScores(){
+    document.getElementById("scores").style.visibility = "visible";
+}
+
+//----------------------------------------------------------------
+// div en plein milieu de l'écran en fin de partie
+//----------------------------------------------------------------
+function afficherScoresFinaux(){
+    console.log("finished");
+    // modifier la zone d'affichage
+    document.getElementById("scores").style.top = "50%";
+    document.getElementById("scores").style.position = "fixed";
+    document.getElementById("scores").style.left = "50%";
+    document.getElementById("scores").style.width = "50%";
+    document.getElementById("scores").style.transform = "translate(-50%, -50%)";
+    document.getElementById("scores").style.textAlign = "center";
+    // afficher la div
+    document.getElementById("scores").style.visibility = "visible";
+    //  TODO  désactiver le mouseover du bouton Scores 
+    document.getElementById("btn score").onmouseover = null ; 
+    document.getElementById("btn score").onclick = null ;
 }
 
 //----------------------------------------------------------------
 // cache la div
 //----------------------------------------------------------------
-function cacheScores(){
+function cacherScores(){
     console.log("out");
+    document.getElementById("scores").style.visibility = "hidden";
 }
 
 //----------------------------------------------------------------

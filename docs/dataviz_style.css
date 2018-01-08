@@ -8,13 +8,13 @@
 }
 
 #scores{
-  top: 50%;
+  top: 67%;
   position:fixed;
-  left: 50%;
-  width: auto;
+  left: 35%;
+  width:500px;
   transform: translate(-50%, -50%); 
   text-align: center;
-  padding : 10px ; 
+  box-shadow: 1px 1px 12px #aaa;
 }
 
 #popupfin{
