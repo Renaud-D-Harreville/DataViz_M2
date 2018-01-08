@@ -3,14 +3,40 @@
 // Date : Decembre 2017 
 //----------------------------------------------------------------
 
-var depart="LE HAVRE";
-var arrivee="STRASBOURG";
+initVille = choixVilles();
+var depart= initVille[0];
+var arrivee= initVille[1];
+
 var numeroJoueurCourant;
 var trajetCourant;
 //nombre de div disponible dans la page html
 var nombreJoueursMax=4;
 
 var couleurs = d3.scaleOrdinal(d3.schemeCategory10);
+
+//----------------------------------------------------------------
+//  choix aléatoire des villes de départ et d'arrivée 
+//----------------------------------------------------------------
+function choixVilles(){
+    var depart= "LE HAVRE";
+    var arrivee="STRASBOURG";
+
+    // choix de la ville de départ
+    var i = Math.floor((Math.random() * 10) + 1);
+    //var depart = villes.getVilleByIndex(i);
+
+    // choix d'une ville à distance >= 3 
+
+    // liste de toutes les villes -> supprimer à chaque fois qu'elle est adjacente
+    //var villesArrivee = villes.getVilles(); 
+    //var voisin1 = villes.getVille("PARIS").listeVillesAdjacentes();
+   
+    //faire pour distance 1, 2 et 3 
+
+
+
+    return [depart,arrivee];
+}
 
 
 //----------------------------------------------------------------

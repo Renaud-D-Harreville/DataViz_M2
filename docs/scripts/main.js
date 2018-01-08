@@ -52,6 +52,12 @@ var dataPromise = d3.queue()
         }
     });
 
+$('.dropdown-button').dropdown({
+    hover: true,
+    constrainWidth : false, 
+    
+});
+
 
 //----------------------------------------------------------------------------------
 // Traitement des données :

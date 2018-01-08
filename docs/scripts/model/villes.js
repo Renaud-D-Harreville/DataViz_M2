@@ -117,8 +117,16 @@ class Villes {
     getVille(nom) {
         for(var i=0; i<this.villes.length;i++){
             if(nom == this.villes[i].nom){
-                return this.villes[i]
+                return this.villes[i];
             }
+        }
+        return null;
+    }
+
+    getVilleByIndex(j){
+
+        if(j< this.villes.length){
+            return this.villes[j];
         }
         return null;
     }
