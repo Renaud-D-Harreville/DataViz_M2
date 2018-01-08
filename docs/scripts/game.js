@@ -12,7 +12,7 @@ var trajetCourant;
 //nombre de div disponible dans la page html
 var nombreJoueursMax=4;
 
-var couleurs = d3.scaleOrdinal(d3.schemeCategory10);
+var couleurs = ["","#FFC300","#f31506","#3352ff"," #8915b5"]
 
 //----------------------------------------------------------------
 //  choix aléatoire des villes de départ et d'arrivée 
@@ -59,7 +59,7 @@ function initialisation(){
             var score = new Score(i);
             joueurs.addJoueur(joueur);
             scores.addScore(score);
-            document.getElementById("joueur"+i+"icone").style.color=couleurs(i);
+            document.getElementById("joueur"+i+"icone").style.color=couleurs[i];
         }
         creationAxesSvg();
     });
@@ -242,6 +242,7 @@ function finished(){
 // fait l'addition des heures minutes
 //----------------------------------------------------------------
 function additionHeure(heure1,heure2){
+    console.log(heure1)
     var h1=parseInt(heure1.split("h")[0]);
     var h2=parseInt(heure2.split("h")[0]);
     var mins1=parseInt(heure1.split("h")[1]);
@@ -273,7 +274,7 @@ function numeroSuivant(num) {
 function annonceJoueurSuivant(numeroJoueur){
     document.getElementById("numeroJoueurPopup").innerHTML=numeroJoueur;
     var div=document.getElementById("nouveauJoueurPopup");
-    document.getElementById("nouveauJoueurCard").style.backgroundColor=couleurs(numeroJoueur);
+    document.getElementById("nouveauJoueurCard").style.backgroundColor=couleurs[numeroJoueur];
     var div=$("#nouveauJoueurPopup");
     setTimeout(afficheDivAnnimee,1000,div);
 }

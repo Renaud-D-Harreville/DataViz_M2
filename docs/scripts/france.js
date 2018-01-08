@@ -22,6 +22,11 @@ var projection =  d3.geoConicConformal()
 var path = d3.geoPath()
 			 .projection(projection);
 
+var tooltipVille = svgFrance.append("rect")	
+    .attr("fill","#4caf50")
+    .attr("position","relative")
+    .attr("rx", 8)
+    .attr("height",20);
 
 //----------------------------------------------------------------
 // Crée la carte avec les noms des villes et les routes
@@ -44,8 +49,13 @@ function creationCarte(){
       .text(function(d){return d.nom;})
       .attr("font-size", "11px")
       .attr("fill", "#585858")
-      .attr("x",function(d){return projection(d.pos)[0];})
-      .attr("y",function(d){return projection(d.pos)[1];});
+      .attr("x",function(d){return projection(d.pos)[0]-15;})
+      .attr("y",function(d){ if(d.nom =="LYON"){
+                                return projection(d.pos)[1]-15;
+                            }
+                            else{
+                                  return projection(d.pos)[1]-5;}
+      });
 
   // rond représentant les villes 
   // classe html : nom de la ville sans espace (classe commune label + rond) 
@@ -82,14 +92,14 @@ function dessinerTrajets(){
     lignes={}
     var dict=trajets.trajetsPossibles();
     for(ville in dict){
-      var x1 = d3.select("#"+ville.replace(/\s/g, '')).attr("x");
-      var y1 = d3.select("#"+ville.replace(/\s/g, '')).attr("y");
+      var x1 = d3.select("#rond"+ville.replace(/\s/g, '')).attr("cx");
+      var y1 = d3.select("#rond"+ville.replace(/\s/g, '')).attr("cy");
       for( i in dict[ville]){
-          var x2 = d3.select("#"+dict[ville][i].replace(/\s/g, '')).attr("x");
-          var y2 = d3.select("#"+dict[ville][i].replace(/\s/g, '')).attr("y");
+          var x2 = d3.select("#rond"+dict[ville][i].replace(/\s/g, '')).attr("cx");
+          var y2 = d3.select("#rond"+dict[ville][i].replace(/\s/g, '')).attr("cy");
           g.append("line")
               .attr("class","trajets")
-              .attr("stroke","#686868")
+              .attr("stroke","#90a4ae")
               .attr("stroke-width","0.5")
               .attr("id",ville.replace(/\s/g, '')+dict[ville][i].replace(/\s/g, ''))
               .attr("x1",x1)
@@ -112,35 +122,51 @@ function afficherCheminsAccessiblesDepuisVille(nom){
     .attr("class","villeCourrante "+nom.replace(/\s/g,'').toUpperCase());
 
   d3.selectAll("#rond"+nom.replace(/\s/g,'').toUpperCase())
-      .attr("fill",couleurs(numeroJoueurCourant));
+      .attr("r",6)
+      .attr("fill",couleurs[numeroJoueurCourant]);
 
   for(i in listeVillesAdjacentes){
     if(listeVillesAdjacentes[i]!=undefined){
         if (listeVillesAdjacentes[i]<nom){
           d3.select("#"+listeVillesAdjacentes[i].replace(/\s/g, '')+nom.replace(/\s/g, '').toUpperCase())
-            .attr("stroke","black")
-            .attr("stroke-width","1")
+            .attr("stroke","#388e3c")
+            .attr("stroke-width","1.3")
             .attr("class","lignesActuelles")
         }
         else{
           d3.select("#"+nom.replace(/\s/g, '').toUpperCase()+listeVillesAdjacentes[i].replace(/\s/g, ''))
-            .attr("stroke","black")
-            .attr("stroke-width","1")
+            .attr("stroke","#388e3c")
+            .attr("stroke-width","1.3")
             .attr("class","lignesActuelles")
         }
         d3.select("."+listeVillesAdjacentes[i].replace(/\s/g,'').toUpperCase())
+          .attr("font-weight","bold")
           .attr("class","villes_accessibles "+listeVillesAdjacentes[i].replace(/\s/g,'').toUpperCase())
     }
   }                     
   var accessibles = svgFrance.selectAll(".villes_accessibles")
                       .on("mouseover", function(d){
-                                            d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#FF5252");
-                                            d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("fill","#FF5252");
+                                            d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#388e3c");
+                                            d3.selectAll("#"+d.nom.replace(/\s/g, ''))
+                                                .attr("fill","white");
+                                            tooltipVille.attr("x",projection(d.pos)[0]-20)
+                                                        .attr("y",function(){
+                                                                if(d.nom =="LYON"){
+                                                                    return projection(d.pos)[1]-30;
+                                                                }
+                                                                else{
+                                                                    return projection(d.pos)[1]-20;
+                                                                  }
+                                                        })
+                                                        .attr("width",8.5*d.nom.length)
+                                                        .style("opacity",1);
                                             d3.select(this).style("cursor", "pointer");
                       })
                       .on("mouseout",function(d){
                                             d3.selectAll("."+d.nom.replace(/\s/g, '')).attr("fill","#585858");
-                                            d3.selectAll("#"+d.nom.replace(/\s/g, '')).attr("fill","#585858");
+                                            d3.selectAll("#"+d.nom.replace(/\s/g, ''))
+                                                .attr("fill","#585858");
+                                            tooltipVille.style("opacity",0);
                                             colorieDepartArrive();
                                             d3.select(this).style("cursor", "default");
                           
@@ -158,7 +184,7 @@ function afficherCheminsAccessiblesDepuisVille(nom){
 //----------------------------------------------------------------
 function retirerCheminsAccessibles(){
   d3.selectAll(".lignesActuelles")
-    .attr("stroke","#686868")
+    .attr("stroke","#90a4ae")
     .attr("stroke-width","0.5");
   d3.selectAll(".lignesActuelles").classed("lignesActuelles",false);
   d3.selectAll(".villes_accessibles")
@@ -170,8 +196,10 @@ function retirerCheminsAccessibles(){
   $(".villes_accessibles").removeClass("villes_accessibles");
   d3.selectAll(".villes_accessibles").classed("villes_accessibles",false);
   d3.selectAll(".villeCourrante")
+    .attr("fill","#585858")
     .attr("font-weight","normal");
   d3.selectAll(".villeCourrante")
+    .attr("r",3)
     .attr("fill","#585858");
   d3.selectAll(".villeCourrante").classed("villeCourrante",false);
 
