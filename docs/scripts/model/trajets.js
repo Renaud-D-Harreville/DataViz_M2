@@ -41,7 +41,7 @@ class TrajetVoiture extends Trajet {
         this.prix=parseFloat(prix);
         this.co2=parseFloat(co2);
         this.duree=duree;
-        this.couleur = "#4848ff";
+        this.couleur = "#ff9100";
         this.legende = "voiture";
     }
 }
@@ -57,7 +57,7 @@ class TrajetTrain extends Trajet {
         this.co2=parseFloat(co2);
         this.duree=duree;
         this.legende = "train";
-        this.couleur = "#46ff49";
+        this.couleur = "#4e342e";
     }
 }
 
@@ -72,7 +72,7 @@ class TrajetAvion extends Trajet {
         this.co2=parseFloat(co2);
         this.duree=duree;
         this.legende = "avion";
-        this.couleur = "#ff213f";
+        this.couleur = "#b3e5fc";
     }
 }
 

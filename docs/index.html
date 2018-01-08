@@ -31,8 +31,9 @@
   </div>
 
     <div class="row">
-      <div id="joueurs" class="col s2">
-         <ul class="collapsible popout" data-collapsible="expandable">
+      <div class="col s2">
+        <div class="row" id="joueurs">
+          <ul class="collapsible popout" data-collapsible="expandable">
               <li class="active joueur1">
                 <div class="collapsible-header active"><i id="joueur1icone" class="material-icons">person</i>Joueur 1</div>
                 <div class="collapsible-body">
@@ -75,6 +76,11 @@
                 </li>
         </ul>
       </div>
+      <div class="row center">
+        <a id="drop" class='dropdown-button btn green ' data-activates='scores'>Scores</a>
+        <div id="scores" class="dropdown-content"></div>
+      </div>
+      </div>
       <div id="carte" class="col s5"></div>
       <div  class="col s5">
       <div class="card" id="graphe">
@@ -116,15 +122,6 @@
           </div>
       </div>
 
-    </div>
-
-    <div class="row">
-      <div id="copyright" class="col s5">
-        DataViz - M2DS, UCBL 2017 <br/>
-        Auteurs : Renaud D'Harreville, Mathilde Boltenhagen, Alice Montel 
-      </div>
-      <a id="drop" class='dropdown-button btn green ' data-activates='scores'>Scores</a>
-      <div id="scores" class="dropdown-content"></div>
     </div>
 </div>
 
