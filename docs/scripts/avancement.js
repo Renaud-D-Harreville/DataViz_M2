@@ -83,7 +83,6 @@ function miseAjourSvg(){
             .attr("transform", "translate(" + x0(score.id) + ",0)");
 
         // une pile par critère (T,A,V)
-        console.log("la "+y(0));
         section.append("g")
             .selectAll("g")
             .data(d3.stack().keys(listeTransports)(castScore))

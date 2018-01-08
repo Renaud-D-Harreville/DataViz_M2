@@ -32,9 +32,6 @@ function choixVilles(){
     //var voisin1 = villes.getVille("PARIS").listeVillesAdjacentes();
    
     //faire pour distance 1, 2 et 3 
-
-
-
     return [depart,arrivee];
 }
 
@@ -220,8 +217,7 @@ function suivant(numeroJoueur){
     else{
         if(finished()){
             afficheScores();
-            document.getElementById("iconescores").style.display = "none";
-            document.getElementById("popupfin").style.visibility = "visible";
+            document.getElementById("scores").display = "inline";
         }
         else{
             suivant(numeroSuivant(numeroJoueur));
