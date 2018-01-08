@@ -132,3 +132,11 @@ label{
     border-radius: 15px;
 }
 
+.marron{
+  background-color: #90a4ae !important;
+}
+
+.card-content{
+  padding : 10px !important ; 
+}
+
