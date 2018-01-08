@@ -196,7 +196,7 @@ function suivant(numeroJoueur){
         if(finished()){
             afficheScores();
             document.getElementById("iconescores").style.display = "none";
-            document.getElementById("popupfin").style.visibility = "visible";
+           // document.getElementById("popupfin").style.visibility = "visible";
         }
         else{
             suivant(numeroSuivant(numeroJoueur));

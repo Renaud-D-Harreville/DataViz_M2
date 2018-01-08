@@ -21,29 +21,35 @@ var s = svgScores.append("g")
 // couleur pour chaque moyen de transport
 var c = {"T":"#46ff49", "A":"#ff213f", "V":"#4848ff"};
 
+// pour les domaines et les piles
 var listeTransports = ["T","A","V"];
 var listeCriteres = ["prix","duree","co2"] ;
 
+// pour les axes 
 var x0 = d3.scaleBand();
 var x1 = d3.scaleBand();
 var y = d3.scaleLinear();
+
 
 //----------------------------------------------------------------
 // Création des axes du svg, une fois les scores initialisés 
 //----------------------------------------------------------------
 function creationAxesSvg(){
+
+    var listeScore = Array.from({length: scores.scores.length-1}, (v, k) => k+1);
+
     x0
         .rangeRound([0, largeur])
         .paddingInner(0.5)
-        .domain([1,scores.scores.length-1]);
+        .domain(listeScore);
 
     x1
         .padding(0.1)
-        .domain(listeCriteres).rangeRound([1,x0.bandwidth()]);
+        .domain(listeCriteres).rangeRound([10,x0.bandwidth()]);
 
     y
-        .range([hauteur,0])
-        .domain([0, 100]);
+        .domain([0, 1000])
+        .rangeRound([hauteur, marges.haut]);
 
     // création des axes
     s.append("g")
@@ -55,6 +61,7 @@ function creationAxesSvg(){
         .attr("class", "axis axis--y")
         .attr("transform", "translate(10,0)")
         .call(d3.axisLeft(y));  
+
 }
 
 //----------------------------------------------------------------
@@ -69,24 +76,26 @@ function miseAjourSvg(){
         var score = scores.getScore(i+1);
         var castScore = castDonnees(score);
 
-        
-        var section = s.append("g")
+        // pour les piles
+        var section = s.append("g");
+
+        section
             .attr("transform", "translate(" + x0(score.id) + ",0)");
 
         // une pile par critère (T,A,V)
-        section
-            .append("g")
+        console.log("la "+y(0));
+        section.append("g")
             .selectAll("g")
             .data(d3.stack().keys(listeTransports)(castScore))
             .enter().append("g")
                 .attr("fill", function(d) { return c[d.key]; })
             .selectAll("rect")
-            .data(function(d) { console.log(d); return d; })
+            .data(function(d) { return d; })
             .enter().append("rect")
                 .attr("x", function(d) { return x1(d.data.index); })
                 .attr("y", function(d) { return y(d[1]); })
                 .attr("width", x0.bandwidth()/3)
-                .attr("height", function(d) { return hauteur-(y(d[0])-y(d[1])); })
+                .attr("height", function(d) { return y(d[0])-y(d[1]); })
     }
 }
 
