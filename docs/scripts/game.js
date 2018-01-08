@@ -194,7 +194,14 @@ function jouer(){
         document.getElementById("joueur"+numeroJoueurCourant+"prix").innerHTML=joueurs.getJoueur(numeroJoueurCourant).prix;
         document.getElementById("joueur"+numeroJoueurCourant+"co2").innerHTML=joueurs.getJoueur(numeroJoueurCourant).co2;
         document.getElementById("joueur"+numeroJoueurCourant+"temps").innerHTML=joueurs.getJoueur(numeroJoueurCourant).temps;
-        suivant(numeroSuivant(numeroJoueurCourant));
+        if(joueurs.getJoueur(numeroJoueurCourant).position==arrivee){
+            annonceGagnant(numeroJoueurCourant);
+            var num=numeroSuivant(numeroJoueurCourant);
+            setTimeout(suivant,4000,num);
+        }
+        else{
+             suivant(numeroSuivant(numeroJoueurCourant));
+        }
     }
 }
 
@@ -275,6 +282,14 @@ function annonceJoueurSuivant(numeroJoueur){
     var div=document.getElementById("nouveauJoueurPopup");
     document.getElementById("nouveauJoueurCard").style.backgroundColor=couleurs[numeroJoueur];
     var div=$("#nouveauJoueurPopup");
+    setTimeout(afficheDivAnnimee,1000,div);
+}
+
+function annonceGagnant(numeroJoueur){
+    document.getElementById("numeroGagnantPopup").innerHTML=numeroJoueur;
+    var div=document.getElementById("gagnerJoueurPopup");
+    document.getElementById("gagnerJoueurCard").style.backgroundColor=couleurs[numeroJoueur];
+    var div=$("#gagnerJoueurPopup");
     setTimeout(afficheDivAnnimee,1000,div);
 }
 
