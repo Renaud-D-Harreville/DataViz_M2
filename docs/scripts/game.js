@@ -216,8 +216,7 @@ function suivant(numeroJoueur){
     }
     else{
         if(finished()){
-            document.getElementById("drop").click();
-            
+            afficheScores();            
         }
         else{
             suivant(numeroSuivant(numeroJoueur));
