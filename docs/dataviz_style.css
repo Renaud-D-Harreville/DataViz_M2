@@ -90,7 +90,7 @@ label{
   display: none;
 }
 
-#nouveauJoueurPopup{
+.popoutJoueur{
   opacity: 0;
   position:absolute;
   top:95px;
