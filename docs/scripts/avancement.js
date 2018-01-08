@@ -40,7 +40,7 @@ function creationAxesSvg(){
 
     x0
         .rangeRound([0, largeur])
-        .paddingInner(0.5)
+        .paddingInner(0.1)
         .domain(listeScore);
 
     x1
@@ -99,15 +99,29 @@ function miseAjourSvg(){
 }
 
 //----------------------------------------------------------------
-// div en plein milieu de l'écran
+// div scores pendant le jeu
 //----------------------------------------------------------------
 function afficherScores(){
-    console.log("hover");
     document.getElementById("scores").style.visibility = "visible";
 }
 
+//----------------------------------------------------------------
+// div en plein milieu de l'écran en fin de partie
+//----------------------------------------------------------------
 function afficherScoresFinaux(){
-
+    console.log("finished");
+    // modifier la zone d'affichage
+    document.getElementById("scores").style.top = "50%";
+    document.getElementById("scores").style.position = "fixed";
+    document.getElementById("scores").style.left = "50%";
+    document.getElementById("scores").style.width = "50%";
+    document.getElementById("scores").style.transform = "translate(-50%, -50%)";
+    document.getElementById("scores").style.textAlign = "center";
+    // afficher la div
+    document.getElementById("scores").style.visibility = "visible";
+    //  TODO  désactiver le mouseover du bouton Scores 
+    document.getElementById("btn score").onmouseover = null ; 
+    document.getElementById("btn score").onclick = null ;
 }
 
 //----------------------------------------------------------------
