@@ -27,6 +27,7 @@ var c = {"T":"#4e342e", "A":"#b3e5fc", "V":"#ff9100"};
 // pour les domaines et les piles
 var listeTransports = ["T","A","V"];
 var listeCriteres = ["prix","duree","co2"] ;
+var poids ={};
 
 // pour les axes 
 var x0 = d3.scaleBand();
@@ -68,6 +69,28 @@ function creationAxesSvg(){
 }
 
 //----------------------------------------------------------------
+// Initialise les poids pour le prix, co2, temps
+//----------------------------------------------------------------
+function creationPoids(modeJeu){
+    switch(modeJeu){
+        case "rapide":
+            poids={"prix":1,"duree":2,"co2":1}
+            break;
+        case "ecolo":
+            poids={"prix":1,"duree":1,"co2":2}
+            break;
+        case "pauvre":
+            poids={"prix":2,"duree":1,"co2":1}
+            break;
+        case "defaut":
+            poids={"prix":1,"duree":1,"co2":1}
+            break;
+        default:
+            break;
+    }
+}
+
+//----------------------------------------------------------------
 // Modifie les données du svg à chaque tour
 //----------------------------------------------------------------
 function miseAjourSvg(){   
@@ -95,9 +118,9 @@ function miseAjourSvg(){
             .data(function(d) { return d; })
             .enter().append("rect")
                 .attr("x", function(d) { return x1(d.data.index); })
-                .attr("y", function(d) { return y(d[1]); })
+                .attr("y", function(d) { return y(d[1]*poids[d.data.index]); })
                 .attr("width", x0.bandwidth()/3)
-                .attr("height", function(d) { return y(d[0])-y(d[1]); })
+                .attr("height", function(d) { return y(d[0]*poids[d.data.index])-y(d[1]*poids[d.data.index]); })
                 .on('mousemove', function(d) {
                     var mouse = d3.mouse(section.node()).map(function(d) {
                         return parseInt(d);
@@ -105,7 +128,7 @@ function miseAjourSvg(){
                     tooltip.classed('hidden', false)
                         .attr('style', 'left:' + (mouse[0] + 2) +
                                 'px; top:' + (mouse[1] - 2) + 'px')
-                        .html(afficherDonnees(d.data.index, d[1]));
+                        .html(afficherDonnees(d.data.index, d[1]*poids[d.data.index]-d[0]*poids[d.data.index]));
                 })
                 .on('mouseout', function() {
                         tooltip.classed('hidden', true);

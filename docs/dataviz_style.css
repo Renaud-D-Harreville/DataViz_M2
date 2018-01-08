@@ -167,3 +167,7 @@ div.tooltip {
   border : solid 2px #4caf50;
   box-shadow: 1px 1px 12px #aaa;
 }
+#selectModeJeu{
+  width :50%;
+  margin-left : 25%;
+}

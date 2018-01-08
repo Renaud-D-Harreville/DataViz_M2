@@ -46,6 +46,8 @@ function initialisation(){
 
     document.getElementById("popupfin").style.visibility = "hidden";
 
+    var modeJeu=document.getElementById("selectModeJeu").value;
+
     // garde le bon nombre de div dans la barre de gauche
     var nombreJoueurs=document.getElementById("selectNombreJoueurs").value;
     for(var i=parseInt(nombreJoueurs)+1;i<=nombreJoueursMax;i++){
@@ -61,6 +63,8 @@ function initialisation(){
             scores.addScore(score);
             document.getElementById("joueur"+i+"icone").style.color=couleurs[i];
         }
+        
+        creationPoids(modeJeu);
         creationAxesSvg();
     });
     p1.then(start());
