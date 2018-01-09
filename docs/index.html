@@ -131,11 +131,44 @@
 </div>
 
 <div class="card">
-  <div id="regles" class="card-content white" style="visibility :hidden">
-    <h5> Règles du jeu </h5>
-    <p> Coucou ceci sont les règles</p>
-    <a class="waves-effect green  btn right" onclick="afficherRegles()">J'ai compris</a>
-  </div>
+    <div id="regles" class="card-content white" style="visibility :hidden">
+        <h5> Règles du jeu </h5>
+        <p> But du jeu : se rendre à la destination imposée, en réduisant ses coûts.
+          Chaque trajet comporte trois types de coûts : Le prix (en €), le taux de Co2 estimé du trajet (en Kg),
+          ainsi que la durée du trajet (en heure et minutes).
+          L'objectif est donc de minimiser un ou plusieurs de ces coûts.
+          Attention, le mode de jeu influence l'estimation des coûts.</p>
+        <p> Quatre modes de jeu sont proposés pour ce jeu :
+            <li>
+                <ul> Mode découverte : Les valeurs des coûts sont brutes.</ul>
+                <ul> Je pense à la planète : c'est le mode écologique.
+                  Le coût en CO2 des trajets est augmenté lors de l'affichage des scores.
+                  Le nouveau coût n'est pas visible sur les graphiques de comparaison,
+                  cela vous incite à bien prendre la valeur de CO2 en compte lors de la sélection d'un trajet.</ul>
+                <ul> Pas le temps : c'est le mode pressé.
+                  La durée des trajets est augmentée lors de l'affichage des scores.
+                  Le nouvelle durée n'est pas visible sur les graphiques de comparaison,
+                  cela vous incite à bien prendre la durée du trajet en compte lors de la sélection d'un trajet.</ul>
+                <ul> Rien dans le portefeuille : c'est le mode économique.
+                  Le prix en € des trajets est augmenté lors de l'affichage des scores.
+                  Le nouveau prix n'est pas visible sur les graphiques de comparaison,
+                  cela vous incite à bien prendre le prix en compte lors de la sélection d'un trajet.</ul>
+            </li>
+        </p>
+        <h5>Comment jouer ? </h5>
+        <p>
+            Après avoir choisi votre mode de jeu, ainsi que le nombre de joueurs souhaités,
+            vous accedez à la visualisation du jeu. A de votre tour de jeu,
+            vous pouvez visualiser les différentes villes accessibles depuis votre emplacement,
+            ainsi que des données plus précises affichées sur la droite de l'écran.
+            Validez votre choix pour passer au joueur suivant</p>
+        <p>A tout moment du jeu, vous pouvez visualiser l'avancement des scores en cliquant sur le bouton associé
+            ('scores'). Inspirez vous en pour faire vos choix ;)</p>
+        <h5>Contexte</h5>
+        <p>Ce jeu s'inscrit dans le cadre d'un projet de visualisation de données au cours
+          du master informatique Data Science à l'Université Claude Bernard Lyon 1</p>
+        <a class="waves-effect green  btn right" onclick="afficherRegles()">J'ai compris</a>
+    </div>
 </div>
 
 <div id="popup">
