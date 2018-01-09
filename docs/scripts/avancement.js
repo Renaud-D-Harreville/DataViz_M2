@@ -140,7 +140,15 @@ function miseAjourSvg(){
 // div scores pendant le jeu
 //----------------------------------------------------------------
 function afficherScores(){
-    document.getElementById("scores").style.visibility = "visible";
+    var regles = document.getElementById("scores").style.visibility;
+    if(regles == "visible"){
+        document.getElementById("scores").style.visibility = "hidden";
+        console.log("hidden to visible");
+    }
+    else {
+        document.getElementById("scores").style.visibility = "visible";
+        console.log("visible to hidden ");
+    }
 }
 
 //----------------------------------------------------------------
@@ -178,17 +186,17 @@ function miseAjourScores(joueuri, d){
     switch(d.type) {
         case "A": 
             scorei.A.prix = scorei.A.prix + d.prix ;  
-            scorei.A.duree = castHeure(additionHeure(castHeureToString(scorei.A.duree), d.duree));  
+            scorei.A.duree = additionHeure(scorei.A.duree, d.duree);  
             scorei.A.co2 = scorei.A.co2 + d.co2 ;  
             break;
         case "T":
             scorei.T.prix = scorei.T.prix + d.prix ; 
-            scorei.T.duree = castHeure(additionHeure(castHeureToString(scorei.T.duree),d.duree)) ;  
+            scorei.T.duree = additionHeure(scorei.T.duree,d.duree);  
             scorei.T.co2 = scorei.T.co2 + d.co2 ;              
             break;
         case "V": 
             scorei.V.prix = scorei.V.prix + d.prix ;  
-            scorei.V.duree = castHeure(additionHeure(castHeureToString(scorei.V.duree), d.duree)) ;  
+            scorei.V.duree = additionHeure(scorei.V.duree, d.duree);  
             scorei.V.co2 = scorei.V.co2 + d.co2 ;  
             break;
         default:

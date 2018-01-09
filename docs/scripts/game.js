@@ -3,7 +3,7 @@
 // Date : Decembre 2017 
 //----------------------------------------------------------------
 
-initVille = choixVilles();
+initVille = getDepartArrivee();
 var depart= initVille[0];
 var arrivee= initVille[1];
 
@@ -13,28 +13,6 @@ var trajetCourant;
 var nombreJoueursMax=4;
 
 var couleurs = ["","#FFC300","#f31506","#3352ff"," #8915b5"]
-
-//----------------------------------------------------------------
-//  choix aléatoire des villes de départ et d'arrivée 
-//----------------------------------------------------------------
-function choixVilles(){
-    var depart= "MARSEILLE";
-    var arrivee="RENNES";
-
-    // choix de la ville de départ
-    var i = Math.floor((Math.random() * 10) + 1);
-    //var depart = villes.getVilleByIndex(i);
-
-    // choix d'une ville à distance >= 3 
-
-    // liste de toutes les villes -> supprimer à chaque fois qu'elle est adjacente
-    //var villesArrivee = villes.getVilles(); 
-    //var voisin1 = villes.getVille("PARIS").listeVillesAdjacentes();
-   
-    //faire pour distance 1, 2 et 3 
-    return [depart,arrivee];
-}
-
 
 //----------------------------------------------------------------
 //  initialise le nb de joueurs, toutes données à 0, cache la div formulaire, lance start() 
@@ -85,6 +63,19 @@ function rejouer(){
 }
 
 //----------------------------------------------------------------
+//  Pour afficher/cacher les règles du jeu
+//----------------------------------------------------------------
+function afficherRegles(){
+    var regles = document.getElementById("regles").style.visibility;
+    if(regles == "visible"){
+        document.getElementById("regles").style.visibility = "hidden";
+    }
+    else {
+        document.getElementById("regles").style.visibility = "visible";
+    }
+}
+
+//----------------------------------------------------------------
 //  init le joueur 1
 //----------------------------------------------------------------
 function start(){
@@ -101,7 +92,21 @@ function start(){
 //  deux villes a au moins 3 chemins d'écart
 //----------------------------------------------------------------
 function getDepartArrivee(){
-    //TODO
+    var depart= "MARSEILLE";
+    var arrivee="RENNES";
+
+    // choix de la ville de départ
+    var i = Math.floor((Math.random() * 10) + 1);
+    //var depart = villes.getVilleByIndex(i);
+
+    // choix d'une ville à distance >= 3 
+
+    // liste de toutes les villes -> supprimer à chaque fois qu'elle est adjacente
+    //var villesArrivee = villes.getVilles(); 
+    //var voisin1 = villes.getVille("PARIS").listeVillesAdjacentes();
+   
+    //faire pour distance 1, 2 et 3 
+    return [depart,arrivee];
 }
 
 
