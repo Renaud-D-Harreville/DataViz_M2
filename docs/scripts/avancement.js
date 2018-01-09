@@ -143,11 +143,9 @@ function afficherScores(){
     var regles = document.getElementById("scores").style.visibility;
     if(regles == "visible"){
         document.getElementById("scores").style.visibility = "hidden";
-        console.log("hidden to visible");
     }
     else {
         document.getElementById("scores").style.visibility = "visible";
-        console.log("visible to hidden ");
     }
 }
 

@@ -8,12 +8,13 @@
 }
 
 #regles{
-  top: 50%;
+  top: 35%;
   position:fixed;
-  left: 50%;
+  left: 41%;
   width:50%;
   transform: translate(-50%, -50%); 
   text-align: center;
+  box-shadow: 1px 1px 12px #aaa;
 }
 
 
