@@ -129,13 +129,12 @@ function miseAjourSvg(){
                 .attr("width", x0.bandwidth()/3)
                 .attr("height", function(d) { return y(d[0]*poids[d.data.index])-y(d[1]*poids[d.data.index]); })
                 .on('mousemove', function(d) {
-/*
+
 // d3 retourne la coordonnée de la souris dans le svg, et non pas dans la fenêtre
                     var mouse = d3.mouse(section.node()).map(function(d) {
                         return parseInt(d);
                     });
-*/
-
+                    console.log(coordonneesSouris);
                     tooltip.classed('hidden', false)
                         .attr('style', 'left:' + (coordonneesSouris.x + 2) +
                             'px; top:' + (coordonneesSouris.y - 2) + 'px')
