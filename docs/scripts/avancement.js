@@ -34,6 +34,13 @@ var x0 = d3.scaleBand();
 var x1 = d3.scaleBand();
 var y = d3.scaleLinear();
 
+var coordonneesSouris = {};
+$(document).mousemove(function(event){
+    coordonneesSouris.x = event.pageX;
+    coordonneesSouris.y = event.pageY;
+    //$("span").text("X: " + event.pageX + ", Y: " + event.pageY);
+});
+
 
 //----------------------------------------------------------------
 // Création des axes du svg, une fois les scores initialisés 
@@ -122,12 +129,16 @@ function miseAjourSvg(){
                 .attr("width", x0.bandwidth()/3)
                 .attr("height", function(d) { return y(d[0]*poids[d.data.index])-y(d[1]*poids[d.data.index]); })
                 .on('mousemove', function(d) {
+/*
+// d3 retourne la coordonnée de la souris dans le svg, et non pas dans la fenêtre
                     var mouse = d3.mouse(section.node()).map(function(d) {
                         return parseInt(d);
                     });
+*/
+
                     tooltip.classed('hidden', false)
-                        .attr('style', 'left:' + (mouse[0] + 2) +
-                                'px; top:' + (mouse[1] - 2) + 'px')
+                        .attr('style', 'left:' + (coordonneesSouris.x + 2) +
+                            'px; top:' + (coordonneesSouris.y - 2) + 'px')
                         .html(afficherDonnees(d.data.index, d[1]*poids[d.data.index]-d[0]*poids[d.data.index]));
                 })
                 .on('mouseout', function() {
