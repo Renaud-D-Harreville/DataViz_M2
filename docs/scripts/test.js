@@ -6,7 +6,7 @@
 //----------------------------------------------------------------
 //  Création & affichage svg à l'initialisation du jeu 
 //----------------------------------------------------------------
-largeurSvg = 500 ; hauteurSvg = 250;
+largeurSvg = 520 ; hauteurSvg = 250;
 var marges = {haut: 20, droite: 30, bas: 20, gauche: 25},
     largeur = largeurSvg - marges.gauche - marges.droite,
     hauteur = hauteurSvg - marges.haut - marges.bas;
@@ -49,6 +49,7 @@ function creationAxesSvg(){
 
     var listeScore = Array.from({length: scores.scores.length-1}, (v, k) => k+1);
 
+    console.log(largeur)
     x0
         .rangeRound([0, largeur])
         .paddingInner(0.2)
@@ -112,8 +113,9 @@ function miseAjourSvg(){
         // pour les piles
         var section = s.append("g");
 
+        console.log(x0(score.id))
         section
-            .attr("transform", "translate(" + x0(score.id) + ",0)");
+            .attr("transform", "translate("+x0(score.id)  +",0)");
 
         // une pile par critère (T,A,V)
         section.append("g")
