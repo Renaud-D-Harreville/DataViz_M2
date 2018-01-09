@@ -141,7 +141,7 @@ label{
 }
 
 .largeabout{
-  width : 41%;
+  width : 41% !important;
   margin-top : 65px !important;
 }
 
