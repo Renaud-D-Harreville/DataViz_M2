@@ -92,8 +92,8 @@ function start(){
 //  deux villes a au moins 3 chemins d'écart
 //----------------------------------------------------------------
 function getDepartArrivee(){
-    var depart= "MARSEILLE";
-    var arrivee="RENNES";
+    var depart= "REIMS";
+    var arrivee="TOULOUSE";
 
     // choix de la ville de départ
     var i = Math.floor((Math.random() * 10) + 1);
