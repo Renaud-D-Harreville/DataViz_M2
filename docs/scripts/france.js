@@ -211,6 +211,7 @@ function colorieDepartArrive(){
     .attr("font-weight","bold")
     .attr("fill","black");
   d3.select("#"+arrivee.replace(/\s/g, ''))
+    .attr("font-size", "13px")
     .attr("font-weight","bold")
     .attr("fill","green");
 }
