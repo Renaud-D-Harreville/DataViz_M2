@@ -36,3 +36,4 @@ Nous sommes plutôt d'accord sur l'aspect global que doit avoir le jeu. Nous pou
 | --- | ------ |
 | Mathilde | Ecriture |
 | Alice | Lecture & correction |
+| Mathilde | Validation ! |
