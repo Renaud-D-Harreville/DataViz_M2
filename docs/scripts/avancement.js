@@ -59,7 +59,7 @@ function creationAxesSvg(){
         .domain(listeCriteres).rangeRound([10,x0.bandwidth()]);
 
     y
-        .domain([0, 1000])
+        .domain([0,1000])
         .rangeRound([hauteur, marges.haut]);
 
     // création des axes
@@ -101,7 +101,7 @@ function creationPoids(modeJeu){
 // Modifie les données du svg à chaque tour
 //----------------------------------------------------------------
 function miseAjourSvg(){   
-    
+
     // une section pour chaque joueur 
     for(i=0; i<scores.scores.length-1;i++){
 
