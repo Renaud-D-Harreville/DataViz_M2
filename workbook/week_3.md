@@ -28,3 +28,4 @@ Alice a enrichi la page html afin d'avoir une base avec les formulaires qui sero
 | --- | ------ |
 | Alice | Ecriture - début |
 | Mathilde | Lecture - écriture | 
+| Alice | Validation (jamais trop tard) |
