@@ -18,7 +18,7 @@ Le but de notre projet est de sensibiliser la population sur leur choix selon tr
 * la durée 
 * le prix
 
-Voici une rapide visualisation du jeu qui est disponible ![ici](https://renaud-d-harreville.github.io/DataViz_M2/) :
+Voici une rapide visualisation du jeu qui est disponible [ici](https://renaud-d-harreville.github.io/DataViz_M2/) :
 
 ![](https://github.com/Renaud-D-Harreville/DataViz_M2/blob/master/Reports/groupe1.gif?raw=true)
 
