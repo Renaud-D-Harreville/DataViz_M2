@@ -15,7 +15,7 @@ Le projet comtient une visualisation de la carte de France et des trajets possib
 
 Le but de notre projet est de sensibiliser la population sur leur choix selon trois critères : 
 * le CO2
-* le temps mis 
+* la durée 
 * le prix
 
 Voici une rapide visualisation du jeu qui est disponible ![ici](https://renaud-d-harreville.github.io/DataViz_M2/) :
