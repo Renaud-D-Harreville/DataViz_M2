@@ -79,9 +79,9 @@ function afficherRegles(){
 //  init le joueur 1
 //----------------------------------------------------------------
 function start(){
-    document.getElementById("joueur1co2").innerHTML=joueurs.getJoueur(1).co2;
+    document.getElementById("joueur1co2").innerHTML=joueurs.getJoueur(1).co2.toFixed(2);
     document.getElementById("joueur1temps").innerHTML=joueurs.getJoueur(1).temps;
-    document.getElementById("joueur1prix").innerHTML=joueurs.getJoueur(1).prix;
+    document.getElementById("joueur1prix").innerHTML=joueurs.getJoueur(1).prix.toFixed(2);
     numeroJoueurCourant=1;
     afficherCheminsAccessiblesDepuisVille(joueurs.getJoueur(1).position);
     colorieDepartArrive();
@@ -94,7 +94,7 @@ function start(){
 function getDepartArrivee(){
     var depart= "REIMS";
     var arrivee="TOULOUSE";
-
+    
     // choix de la ville de départ
     var i = Math.floor((Math.random() * 10) + 1);
     //var depart = villes.getVilleByIndex(i);
@@ -200,8 +200,8 @@ function jouer(){
         joueurs.getJoueur(numeroJoueurCourant).co2+=parseFloat(document.getElementById("trajetco2").innerHTML);
         miseAjourScores(joueurs.getJoueur(numeroJoueurCourant), trajetCourant);
         miseAjourSvg();
-        document.getElementById("joueur"+numeroJoueurCourant+"prix").innerHTML=joueurs.getJoueur(numeroJoueurCourant).prix;
-        document.getElementById("joueur"+numeroJoueurCourant+"co2").innerHTML=joueurs.getJoueur(numeroJoueurCourant).co2;
+        document.getElementById("joueur"+numeroJoueurCourant+"prix").innerHTML=joueurs.getJoueur(numeroJoueurCourant).prix.toFixed(2);
+        document.getElementById("joueur"+numeroJoueurCourant+"co2").innerHTML=joueurs.getJoueur(numeroJoueurCourant).co2.toFixed(2);
         document.getElementById("joueur"+numeroJoueurCourant+"temps").innerHTML=joueurs.getJoueur(numeroJoueurCourant).temps;
         if(joueurs.getJoueur(numeroJoueurCourant).position==arrivee){
             annonceGagnant(numeroJoueurCourant);
@@ -224,8 +224,8 @@ function suivant(numeroJoueur){
         numeroJoueurCourant=numeroJoueur;
         retirerCheminsAccessibles();
         $('.collapsible').collapsible('open', numeroJoueur-1);
-        document.getElementById("joueur"+numeroJoueurCourant+"prix").innerHTML=joueurs.getJoueur(numeroJoueurCourant).prix;
-        document.getElementById("joueur"+numeroJoueurCourant+"co2").innerHTML=joueurs.getJoueur(numeroJoueurCourant).co2;
+        document.getElementById("joueur"+numeroJoueurCourant+"prix").innerHTML=joueurs.getJoueur(numeroJoueurCourant).prix.toFixed(2);
+        document.getElementById("joueur"+numeroJoueurCourant+"co2").innerHTML=joueurs.getJoueur(numeroJoueurCourant).co2.toFixed(2);
         document.getElementById("joueur"+numeroJoueurCourant+"temps").innerHTML=joueurs.getJoueur(numeroJoueurCourant).temps;
         afficherCheminsAccessiblesDepuisVille(joueurs.getJoueur(numeroJoueur).position);
         colorieDepartArrive();
