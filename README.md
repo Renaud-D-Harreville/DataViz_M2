@@ -8,7 +8,7 @@
 
 Dans le cadre de l'UE ` Data Visualisation` du master Data science de l'Université de Lyon 1, par groupe de 3, nous devions présenter une visualisation innovante sur le thème des transports. Nous nous sommes alors lancés dans l'implémentation d'un serious game, un logiciel éducatif distrayant. 
 
-Le projet comtient une visualisation de la carte de France et des trajets possibles à effectuer selon trois moyens de transports : 
+Le projet contient une visualisation de la carte de France et des trajets possibles à effectuer selon trois moyens de transports : 
 * le train
 * la voiture
 * l'avion
@@ -28,5 +28,5 @@ Voici une rapide visualisation du jeu qui est disponible ![ici](https://renaud-d
 
 - docs : fichiers js, python et nos données
 
-- workbook : the progress of our work per week 
+- workbook : le détail de notre avancement et nos objectifs chaque semaine
 
