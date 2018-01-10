@@ -27,5 +27,5 @@ Une grande partie du temps de cette dernière phase a été consacrée à la ré
  
 | Nom | Action |
 | --- | ------ |
-| Alice | Début |
+| Alice | Rédaction |
 | Mathilde | Validation | 
