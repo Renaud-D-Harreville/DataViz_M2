@@ -35,4 +35,4 @@ Nous avons donc choisi de distinguer entre autres les sections suivantes :
 | Nom | Action |
 | --- | ------ |
 | Mathilde | Début |
-| Alice | Fin |
+| Alice | Fin - validation |
