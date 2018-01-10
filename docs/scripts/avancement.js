@@ -134,11 +134,10 @@ function miseAjourSvg(){
                     var mouse = d3.mouse(section.node()).map(function(d) {
                         return parseInt(d);
                     });
-                    console.log(coordonneesSouris);
                     tooltip.classed('hidden', false)
                         .attr('style', 'left:' + (coordonneesSouris.x + 2) +
                             'px; top:' + (coordonneesSouris.y - 2) + 'px')
-                        .html(afficherDonnees(d.data.index, d[1]*poids[d.data.index]-d[0]*poids[d.data.index]));
+                        .html(afficherDonnees(d.data.index, d[1]-d[0]));
                 })
                 .on('mouseout', function() {
                         tooltip.classed('hidden', true);
@@ -260,22 +259,26 @@ function castDonnees(score){
 // fonction auxiliaire pour l'affichage dans le tooltip
 //----------------------------------------------------------------
 function afficherDonnees(cle, valeur){
+    var donnee = "";
     switch(cle){
         case "duree" :
             var heure = Math.floor(valeur/60);
             var minutes = valeur%60;
-            return "Temps : <br/>"+heure+"h"+minutes;
+            donnee = "Temps : <br/>"+heure+"h"+minutes;
             break; 
         case "co2" : 
-            return "CO2 : <br/>"+valeur+" Kg"; 
+            donnee =  "CO2 : <br/>"+valeur+" Kg"; 
             break ;
         case "prix" :
-            return "Prix : <br/>"+valeur+" €";
+            donnee =  "Prix : <br/>"+valeur+" €";
             break;
         default :
             break ;
     }
-
+    if(poids[cle] == 2){
+        donnee+= "*"+poids[cle]+" !";
+    } 
+    return donnee; 
 }
 
 
